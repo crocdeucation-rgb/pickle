@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>피클과외 시스템 프로토타입</title>
+<title>픽클 시스템 프로토타입</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.47.0/tabler-icons.min.css">
 <style>
 :root{
@@ -66,19 +66,39 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
 </style>
 </head>
 <body>
+<!-- 픽클 마스코트 로고 (선생님 오이 + 아이 오이) · 재사용 심볼 -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><symbol id="pickleLogo" viewBox="0 0 44 44">
+  <ellipse cx="18.5" cy="25" rx="8.4" ry="14.5" transform="rotate(-10 18.5 25)" fill="#2c6b30"/>
+  <ellipse cx="30" cy="28" rx="6.2" ry="11" transform="rotate(12 30 28)" fill="#3c8a40"/>
+  <g fill="none" stroke="#eef6e0" stroke-width="1.5" stroke-linecap="round">
+    <circle cx="15.1" cy="21.3" r="2.9"/><circle cx="22.3" cy="20.3" r="2.9"/>
+    <path d="M18 21 L19.4 20.7"/>
+    <path d="M16.6 27 Q18.6 29 20.6 26.6"/>
+  </g>
+  <circle cx="29.8" cy="25.6" r="1.5" fill="#eef6e0"/>
+  <path d="M28.8 29 Q30 30.2 31.2 28.8" fill="none" stroke="#eef6e0" stroke-width="1.3" stroke-linecap="round"/>
+</symbol></svg>
 <div class="app">
   <!-- 사이드바 -->
   <nav class="sidebar">
     <div class="sb-logo">
-      <div class="sb-logo-name"><span class="sb-logo-icon"><i class="ti ti-leaf"></i></span> 피클과외</div>
+      <div class="sb-logo-name"><span class="sb-logo-icon"><svg viewBox="0 0 44 44" style="width:84%;height:84%;display:block"><use href="#pickleLogo"/></svg></span> 픽클</div>
       <div class="sb-logo-sub">시스템 프로토타입 v1.0</div>
     </div>
 
+    <div style="padding:12px 14px 4px;border-bottom:1px solid rgba(255,255,255,0.06)">
+      <div style="font-size:10px;color:rgba(223,232,212,0.4);letter-spacing:0.5px;margin-bottom:7px">역할 기반 접근 · 한 어드민</div>
+      <div style="display:flex;gap:5px">
+        <span style="font-size:10px;font-weight:600;padding:3px 9px;border-radius:20px;background:var(--green);color:#fff">관리자</span>
+        <span style="font-size:10px;font-weight:600;padding:3px 9px;border-radius:20px;background:#2b5c8a;color:#dcebf7">마케터</span>
+        <span style="font-size:10px;font-weight:600;padding:3px 9px;border-radius:20px;background:rgba(199,232,122,0.22);color:var(--lime)">강사</span>
+      </div>
+      <div style="font-size:10px;color:rgba(223,232,212,0.42);margin-top:8px;line-height:1.55">관리자·마케터 = <b style="color:rgba(223,232,212,0.7)">내부 IP만</b> · 강사 = <b style="color:rgba(223,232,212,0.7)">외부 IP 허용</b></div>
+    </div>
+
     <div class="sb-group">
-      <div class="sb-group-label">관리자 어드민</div>
+      <div class="sb-group-label">관리자 <span style="color:rgba(223,232,212,0.3)">· 내부 IP</span></div>
       <div class="sb-nav active" data-screen="admin-dash"><i class="ti ti-layout-dashboard"></i> 운영 대시보드</div>
-      <div class="sb-nav" data-screen="admin-lead"><i class="ti ti-users"></i> 리드 관리 <span class="eye"><i class="ti ti-eye"></i>마케터</span></div>
-      <div class="sb-nav" data-screen="admin-channel"><i class="ti ti-broadcast"></i> 채널 관리 <span class="eye"><i class="ti ti-eye"></i>마케터</span></div>
       <div class="sb-nav" data-screen="admin-match"><i class="ti ti-adjustments"></i> 매칭·배정</div>
       <div class="sb-nav" data-screen="admin-attend"><i class="ti ti-clipboard-check"></i> 출결·보강</div>
       <div class="sb-nav" data-screen="admin-settle"><i class="ti ti-coin"></i> 정산 (티어)</div>
@@ -86,21 +106,28 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
     </div>
 
     <div class="sb-group">
-      <div class="sb-group-label">강사</div>
-      <div class="sb-nav" data-screen="teacher-dash"><i class="ti ti-home"></i> 강사 대시보드</div>
-      <div class="sb-nav" data-screen="teacher-timetable"><i class="ti ti-calendar"></i> 시간표 허브</div>
-      <div class="sb-nav" data-screen="teacher-proposal"><i class="ti ti-inbox"></i> 배정 제안 받기</div>
-      <div class="sb-nav" data-screen="teacher-bank"><i class="ti ti-leaf"></i> 피클뱅크</div>
-      <div class="sb-nav" data-screen="promise"><i class="ti ti-shield-check"></i> 피클 약속</div>
+      <div class="sb-group-label" style="color:#7fb0db">마케터 전용 <span style="color:rgba(223,232,212,0.3)">· 내부 IP</span></div>
+      <div class="sb-nav" data-screen="admin-lead"><i class="ti ti-users"></i> 리드 관리 <span class="eye"><i class="ti ti-eye"></i>마케터</span></div>
+      <div class="sb-nav" data-screen="admin-channel"><i class="ti ti-broadcast"></i> 채널 관리 <span class="eye"><i class="ti ti-eye"></i>마케터</span></div>
     </div>
 
     <div class="sb-group">
-      <div class="sb-group-label">고객 (학부모·학생)</div>
+      <div class="sb-group-label">강사 <span style="color:rgba(223,232,212,0.3)">· 외부 IP 허용 · 픽클 고객</span></div>
+      <div class="sb-nav" data-screen="teacher-dash"><i class="ti ti-home"></i> 강사 대시보드</div>
+      <div class="sb-nav" data-screen="teacher-timetable"><i class="ti ti-calendar"></i> 시간표·프로필</div>
+      <div class="sb-nav" data-screen="teacher-proposal"><i class="ti ti-inbox"></i> 배정 제안 받기</div>
+      <div class="sb-nav" data-screen="teacher-bank"><i class="ti ti-leaf"></i> 픽클뱅크</div>
+      <div class="sb-nav" data-screen="promise"><i class="ti ti-shield-check"></i> 픽클 약속</div>
+    </div>
+
+    <div class="sb-group">
+      <div class="sb-group-label">고객 (학부모·학생) <span style="color:rgba(223,232,212,0.3)">· 외부</span></div>
       <div class="sb-nav" data-screen="parent-web"><i class="ti ti-user-heart"></i> 학부모 웹</div>
       <div class="sb-nav" data-screen="student-web"><i class="ti ti-mood-kid"></i> 학생 웹</div>
-      <div class="sb-nav" data-screen="study-room"><i class="ti ti-books"></i> 피클 숙성실</div>
+      <div class="sb-nav" data-screen="monthly-report"><i class="ti ti-report-analytics"></i> 월간 리포트</div>
+      <div class="sb-nav" data-screen="study-room"><i class="ti ti-books"></i> 자습실</div>
       <div class="sb-nav" data-screen="payment"><i class="ti ti-credit-card"></i> 결제·구독</div>
-      <div class="sb-nav" data-screen="shop"><i class="ti ti-shopping-bag"></i> 피클 상점</div>
+      <div class="sb-nav" data-screen="shop"><i class="ti ti-shopping-bag"></i> 픽클 상점</div>
     </div>
   </nav>
 
@@ -193,10 +220,10 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
       <div class="ti-it"><span class="ti-tm">18:30</span><div style="flex:1"><div class="ti-nm">이준혁 (초5) 수학</div><div class="ti-sb">김하늘 · 60분</div></div><span class="ti-bd bp">예정</span></div>
     </div>
     <div class="ad-tp">
-      <div class="ad-tp-h"><i class="ti ti-star"></i> 시강 (에이스) <span class="cnt">4</span></div>
-      <div class="ti-it"><span class="ti-tm">14:00</span><div style="flex:1"><div class="ti-nm">김민서 (중2) 수학</div><div class="ti-sb">이민준 에이스</div></div><span class="ti-bd bn">진행중</span></div>
-      <div class="ti-it"><span class="ti-tm">15:30</span><div style="flex:1"><div class="ti-nm">박지아 (고1) 영어</div><div class="ti-sb">이민준 에이스</div></div><span class="ti-bd bs">곧</span></div>
-      <div class="ti-it"><span class="ti-tm">17:00</span><div style="flex:1"><div class="ti-nm">이하윤 (초5) 수학</div><div class="ti-sb">이민준 에이스</div></div><span class="ti-bd bp">예정</span></div>
+      <div class="ad-tp-h"><i class="ti ti-star"></i> 시강 (전담) <span class="cnt">4</span></div>
+      <div class="ti-it"><span class="ti-tm">14:00</span><div style="flex:1"><div class="ti-nm">김민서 (중2) 수학</div><div class="ti-sb">이민준 전담</div></div><span class="ti-bd bn">진행중</span></div>
+      <div class="ti-it"><span class="ti-tm">15:30</span><div style="flex:1"><div class="ti-nm">박지아 (고1) 영어</div><div class="ti-sb">이민준 전담</div></div><span class="ti-bd bs">곧</span></div>
+      <div class="ti-it"><span class="ti-tm">17:00</span><div style="flex:1"><div class="ti-nm">이하윤 (초5) 수학</div><div class="ti-sb">이민준 전담</div></div><span class="ti-bd bp">예정</span></div>
     </div>
     <div class="ad-tp">
       <div class="ad-tp-h"><i class="ti ti-map-pin"></i> 방문 <span class="cnt">2</span></div>
@@ -261,37 +288,88 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
 .mgr-none{color:var(--danger-tx)}
 .lbtn{font-size:11px;padding:4px 11px;border-radius:7px;border:1px solid var(--adm-line2);background:#fff;cursor:pointer;color:var(--adm-text)}
 .lbtn.pr{background:var(--info-bg);border-color:var(--info-bd);color:var(--info-tx)}
+.lbtn.hand{background:#efe9fb;border-color:#cbb9ee;color:#5a3db0}
+.lead-flow{display:flex;align-items:center;gap:6px;flex-wrap:wrap;background:#fff;border:1px solid var(--adm-line);border-radius:10px;padding:9px 12px;margin-bottom:12px;font-size:11px;color:var(--adm-text2)}
+.lead-flow .fs{padding:3px 9px;border-radius:20px;background:var(--adm-bg);white-space:nowrap}
+.lead-flow .fs.mkt{background:var(--info-bg);color:var(--info-tx);font-weight:500}
+.lead-flow .fs.adm{background:var(--succ-bg);color:var(--succ-tx);font-weight:500}
+.lead-flow .ar{color:var(--adm-text3)}
+.lead-bar{display:flex;align-items:center;gap:8px;margin-bottom:10px;flex-wrap:wrap}
+.lf-chips{display:flex;gap:5px;flex-wrap:wrap}
+.lf-chip{font-size:11px;padding:4px 11px;border-radius:20px;border:1px solid var(--adm-line2);background:#fff;color:var(--adm-text2);cursor:pointer}
+.lf-chip.on{background:#26261f;color:#fff;border-color:#26261f;font-weight:500}
+.lf-right{margin-left:auto;display:flex;gap:7px;align-items:center}
+.lf-sel{font-size:11px;padding:5px 10px;border-radius:8px;border:1px solid var(--adm-line2);background:#fff;color:var(--adm-text);cursor:pointer;font-family:inherit}
+.lbadge.sel{cursor:pointer;display:inline-flex;align-items:center;gap:3px}
+.lbadge.sel .cv{font-size:8px;opacity:0.6}
+.grp-row td{background:#f6f6f3 !important;font-size:10px;font-weight:600;color:var(--adm-text2);padding:5px 11px !important;letter-spacing:0.3px}
 </style>
 <div class="lead-pad">
   <div class="lead-brand">
     <div class="lb-tab on"><span class="lb-dot" style="background:#26261f"></span> 전체</div>
-    <div class="lb-tab"><span class="lb-dot" style="background:#3a8e3f"></span> 피클과외</div>
+    <div class="lb-tab"><span class="lb-dot" style="background:#3a8e3f"></span> 픽클</div>
     <div class="lb-tab"><span class="lb-dot" style="background:#185fa5"></span> 아라온스쿨</div>
   </div>
-  <div class="lead-vtab">
-    <div class="lv on">전체 <span class="c">67</span></div>
-    <div class="lv">신규 <span class="c">18</span></div>
-    <div class="lv">시강예정 <span class="c">12</span></div>
-    <div class="lv">방문예정 <span class="c">9</span></div>
-    <div class="lv">배정대기 <span class="c">9</span></div>
-    <div class="lv">추가관리 <span class="c">19</span></div>
+
+  <div class="lead-flow">
+    <span class="fs mkt">① 마케터 1차 관리</span><span class="ar">→</span>
+    <span class="fs">② 시강 / 방문</span><span class="ar">→</span>
+    <span class="fs">③ 안 함 = 보류로 계속 관리</span><span class="ar">→</span>
+    <span class="fs adm">④ 관리자 인계 · 강사 배정</span>
   </div>
+
+  <div class="lead-vtab">
+    <div class="lv on" onclick="leadTab(this,'all')">전체 <span class="c">67</span></div>
+    <div class="lv" onclick="leadTab(this,'new')">신규 <span class="c">18</span></div>
+    <div class="lv" onclick="leadTab(this,'trial')">시강예정 <span class="c">12</span></div>
+    <div class="lv" onclick="leadTab(this,'visit')">방문예정 <span class="c">9</span></div>
+    <div class="lv" onclick="leadTab(this,'wait')">배정대기 <span class="c">9</span></div>
+    <div class="lv" onclick="leadTab(this,'hold')">보류 <span class="c">11</span></div>
+    <div class="lv" onclick="leadTab(this,'more')">추가관리 <span class="c">8</span></div>
+  </div>
+
+  <div class="lead-bar">
+    <div class="lf-chips">
+      <span class="lf-chip on" onclick="leadCh(this,'all')">전체 채널</span>
+      <span class="lf-chip" onclick="leadCh(this,'meta')">메타</span>
+      <span class="lf-chip" onclick="leadCh(this,'naver')">네이버</span>
+      <span class="lf-chip" onclick="leadCh(this,'daangn')">당근</span>
+      <span class="lf-chip" onclick="leadCh(this,'kakao')">카카오</span>
+      <span class="lf-chip" onclick="leadCh(this,'google')">구글</span>
+      <span class="lf-chip" onclick="leadCh(this,'tenping')">텐핑</span>
+    </div>
+    <div class="lf-right">
+      <select class="lf-sel" onchange="leadSort('sort',this.value)">
+        <option value="prio">정렬: 우선순위순</option>
+        <option value="elapsed">정렬: 경과일순</option>
+        <option value="recent">정렬: 최신순</option>
+      </select>
+      <select class="lf-sel" onchange="leadSort('group',this.value)">
+        <option value="none">모아보기: 끄기</option>
+        <option value="ch">모아보기: 채널별</option>
+        <option value="status">모아보기: 상태별</option>
+      </select>
+    </div>
+  </div>
+
   <div class="lead-tbl-wrap">
     <table class="lead-tbl">
       <thead><tr><th>이름</th><th>학년·과목</th><th>상태</th><th>경과</th><th>채널</th><th>담당</th><th>메모</th><th>액션</th></tr></thead>
-      <tbody>
-        <tr><td><b>김민서</b></td><td>중2 · 수학</td><td><span class="lbadge lb-new">신규</span></td><td><span class="dtag d2">오늘</span></td><td><span class="ch-pill cp-meta">메타</span></td><td>신상준</td><td style="color:var(--adm-text3)">—</td><td><button class="lbtn pr">루트 지정</button></td></tr>
-        <tr class="urg"><td><b>한도윤</b></td><td>고1 · 수학</td><td><span class="lbadge lb-wait">배정대기</span></td><td><span class="dtag d0">3일</span></td><td><span class="ch-pill cp-tenping">텐핑</span></td><td>신상준</td><td>긴급</td><td><button class="lbtn pr">매칭</button></td></tr>
-        <tr><td><b>박지아</b></td><td>고1 · 영어</td><td><span class="lbadge lb-new">신규</span></td><td><span class="dtag d2">오늘</span></td><td><span class="ch-pill cp-naver">네이버</span></td><td>신상준</td><td style="color:var(--adm-text3)">—</td><td><button class="lbtn pr">루트 지정</button></td></tr>
-        <tr><td><b>최서준</b></td><td>중3 · 수학</td><td><span class="lbadge lb-visit">시강예정</span></td><td><span class="dtag d1">1일</span></td><td><span class="ch-pill cp-daangn">당근</span></td><td>우혜림</td><td>오늘 16시</td><td><button class="lbtn">상세</button></td></tr>
-        <tr class="urg"><td><b>정민준</b></td><td>고3 · 수학</td><td><span class="lbadge lb-call">미연락</span></td><td><span class="dtag d0">2일</span></td><td><span class="ch-pill cp-google">구글</span></td><td><span class="mgr-none">미배정</span></td><td style="color:var(--adm-text3)">—</td><td><button class="lbtn">재통화</button></td></tr>
-        <tr><td><b>강다은</b></td><td>고2 · 수학</td><td><span class="lbadge lb-visit">방문예정</span></td><td><span class="dtag d2">오늘</span></td><td><span class="ch-pill cp-meta">메타</span></td><td>장윤호</td><td>오늘 18시</td><td><button class="lbtn">결과</button></td></tr>
-        <tr><td><b>황지원</b></td><td>초5 · 수학</td><td><span class="lbadge lb-order">오더</span></td><td><span class="dtag d2">완료</span></td><td><span class="ch-pill cp-meta">메타</span></td><td>김윤호</td><td>결제완료</td><td><button class="lbtn">상세</button></td></tr>
-        <tr><td><b>류아린</b></td><td>고2 · 영어</td><td><span class="lbadge lb-hold">홀딩</span></td><td><span class="dtag d1">재통화</span></td><td><span class="ch-pill cp-tenping">텐핑</span></td><td><span class="mgr-none">미배정</span></td><td>재통화 필요</td><td><button class="lbtn">재통화</button></td></tr>
+      <tbody id="leadBody">
+        <tr data-ch="tenping" data-group="wait" data-days="3" data-prio="95" class="urg lead-data"><td><b>한도윤</b></td><td>고1 · 수학</td><td><span class="lbadge lb-wait sel">배정대기 <i class="ti ti-chevron-down cv"></i></span></td><td><span class="dtag d0">3일</span></td><td><span class="ch-pill cp-tenping">텐핑</span></td><td>신상준</td><td>긴급</td><td><button class="lbtn hand">관리자 인계 →</button></td></tr>
+        <tr data-ch="google" data-group="more" data-days="2" data-prio="80" class="urg lead-data"><td><b>정민준</b></td><td>고3 · 수학</td><td><span class="lbadge lb-call sel">미연락 <i class="ti ti-chevron-down cv"></i></span></td><td><span class="dtag d0">2일</span></td><td><span class="ch-pill cp-google">구글</span></td><td><span class="mgr-none">미배정</span></td><td style="color:var(--adm-text3)">—</td><td><button class="lbtn">재통화</button></td></tr>
+        <tr class="lead-data" data-ch="meta" data-group="visit" data-days="0" data-prio="68"><td><b>강다은</b></td><td>고2 · 수학</td><td><span class="lbadge lb-visit sel">방문예정 <i class="ti ti-chevron-down cv"></i></span></td><td><span class="dtag d2">오늘</span></td><td><span class="ch-pill cp-meta">메타</span></td><td>장윤호</td><td>오늘 18시</td><td><button class="lbtn">결과</button></td></tr>
+        <tr class="lead-data" data-ch="daangn" data-group="trial" data-days="1" data-prio="62"><td><b>최서준</b></td><td>중3 · 수학</td><td><span class="lbadge lb-visit sel">시강예정 <i class="ti ti-chevron-down cv"></i></span></td><td><span class="dtag d1">1일</span></td><td><span class="ch-pill cp-daangn">당근</span></td><td>우혜림</td><td>오늘 16시</td><td><button class="lbtn">상세</button></td></tr>
+        <tr class="lead-data" data-ch="kakao" data-group="hold" data-days="4" data-prio="52"><td><b>윤서아</b></td><td>중1 · 영어</td><td><span class="lbadge lb-hold sel">보류 <i class="ti ti-chevron-down cv"></i></span></td><td><span class="dtag d1">4일</span></td><td><span class="ch-pill cp-kakao">카카오</span></td><td>신상준</td><td>시강함 · 결정 보류 (재상담)</td><td><button class="lbtn hand">관리자 인계 →</button></td></tr>
+        <tr class="lead-data" data-ch="meta" data-group="hold" data-days="6" data-prio="48"><td><b>조하준</b></td><td>초6 · 수학</td><td><span class="lbadge lb-hold sel">보류 <i class="ti ti-chevron-down cv"></i></span></td><td><span class="dtag d2">6일</span></td><td><span class="ch-pill cp-meta">메타</span></td><td>신상준</td><td>방문함 · 비용 고민 중</td><td><button class="lbtn hand">관리자 인계 →</button></td></tr>
+        <tr class="lead-data" data-ch="tenping" data-group="hold" data-days="1" data-prio="46"><td><b>류아린</b></td><td>고2 · 영어</td><td><span class="lbadge lb-hold sel">홀딩 <i class="ti ti-chevron-down cv"></i></span></td><td><span class="dtag d1">재통화</span></td><td><span class="ch-pill cp-tenping">텐핑</span></td><td><span class="mgr-none">미배정</span></td><td>재통화 필요</td><td><button class="lbtn">재통화</button></td></tr>
+        <tr class="lead-data" data-ch="meta" data-group="new" data-days="0" data-prio="42"><td><b>김민서</b></td><td>중2 · 수학</td><td><span class="lbadge lb-new sel">신규 <i class="ti ti-chevron-down cv"></i></span></td><td><span class="dtag d2">오늘</span></td><td><span class="ch-pill cp-meta">메타</span></td><td>신상준</td><td style="color:var(--adm-text3)">—</td><td><button class="lbtn pr">루트 지정</button></td></tr>
+        <tr class="lead-data" data-ch="naver" data-group="new" data-days="0" data-prio="41"><td><b>박지아</b></td><td>고1 · 영어</td><td><span class="lbadge lb-new sel">신규 <i class="ti ti-chevron-down cv"></i></span></td><td><span class="dtag d2">오늘</span></td><td><span class="ch-pill cp-naver">네이버</span></td><td>신상준</td><td style="color:var(--adm-text3)">—</td><td><button class="lbtn pr">루트 지정</button></td></tr>
+        <tr class="lead-data" data-ch="meta" data-group="more" data-days="0" data-prio="12"><td><b>황지원</b></td><td>초5 · 수학</td><td><span class="lbadge lb-order sel">오더 <i class="ti ti-chevron-down cv"></i></span></td><td><span class="dtag d2">완료</span></td><td><span class="ch-pill cp-meta">메타</span></td><td>김윤호</td><td>결제완료</td><td><button class="lbtn">상세</button></td></tr>
       </tbody>
     </table>
   </div>
-  <div style="margin-top:10px;font-size:11px;color:var(--adm-text2)">노션식 인라인 편집 · 상태 즉시 변경 · 전 채널 모수 통합 (메타·네이버·당근·카카오·구글·텐핑)</div>
+  <div style="margin-top:10px;font-size:11px;color:var(--adm-text2)">노션식 인라인 편집 · 상태 칩 클릭으로 즉시 변경 · "안 함"도 <b>보류</b>로 계속 관리 · 전 채널 모수 통합 (메타·네이버·당근·카카오·구글·텐핑 + 추후 확장)</div>
 </div>
 </div>
 
@@ -418,10 +496,11 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
 .bconf{margin-left:auto;font-size:11px;padding:5px 14px;border-radius:7px;border:1px solid var(--succ-bd);background:var(--succ-bg);color:var(--succ-tx);cursor:pointer;font-weight:500}
 </style>
 <div class="mt-pad">
+  <div style="display:flex;align-items:flex-start;gap:8px;font-size:11px;color:#185fa5;background:var(--info-bg);border:1px solid var(--info-bd);border-radius:9px;padding:9px 12px;margin-bottom:12px;line-height:1.5"><i class="ti ti-user-plus" style="font-size:15px;flex-shrink:0;margin-top:1px"></i><span><b>최초 가입은 "학생 기준"으로 등록돼요.</b> 희망/가능 시간 · 과목 · 원하는 교재 · 특이사항이 먼저 정리된 상태로 넘어와, 강사 스킬 포트폴리오·빈 슬롯과 매칭만 하면 됩니다.</span></div>
   <div class="mt-target">
     <div class="mt-av">이준</div>
     <div class="mt-tinfo"><div class="mt-tname">이준혁 <span style="font-size:11px;color:var(--adm-text2);font-weight:400">초5 · 배정 대기 3일</span></div><div class="mt-tsub">차분한 선생님 선호</div></div>
-    <div class="mt-conds"><span class="mt-cond">수학</span><span class="mt-cond">주2회·60분</span><span class="mt-cond">화·목 17~19시</span><span class="mt-cond">성별 무관</span></div>
+    <div class="mt-conds"><span class="mt-cond">수학</span><span class="mt-cond">주2회·60분</span><span class="mt-cond">화·목 17~19시</span><span class="mt-cond">성별 무관</span><span class="mt-cond">교재: 디딤돌</span></div>
   </div>
   <div class="mt-flow"><i class="ti ti-route"></i><span class="cur">① 강사 선택</span><span>→</span><span>② 배정 제안</span><span>→</span><span>③ 강사 수락</span><span>→</span><span>④ 확정 (BODA+알림톡)</span></div>
   <div class="mc best">
@@ -523,7 +602,7 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
 </div>
 </div>
 
-<!-- ========== 관리자: 정산 (피클 티어제) ========== -->
+<!-- ========== 관리자: 정산 (픽클 티어제) ========== -->
 <div class="screen" id="scr-admin-settle">
 <style>
 .se-pad{padding:20px;background:var(--adm-bg);min-height:100%}
@@ -570,13 +649,13 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
 .nst .nsa{color:var(--green-dark)}
 </style>
 <div class="se-pad">
-  <div class="se-sect" style="margin-bottom:14px"><span>강사 정산 · 피클 티어제</span> <span class="sub">— 씨앗에서 골든피클까지 · 오래·잘하고 연장 잘 시킬수록 ↑ · 순매출 기준</span></div>
+  <div class="se-sect" style="margin-bottom:14px"><span>강사 정산 · 픽클 티어제</span> <span class="sub">— 씨앗에서 골든픽클까지 · 오래·잘하고 연장 잘 시킬수록 ↑ · 순매출 기준</span></div>
   <div class="se-tiers" style="grid-template-columns:repeat(5,1fr)">
     <div class="se-tier"><div class="se-emoji">🌱</div><div class="se-tn">씨앗</div><div class="se-ten">Seed · 신입</div><div class="se-rate">44%</div><div class="se-rl">순매출 배분율</div><div class="se-cond">입사~3개월 / 정착 지원금 병행</div></div>
     <div class="se-tier cur"><div class="se-cb">김하늘</div><div class="se-emoji">🥒</div><div class="se-tn">오이</div><div class="se-ten">Cucumber</div><div class="se-rate">46%</div><div class="se-rl">순매출 배분율</div><div class="se-cond">근속+타임 / 연장 시작</div></div>
     <div class="se-tier"><div class="se-emoji">🧂</div><div class="se-tn">절임</div><div class="se-ten">Brine</div><div class="se-rate">50%</div><div class="se-rl">순매출 배분율</div><div class="se-cond">연장 누적 / 베테랑</div></div>
-    <div class="se-tier"><div class="se-emoji">🫙</div><div class="se-tn">피클</div><div class="se-ten">Pickle · 마스터</div><div class="se-rate">52%</div><div class="se-rl">순매출 배분율</div><div class="se-cond">최상위 마스터</div></div>
-    <div class="se-tier" style="border:2px solid var(--lime);background:linear-gradient(135deg,#f6fde8,#fff)"><div class="se-emoji">✨</div><div class="se-tn" style="color:var(--green-dark)">골든피클</div><div class="se-ten">Golden Pickle · 원장</div><div class="se-rate" style="font-size:15px;line-height:1.3">52%<br><span style="font-size:11px;color:var(--green)">+ 후배 4%</span></div><div class="se-rl">멘토 수익 추가</div><div class="se-cond" style="color:var(--green-dark)">후배를 키워 버는<br>지역 원장</div></div>
+    <div class="se-tier"><div class="se-emoji">🫙</div><div class="se-tn">픽클</div><div class="se-ten">Pickle · 마스터</div><div class="se-rate">52%</div><div class="se-rl">순매출 배분율</div><div class="se-cond">최상위 마스터</div></div>
+    <div class="se-tier" style="border:2px solid var(--lime);background:linear-gradient(135deg,#f6fde8,#fff)"><div class="se-emoji">✨</div><div class="se-tn" style="color:var(--green-dark)">골든픽클</div><div class="se-ten">Golden Pickle · 원장</div><div class="se-rate" style="font-size:15px;line-height:1.3">52%<br><span style="font-size:11px;color:var(--green)">+ 후배 4%</span></div><div class="se-rl">멘토 수익 추가</div><div class="se-cond" style="color:var(--green-dark)">후배를 키워 버는<br>지역 원장</div></div>
   </div>
   <div class="se-sect"><i class="ti ti-trending-up"></i> 승급 공식 <span class="sub">근속(기본) + 타임 + 연장 결제</span></div>
   <div class="promo">
@@ -589,10 +668,10 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
     </div>
     <div class="pnote"><i class="ti ti-bulb"></i><span><b>연장 결제에 가장 높은 가중치.</b> "오래 가르치는 것"보다 "학부모가 계속 결제하게 만드는 강사"를 우대 → 강사 인센티브 = 회사 매출(연장율) 방향과 일치.</span></div>
   </div>
-  <div class="pnote" style="margin-top:10px;border:1px solid #c9e89f;background:#f3fce2"><i class="ti ti-crown" style="color:var(--green-dark)"></i><span><b>골든피클(원장) = 세계관의 완성.</b> 씨앗으로 입사 → 피클로 성장 → 골든피클(원장)이 되어 새 씨앗을 키운다. 본인 52% + 후배 강사 순매출의 <b>4% 멘토 수익</b> 추가. 지역 원장이 되면 해당 지역 강사·학생 데이터를 관리할 수 있는 권한이 부여됨.</span></div>
+  <div class="pnote" style="margin-top:10px;border:1px solid #c9e89f;background:#f3fce2"><i class="ti ti-crown" style="color:var(--green-dark)"></i><span><b>골든픽클(원장) = 세계관의 완성.</b> 씨앗으로 입사 → 픽클로 성장 → 골든픽클(원장)이 되어 새 씨앗을 키운다. 본인 52% + 후배 강사 순매출의 <b>4% 멘토 수익</b> 추가. 지역 원장이 되면 해당 지역 강사·학생 데이터를 관리할 수 있는 권한이 부여됨.</span></div>
   <div class="se-sect"><i class="ti ti-table"></i> 단가 매트릭스 <span class="sub">학년 × 티어 (90분 기준)</span></div>
   <table class="matrix">
-    <thead><tr><th>학년 (90분)</th><th>🌱 씨앗</th><th>🥒 오이</th><th>🧂 절임</th><th>🫙 피클</th></tr></thead>
+    <thead><tr><th>학년 (90분)</th><th>🌱 씨앗</th><th>🥒 오이</th><th>🧂 절임</th><th>🫙 픽클</th></tr></thead>
     <tbody>
       <tr><td>초등</td><td><span class="cr">17,000</span></td><td><span class="cr">+a</span></td><td><span class="cr">+a</span></td><td><span class="cr">+a</span></td></tr>
       <tr><td>중등</td><td><span class="cr">22,000</span></td><td><span class="cr">+a</span></td><td><span class="cr">+a</span></td><td><span class="cr">+a</span></td></tr>
@@ -638,20 +717,20 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
 .ev-msg b{font-weight:600}
 </style>
 <div class="ev-pad">
-  <div style="font-size:12px;color:var(--adm-text2);margin-bottom:14px">시강은 "에이스 맛보기 → 클로징 무기"에서 출발, 규모 커지면 정규 프로세스로 진화 · MVP는 1단계만, 2·3단계는 확장 포인트로</div>
+  <div style="font-size:12px;color:var(--adm-text2);margin-bottom:14px">시강은 "전담 맛보기 → 클로징 무기"에서 출발, 규모 커지면 정규 프로세스로 진화 · MVP는 1단계만, 2·3단계는 확장 포인트로</div>
   <div class="ev-grid">
     <div class="ev-col now">
-      <div class="ev-ch"><div class="ev-stage"><i class="ti ti-seeding"></i> 1단계 <span class="ev-sb bn2">MVP · 현재</span></div><div class="ev-ph">에이스 고정</div><div class="ev-tr">리드 적음 · 에이스 1~2명 전담</div></div>
+      <div class="ev-ch"><div class="ev-stage"><i class="ti ti-seeding"></i> 1단계 <span class="ev-sb bn2">MVP · 현재</span></div><div class="ev-ph">전담 고정</div><div class="ev-tr">리드 적음 · 전담 강사 1~2명</div></div>
       <div class="ev-body">
-        <div><div class="ev-al"><i class="ti ti-user-star"></i> 누가 시강하나</div><div class="ev-av">에이스 강사 고정</div><div class="ev-as">"시스템 맛보기" 최고 무기</div><span class="evtag tg-a">에이스 1~2명</span></div>
+        <div><div class="ev-al"><i class="ti ti-user-star"></i> 누가 시강하나</div><div class="ev-av">전담 강사 고정</div><div class="ev-as">"시스템 맛보기" 최고 무기</div><span class="evtag tg-a">전담 1~2명</span></div>
         <div><div class="ev-al"><i class="ti ti-hand-click"></i> 어떻게 배정</div><div class="ev-av">관리자 수동 배정</div><span class="evtag tg-m">수동</span></div>
         <div><div class="ev-al"><i class="ti ti-chart-dots"></i> 무엇을 측정</div><div class="ev-av">기본 기록만</div><span class="evtag tg-m">측정 최소</span></div>
       </div>
     </div>
     <div class="ev-col">
-      <div class="ev-ch"><div class="ev-stage"><i class="ti ti-trending-up"></i> 2단계 <span class="ev-sb bx2">성장기</span></div><div class="ev-ph">시강 풀 양성</div><div class="ev-tr">리드 폭증 · 에이스 병목</div></div>
+      <div class="ev-ch"><div class="ev-stage"><i class="ti ti-trending-up"></i> 2단계 <span class="ev-sb bx2">성장기</span></div><div class="ev-ph">시강 풀 양성</div><div class="ev-tr">리드 폭증 · 전담 병목</div></div>
       <div class="ev-body">
-        <div><div class="ev-al"><i class="ti ti-user-star"></i> 누가 시강하나</div><div class="ev-av">에이스 + 준에이스 풀</div><div class="ev-as">전환 잘하는 강사 양성 · 병목 해소</div><span class="evtag tg-a">에이스</span><span class="evtag tg-p">준에이스</span></div>
+        <div><div class="ev-al"><i class="ti ti-user-star"></i> 누가 시강하나</div><div class="ev-av">전담 + 백업 풀</div><div class="ev-as">전환 잘하는 강사 양성 · 병목 해소</div><span class="evtag tg-a">전담</span><span class="evtag tg-p">백업</span></div>
         <div><div class="ev-al"><i class="ti ti-adjustments"></i> 어떻게 배정</div><div class="ev-av">반자동 추천</div><span class="evtag tg-p">반자동</span></div>
         <div><div class="ev-al"><i class="ti ti-chart-dots"></i> 무엇을 측정</div><div class="ev-av">시강→등록 전환율</div><span class="evtag tg-d">전환율 집계</span></div>
       </div>
@@ -710,13 +789,23 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
 .rr:last-child{border-bottom:none}
 .rrn{font-size:12px;font-weight:500}.rrs{font-size:11px;color:var(--text2)}
 .rrt{font-size:10px;padding:2px 8px;border-radius:20px;background:var(--lime-soft);color:var(--green);font-weight:500}
+.lcw{background:#fff;border:1px solid var(--line);border-radius:12px;margin-bottom:8px;overflow:hidden}
+.lcw.now{border-color:var(--green)}
+.lc-top{display:flex;align-items:center;gap:14px;padding:13px 15px}
+.lcw.now .lc-top{background:var(--lime-soft)}
+.lc-ext{padding:9px 15px;border-top:1px dashed var(--line2);background:#fafdf7}
+.lc-er{display:flex;gap:8px;font-size:11px;color:var(--text2);line-height:1.5;padding:2px 0}
+.lc-er .ek{color:var(--green);min-width:60px;flex-shrink:0;font-weight:500}
+.lc-share{font-size:10px;color:var(--text3);margin-top:4px;display:flex;align-items:center;gap:5px}
+.dev-note{display:flex;align-items:center;gap:7px;font-size:11px;color:#854f0b;background:var(--warn-bg);border:1px solid var(--warn-bd);border-radius:9px;padding:8px 12px;margin-bottom:10px;line-height:1.5}
+.dev-note i{font-size:15px;flex-shrink:0}
 </style>
 <div class="tea-pad">
   <div class="tea-greet"><div class="tea-gt">안녕하세요, 김하늘 선생님 🥒 오이 티어</div><div class="tea-gs">2026년 6월 24일 (화) · 오늘 수업 3개가 있어요</div></div>
   <div class="tea-sum">
     <div class="tea-sc"><div class="tea-scl">오늘 수업</div><div class="tea-scv gI">3</div><div class="tea-scs">완료 1 · 남음 2</div></div>
     <div class="tea-sc"><div class="tea-scl">이번달 타임</div><div class="tea-scv">142</div><div class="tea-scs">담당 학생 12명</div></div>
-    <div class="tea-sc"><div class="tea-scl">피클뱅크 잔액</div><div class="tea-scv gI">1.84M</div><div class="tea-scs">출금 가능</div></div>
+    <div class="tea-sc"><div class="tea-scl">픽클뱅크 잔액</div><div class="tea-scv gI">1.84M</div><div class="tea-scs">출금 가능</div></div>
     <div class="tea-sc"><div class="tea-scl">연장 결제</div><div class="tea-scv">6건 ★</div><div class="tea-scs">절임까지 72%</div></div>
   </div>
   <div class="tea-prop">
@@ -725,9 +814,34 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
     <div class="tea-pa"><button class="btacc" onclick="switchScreen('teacher-proposal')">자세히 보기</button></div>
   </div>
   <div class="tea-sect"><span><i class="ti ti-device-laptop" style="vertical-align:-2px;color:var(--text2)"></i> 오늘 수업</span> <a onclick="switchScreen('teacher-timetable')">시간표 전체 →</a></div>
-  <div class="lc"><div class="lct"><div class="lcth">13:00</div><div class="lctd">완료</div></div><div class="lci"><div class="lcs">박서연 (고1) · 영어</div><div class="lcm">60분 · 4회차</div></div><div style="display:flex;gap:8px;align-items:center"><span class="lcb lb-done">완료</span><button class="brep" onclick="openModal('report')">리포트 작성</button></div></div>
-  <div class="lc now"><div class="lct"><div class="lcth">17:00</div><div class="lctd">곧 시작</div></div><div class="lci"><div class="lcs">이준혁 (초5) · 수학</div><div class="lcm">60분 · 1회차 (첫 수업)</div></div><div style="display:flex;gap:8px;align-items:center"><span class="lcb lb-s">10분 후</span><button class="benter"><i class="ti ti-video"></i> 입장하기</button></div></div>
-  <div class="lc"><div class="lct"><div class="lcth">19:30</div><div class="lctd">예정</div></div><div class="lci"><div class="lcs">김지우 (중2) · 수학</div><div class="lcm">90분 · 8회차</div></div><div style="display:flex;gap:8px;align-items:center"><span class="lcb lb-d">예정</span><button class="benter dim"><i class="ti ti-clock"></i> 30분 전 활성화</button></div></div>
+  <div class="dev-note"><i class="ti ti-device-laptop"></i><span><b>수업은 패드·노트북에서만</b> 개설돼요 (스마트폰 불가). 입장은 따로 누르지 않아도 <b>수업 10분 전 자동 개설</b>됩니다.</span></div>
+
+  <div class="lcw">
+    <div class="lc-top"><div class="lct"><div class="lcth">13:00</div><div class="lctd">완료</div></div><div class="lci"><div class="lcs">박서연 (고1) · 영어</div><div class="lcm">60분 · 4회차</div></div><div style="display:flex;gap:8px;align-items:center"><span class="lcb lb-done">완료</span><button class="brep" onclick="openModal('report')">리포트 작성</button></div></div>
+    <div class="lc-ext">
+      <div class="lc-er"><span class="ek">지난 수업</span><span>3회차 · 현재완료 시제 (have p.p.) 개념 정리</span></div>
+      <div class="lc-er"><span class="ek">내준 숙제</span><span>교재 p.40~43 · 오답 2문제 다시 풀기</span></div>
+      <div class="lc-share"><i class="ti ti-users"></i> 강사·학생·학부모 모두에게 동일하게 표시</div>
+    </div>
+  </div>
+
+  <div class="lcw now">
+    <div class="lc-top"><div class="lct"><div class="lcth">17:00</div><div class="lctd">곧 시작</div></div><div class="lci"><div class="lcs">이준혁 (초5) · 수학</div><div class="lcm">60분 · 1회차 (첫 수업)</div></div><div style="display:flex;gap:8px;align-items:center"><span class="lcb lb-s">자동 개설됨</span><button class="benter"><i class="ti ti-video"></i> 입장하기</button></div></div>
+    <div class="lc-ext">
+      <div class="lc-er"><span class="ek">지난 수업</span><span>첫 수업 · 진단 후 첫 리포트를 작성해요</span></div>
+      <div class="lc-er"><span class="ek">내준 숙제</span><span>—</span></div>
+      <div class="lc-share"><i class="ti ti-device-laptop"></i> 패드·노트북에서 입장 · 스마트폰 입장 불가</div>
+    </div>
+  </div>
+
+  <div class="lcw">
+    <div class="lc-top"><div class="lct"><div class="lcth">19:30</div><div class="lctd">예정</div></div><div class="lci"><div class="lcs">김지우 (중2) · 수학</div><div class="lcm">90분 · 8회차</div></div><div style="display:flex;gap:8px;align-items:center"><span class="lcb lb-d">예정</span><button class="benter dim"><i class="ti ti-clock"></i> 10분 전 자동 개설</button></div></div>
+    <div class="lc-ext">
+      <div class="lc-er"><span class="ek">지난 수업</span><span>7회차 · 이차방정식 근의공식 유도 + 활용</span></div>
+      <div class="lc-er"><span class="ek">내준 숙제</span><span>쎈 B단계 12문제 · 오답노트 정리</span></div>
+      <div class="lc-share"><i class="ti ti-users"></i> 강사·학생·학부모 모두에게 동일하게 표시</div>
+    </div>
+  </div>
   <div class="tea-bot" style="margin-top:18px">
     <div class="tpanel">
       <div class="tea-sect"><span><i class="ti ti-file-text" style="vertical-align:-2px;color:var(--text2)"></i> 작성할 리포트</span></div>
@@ -736,11 +850,11 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
       <div style="margin-top:10px;font-size:11px;color:var(--text2);background:var(--lime-soft);border-radius:8px;padding:8px 10px;line-height:1.5"><i class="ti ti-info-circle" style="color:var(--green)"></i> 리포트 작성하면 학부모에게 자동 발송 · 연장 결정에 큰 영향</div>
     </div>
     <div class="tpanel">
-      <div class="tea-sect"><span><i class="ti ti-leaf" style="vertical-align:-2px;color:var(--green)"></i> 피클뱅크</span> <a onclick="switchScreen('teacher-bank')">상세 →</a></div>
-      <div style="font-size:24px;font-weight:700;color:var(--green-dark);margin:6px 0">1,847,200 <span style="font-size:13px;color:var(--text2)">피클</span></div>
-      <div style="font-size:11px;color:var(--text2);line-height:1.6">= 1,847,200원 · 1피클 = 1원<br>이번달 적립 1,730,350피클 (세후)</div>
+      <div class="tea-sect"><span><i class="ti ti-leaf" style="vertical-align:-2px;color:var(--green)"></i> 픽클뱅크</span> <a onclick="switchScreen('teacher-bank')">상세 →</a></div>
+      <div style="font-size:24px;font-weight:700;color:var(--green-dark);margin:6px 0">1,847,200 <span style="font-size:13px;color:var(--text2)">픽클</span></div>
+      <div style="font-size:11px;color:var(--text2);line-height:1.6">= 1,847,200원 · 1픽클 = 1원<br>이번달 적립 1,730,350픽클 (세후)</div>
       <div style="margin-top:12px;border-top:1px solid var(--line);padding-top:12px">
-        <div class="tea-sect" style="margin-bottom:8px"><span><i class="ti ti-shield-check" style="vertical-align:-2px;color:var(--green)"></i> 피클 약속 현황</span> <a onclick="switchScreen('promise')">전체 →</a></div>
+        <div class="tea-sect" style="margin-bottom:8px"><span><i class="ti ti-shield-check" style="vertical-align:-2px;color:var(--green)"></i> 픽클 약속 현황</span> <a onclick="switchScreen('promise')">전체 →</a></div>
         <div style="font-size:12px;color:var(--text2);line-height:1.8">
           <div>약속 진행 중 <b style="color:var(--green-dark)">2건</b> · 완료 임박 <b style="color:#854f0b">1건</b></div>
           <div style="font-size:11px;margin-top:4px;background:var(--lime-soft);border-radius:8px;padding:7px 10px;color:var(--green-dark)"><i class="ti ti-info-circle"></i> 이준혁(초5) 완료까지 2회 — 연장 상담 준비하세요</div>
@@ -751,7 +865,7 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
 </div>
 </div>
 
-<!-- ========== 강사: 시간표 허브 ========== -->
+<!-- ========== 강사: 시간표·프로필 (스킬 포트폴리오) ========== -->
 <div class="screen" id="scr-teacher-timetable">
 <style>
 .th-pad{padding:20px;background:var(--bg);min-height:100%}
@@ -775,9 +889,20 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
 .m-e{background:#fff;border:1px solid var(--line)}
 .m-f{background:var(--lime-soft);border:1px solid var(--green);color:var(--green-dark);font-weight:500}
 .m-b{background:var(--info-bg);border:1px solid var(--info-bd);color:var(--info-tx)}
+.sk{background:#fafdf7;border:1px solid var(--line);border-radius:10px;padding:11px 13px;margin:11px 0}
+.sk-h{font-size:11px;font-weight:600;color:var(--green-dark);margin-bottom:9px;display:flex;align-items:center;gap:6px}
+.sk-row{display:flex;align-items:flex-start;gap:9px;font-size:11px;margin-bottom:8px}
+.sk-row:last-child{margin-bottom:0}
+.sk-k{color:var(--text2);min-width:56px;flex-shrink:0;padding-top:3px}
+.sk-tags{display:flex;flex-wrap:wrap;gap:5px}
+.sk-t{font-size:10px;padding:3px 9px;border-radius:20px;background:var(--lime-soft);color:var(--green-dark);border:1px solid #cfe6bf}
+.sk-t.sub{background:#fff;color:var(--text2);border-color:var(--line2)}
+.sk-t.bk{background:#eef3fb;color:#2b5c8a;border-color:#bcd4ec}
+.sk-add{font-size:10px;padding:3px 9px;border-radius:20px;background:#fff;color:var(--green);border:1px dashed var(--green);cursor:pointer}
 </style>
 <div class="th-pad">
-  <div style="font-size:12px;color:var(--text2);margin-bottom:12px">강사별 "가능시간 − 이미 찬 슬롯 = 실제 빈 슬롯" · 매칭은 이 빈 슬롯으로만</div>
+  <div style="font-size:12px;color:var(--text2);margin-bottom:12px">강사별 <b>스킬 포트폴리오</b>(가능 학년·과목·교재)를 미리 설정 → 매칭 때 일일이 묻지 않아도 됨 · 시간표는 "가능시간 − 찬 슬롯 = 빈 슬롯"</div>
+  <div style="display:flex;align-items:center;gap:7px;font-size:11px;color:#185fa5;background:var(--info-bg);border:1px solid var(--info-bd);border-radius:9px;padding:8px 12px;margin-bottom:12px;line-height:1.5"><i class="ti ti-book" style="font-size:15px;flex-shrink:0"></i><span>교재 준비(구매·스캔·발송)는 <b>담당 강사 업무</b>로 운영해요. 포트폴리오의 "가능 교재"는 강사가 직접 수업 가능한 교재예요.</span></div>
   <div class="th-leg">
     <div class="lg"><span class="lgb lg-f"></span> 빈 슬롯 (배정 가능)</div>
     <div class="lg"><span class="lgb lg-b"></span> 수업 찬 슬롯</div>
@@ -785,10 +910,22 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
   </div>
   <div class="thc">
     <div class="thch"><div class="thp">김</div><div><div class="thn">김하늘 <span style="font-size:9px;padding:1px 6px;border-radius:20px;background:var(--danger-bg);color:var(--danger-tx)">여</span> 🥒 <span style="font-size:10px;color:var(--text2)">수학</span></div><div class="thm">서울교대 · 경력 2년</div></div><div class="thcc"><div><span class="thcv" style="color:var(--green-dark)">9</span><span class="thcl">빈 슬롯</span></div><div><span class="thcv">5</span><span class="thcl">배정</span></div></div></div>
+    <div class="sk">
+      <div class="sk-h"><i class="ti ti-cards"></i> 스킬 포트폴리오</div>
+      <div class="sk-row"><span class="sk-k">가능 학년</span><div class="sk-tags"><span class="sk-t">초3~초6</span><span class="sk-t">중1~중3</span><span class="sk-t sub">고1 (서브)</span></div></div>
+      <div class="sk-row"><span class="sk-k">과목</span><div class="sk-tags"><span class="sk-t">수학 (메인)</span><span class="sk-t sub">과학 (서브)</span></div></div>
+      <div class="sk-row"><span class="sk-k">가능 교재</span><div class="sk-tags"><span class="sk-t bk">디딤돌</span><span class="sk-t bk">쎈</span><span class="sk-t bk">개념원리</span><span class="sk-t bk">RPM</span><span class="sk-add"><i class="ti ti-plus"></i> 스킬 추가</span></div></div>
+    </div>
     <table class="mini"><thead><tr><th></th><th>월</th><th>화</th><th>수</th><th>목</th><th>금</th><th>토</th></tr></thead><tbody id="tt1b"></tbody></table>
   </div>
   <div class="thc">
     <div class="thch"><div class="thp">박</div><div><div class="thn">박지훈 <span style="font-size:9px;padding:1px 6px;border-radius:20px;background:var(--info-bg);color:var(--info-tx)">남</span> 🫙 <span style="font-size:10px;color:var(--text2)">수학</span></div><div class="thm">고려대 · 경력 5년</div></div><div class="thcc"><div><span class="thcv" style="color:var(--danger-tx)">1</span><span class="thcl">빈 슬롯</span></div><div><span class="thcv">12</span><span class="thcl">배정</span></div></div></div>
+    <div class="sk">
+      <div class="sk-h"><i class="ti ti-cards"></i> 스킬 포트폴리오</div>
+      <div class="sk-row"><span class="sk-k">가능 학년</span><div class="sk-tags"><span class="sk-t">중2~중3</span><span class="sk-t">고1~고3</span></div></div>
+      <div class="sk-row"><span class="sk-k">과목</span><div class="sk-tags"><span class="sk-t">수학 (메인)</span><span class="sk-t sub">물리 (서브)</span></div></div>
+      <div class="sk-row"><span class="sk-k">가능 교재</span><div class="sk-tags"><span class="sk-t bk">쎈</span><span class="sk-t bk">자이스토리</span><span class="sk-t bk">마플</span><span class="sk-t bk">일품</span><span class="sk-t bk">수능특강</span><span class="sk-add"><i class="ti ti-plus"></i> 스킬 추가</span></div></div>
+    </div>
     <table class="mini"><thead><tr><th></th><th>월</th><th>화</th><th>수</th><th>목</th><th>금</th><th>토</th></tr></thead><tbody id="tt3b"></tbody></table>
   </div>
 </div>
@@ -847,7 +984,7 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
     <div>
       <div class="kf">
         <div class="kfl"><i class="ti ti-brand-kakao"></i> 카카오 알림톡 (Solapi)</div>
-        <div class="kfb"><div class="kft"><i class="ti ti-bell"></i> 피클과외 배정 요청</div><div class="kfbody"><div class="kfti">새 수업 배정 요청이 도착했어요</div><div class="kfr"><span class="k">학생</span> 이○○ (초5)</div><div class="kfr"><span class="k">과목</span> 수학 · 주2회 60분</div><div class="kfr"><span class="k">시간</span> 화·목 17:00</div><div class="kfn">차분한 지도 선호 · 기초 보강 단계예요. 자세한 내용은 아래에서.</div><div class="kfbtn">자세히 보고 응답하기</div></div></div>
+        <div class="kfb"><div class="kft"><i class="ti ti-bell"></i> 픽클 배정 요청</div><div class="kfbody"><div class="kfti">새 수업 배정 요청이 도착했어요</div><div class="kfr"><span class="k">학생</span> 이○○ (초5)</div><div class="kfr"><span class="k">과목</span> 수학 · 주2회 60분</div><div class="kfr"><span class="k">시간</span> 화·목 17:00</div><div class="kfn">차분한 지도 선호 · 기초 보강 단계예요. 자세한 내용은 아래에서.</div><div class="kfbtn">자세히 보고 응답하기</div></div></div>
       </div>
       <div class="pr-cal">알림톡엔 <b>이름 마스킹 + 수업 핵심 + 중립적 성향 한 줄</b>만. 민감 정보·구체 점수·인격 평가는 카톡에 넣지 않습니다.</div>
     </div>
@@ -871,7 +1008,7 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
 </div>
 </div>
 
-<!-- ========== 강사: 피클뱅크 ========== -->
+<!-- ========== 강사: 픽클뱅크 ========== -->
 <div class="screen" id="scr-teacher-bank">
 <style>
 .bk-pad{padding:20px;background:var(--bg);min-height:100%;display:flex;justify-content:center}
@@ -909,24 +1046,24 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
 <div class="bk-pad">
   <div class="bk-wrap">
     <div class="bk-bank">
-      <div class="bk-top"><div class="bk-name"><span class="bk-ni"><i class="ti ti-leaf"></i></span> 피클뱅크</div><div class="bk-tier">🥒 오이 티어</div></div>
+      <div class="bk-top"><div class="bk-name"><span class="bk-ni"><i class="ti ti-leaf"></i></span> 픽클뱅크</div><div class="bk-tier">🥒 오이 티어</div></div>
       <div class="bk-bl">김하늘 선생님 · 출금 가능 잔액</div>
-      <div class="bk-bal">1,847,200 <span class="u">피클</span></div>
-      <div class="bk-won">= 1,847,200원 · 1피클 = 1원 (세후 적립 기준)</div>
+      <div class="bk-bal">1,847,200 <span class="u">픽클</span></div>
+      <div class="bk-won">= 1,847,200원 · 1픽클 = 1원 (세후 적립 기준)</div>
       <button class="bk-wd"><i class="ti ti-cash"></i> 출금 신청하기</button>
     </div>
-    <div class="bk-rate"><i class="ti ti-info-circle"></i><span><b>1피클 = 1원</b> 고정 · 수업 완료 시 3.3% 사업소득세를 먼저 뗀 세후 금액으로 적립 · 출금 = 정산 신청</span></div>
+    <div class="bk-rate"><i class="ti ti-info-circle"></i><span><b>1픽클 = 1원</b> 고정 · 수업 완료 시 3.3% 사업소득세를 먼저 뗀 세후 금액으로 적립 · 출금 = 정산 신청</span></div>
     <div class="bk-sect">이번 달 적립 (6월)</div>
     <div class="bk-calc">
       <div class="bcr"><span>담당 수업 순매출</span><span style="font-weight:600">3,890,000원</span></div>
       <div class="bcr"><span>× 오이 티어 배분율 46%</span><span style="font-weight:600">1,789,400원</span></div>
       <div class="bcr m"><span>− 사업소득세 <span class="bct">3.3% 선공제</span></span><span style="font-weight:600">−59,050원</span></div>
       <div class="bcr m"><span>− 기기/사은품 <span class="bct">해당 시</span></span><span style="font-weight:600">−0원</span></div>
-      <div class="bcr res"><span>이번 달 피클 적립</span><span>1,730,350 피클</span></div>
+      <div class="bcr res"><span>이번 달 픽클 적립</span><span>1,730,350 픽클</span></div>
     </div>
     <div class="bk-sect">최근 거래</div>
     <div class="bk-tx">
-      <div class="btr"><div class="bti bt-e"><i class="ti ti-plus"></i></div><div style="flex:1"><div class="btt">이준혁 (초5) 수학 · 12회차 완료</div><div class="bts">6월 22일 · 90분 · 세후 적립</div></div><div class="bta"><div class="btav p">+12,837</div><div class="btas">피클</div></div></div>
+      <div class="btr"><div class="bti bt-e"><i class="ti ti-plus"></i></div><div style="flex:1"><div class="btt">이준혁 (초5) 수학 · 12회차 완료</div><div class="bts">6월 22일 · 90분 · 세후 적립</div></div><div class="bta"><div class="btav p">+12,837</div><div class="btas">픽클</div></div></div>
       <div class="btr"><div class="bti bt-e"><i class="ti ti-refresh"></i></div><div style="flex:1"><div class="btt">김지우 (중2) · 6개월 연장 결제 🎉</div><div class="bts">6월 20일 · 연장 보너스 + 티어 가산점</div></div><div class="bta"><div class="btav p">+50,000</div><div class="btas">연장 보너스</div></div></div>
       <div class="btr"><div class="bti bt-o"><i class="ti ti-cash"></i></div><div style="flex:1"><div class="btt">5월 정산 출금</div><div class="bts">6월 4일 · 계좌 입금 완료</div></div><div class="bta"><div class="btav mi">−1,620,400</div><div class="btas">출금</div></div></div>
     </div>
@@ -998,7 +1135,7 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
 <div class="pw-pad">
   <div class="pw-wrap">
     <div class="pw-h">
-      <div class="pw-br"><span class="pw-bn"><span class="pw-bi"><i class="ti ti-leaf"></i></span> 피클과외</span><span class="pw-bell"><i class="ti ti-bell"></i></span></div>
+      <div class="pw-br"><span class="pw-bn"><span class="pw-bi"><svg viewBox="0 0 44 44" style="width:84%;height:84%;display:block"><use href="#pickleLogo"/></svg></span> 픽클</span><span class="pw-bell"><i class="ti ti-bell"></i></span></div>
       <div class="pw-g">정유진 학부모님, 안녕하세요 🥒</div>
       <div class="pw-c">이준혁 학생</div>
       <div class="pw-cs">초5 · 수학 · 김하늘 선생님과 <span class="pw-wp">6주차</span></div>
@@ -1006,6 +1143,11 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
     <div class="pw-today">
       <div class="pw-tl"><i class="ti ti-calendar-event"></i> 오늘 수업</div>
       <div class="pw-tm"><div class="pw-tt"><div class="pw-tth">17:00</div><div class="pw-ttd">10분 후</div></div><div style="flex:1"><div class="pw-ts">수학 · 60분</div><div class="pw-tte">김하늘 선생님</div></div><button class="pw-en"><i class="ti ti-video"></i> 입장</button></div>
+      <div style="margin-top:10px;border-top:1px solid #eef3e4;padding-top:10px">
+        <div style="display:flex;gap:8px;font-size:11px;color:var(--text2);line-height:1.5;padding:2px 0"><span style="color:var(--green);min-width:54px;font-weight:500;flex-shrink:0">지난 수업</span><span>분수 곱셈 · 약분 활용 문제풀이</span></div>
+        <div style="display:flex;gap:8px;font-size:11px;color:var(--text2);line-height:1.5;padding:2px 0"><span style="color:var(--green);min-width:54px;font-weight:500;flex-shrink:0">오늘 숙제</span><span>쎈 78~81p · 오답 3문제</span></div>
+        <div style="font-size:10px;color:var(--text3);margin-top:6px;display:flex;align-items:center;gap:5px"><i class="ti ti-device-laptop" style="color:var(--green)"></i> 수업 10분 전 자동 개설 · 패드/노트북에서만 입장돼요</div>
+      </div>
     </div>
     <div class="pw-sec">
       <div class="pw-st"><span>학습 진행 상황</span> <a>자세히 →</a></div>
@@ -1032,7 +1174,7 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
       </div>
     </div>
     <div class="pw-sec">
-      <div class="pw-st"><span>피클 숙성실 이용</span> <a onclick="switchScreen('study-room')" style="cursor:pointer">전체 →</a></div>
+      <div class="pw-st"><span>자습실 이용</span> <a onclick="switchScreen('study-room')" style="cursor:pointer">전체 →</a></div>
       <div class="pw-study">
         <div class="pw-si">🫙</div>
         <div class="pw-sti"><div class="pw-stt">이번주 3시간 12분 공부</div><div class="pw-sts">수업 외에 스스로 4일 출석 · 숙제 완료</div></div>
@@ -1088,7 +1230,7 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
 <div class="sw-pad">
   <div class="sw-wrap">
     <div class="sw-h">
-      <div class="sw-br"><span class="sw-bi"><i class="ti ti-leaf"></i></span> 피클과외</div>
+      <div class="sw-br"><span class="sw-bi"><svg viewBox="0 0 44 44" style="width:84%;height:84%;display:block"><use href="#pickleLogo"/></svg></span> 픽클</div>
       <div class="sw-hi">준혁아, 안녕! 🥒</div>
       <div class="sw-his">오늘도 수학 한 판 가볼까?</div>
     </div>
@@ -1098,13 +1240,20 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
       <div class="sw-nt">김하늘 선생님</div>
       <div class="sw-ntm">오후 5:00 · 60분</div>
       <button class="sw-eb"><i class="ti ti-video"></i> 수업 들어가기</button>
-      <div class="sw-eh">버튼을 누르면 바로 선생님과 연결돼요</div>
+      <div class="sw-eh">수업 10분 전 자동으로 열려요 · <b>패드/노트북에서만</b> 입장돼요 (휴대폰 X)</div>
+    </div>
+    <div class="sw-sec">
+      <div class="sw-stt">지난 수업 · 오늘 숙제</div>
+      <div style="background:#fff;border-radius:16px;border:1px solid var(--line);padding:14px 16px">
+        <div style="display:flex;gap:8px;font-size:12px;color:var(--text2);line-height:1.5;padding:3px 0"><span style="color:var(--green);min-width:58px;font-weight:500;flex-shrink:0">지난 수업</span><span>지난 시간엔 약분이 들어간 분수 곱셈을 배웠어요</span></div>
+        <div style="display:flex;gap:8px;font-size:12px;color:var(--text2);line-height:1.5;padding:3px 0"><span style="color:var(--green);min-width:58px;font-weight:500;flex-shrink:0">오늘 숙제</span><span>쎈 78~81p · 오답 3문제 다시 풀기</span></div>
+      </div>
     </div>
     <div class="sw-sec">
       <div class="sw-stt">혼자 공부하고 싶을 땐</div>
       <div class="sw-room" onclick="switchScreen('study-room')">
         <div class="sw-ri">🫙</div>
-        <div class="sw-rinf"><div class="sw-rt">피클 숙성실 들어가기</div><div class="sw-rs">지금 8명이 조용히 공부하고 있어요</div></div>
+        <div class="sw-rinf"><div class="sw-rt">자습실 들어가기</div><div class="sw-rs">지금 8명이 조용히 공부하고 있어요</div></div>
         <div class="sw-rgo"><i class="ti ti-arrow-right"></i></div>
       </div>
     </div>
@@ -1117,7 +1266,7 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
 </div>
 </div>
 
-<!-- ========== 고객: 피클 숙성실 ========== -->
+<!-- ========== 고객: 자습실 ========== -->
 <div class="screen" id="scr-study-room">
 <style>
 .rm-pad{background:#1a2416;min-height:100%;padding:18px;color:#e8efe0}
@@ -1156,7 +1305,7 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
 </style>
 <div class="rm-pad">
   <div class="rm-wrap">
-    <div class="rm-top"><div class="rm-t"><span class="rm-ti"><i class="ti ti-books"></i></span> 피클 숙성실</div><div class="rm-live"><span class="d"></span> 지금 8명 숙성 중</div></div>
+    <div class="rm-top"><div class="rm-t"><span class="rm-ti"><i class="ti ti-books"></i></span> 자습실</div><div class="rm-live"><span class="d"></span> 지금 8명 자습 중</div></div>
     <div class="rm-body">
       <div class="rm-grid">
         <div class="cam me"><img class="cam-photo" src="data:image/jpeg;base64,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" alt=""><div class="cam-tm">01:24:30</div><div class="cam-mu"><i class="ti ti-microphone-off"></i></div><div class="cam-l"><i class="ti ti-user"></i> 나 (준혁)</div></div>
@@ -1238,20 +1387,20 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
 <div class="py-pad"><div class="py-wrap">
   <div class="py-h"><div class="py-t">수업 구성하고 결제하기</div><div class="py-s">강다은 학생 (고2) · 김하늘 선생님</div></div>
   <div class="py-card">
-    <div class="py-step"><span class="py-sn">1</span> 수업 구성</div>
-    <div class="py-f"><div class="py-fl">학년</div><div class="py-opts"><span class="py-opt" onclick="pyG(this)">초등</span><span class="py-opt" onclick="pyG(this)">중등</span><span class="py-opt on" onclick="pyG(this)">고1·2</span><span class="py-opt" onclick="pyG(this)">고3</span></div></div>
+    <div class="py-step"><span class="py-sn">1</span> 수업 구성 <span style="font-size:10px;color:var(--text3);font-weight:400">· 학년·과목·횟수·시간 고르면 금액 자동 계산</span></div>
+    <div class="py-f"><div class="py-fl">학년</div><div class="py-opts" id="pyGrade"><span class="py-opt" data-g="초등" onclick="pyG(this)">초등</span><span class="py-opt" data-g="중등" onclick="pyG(this)">중등</span><span class="py-opt on" data-g="고1·2" onclick="pyG(this)">고1·2</span><span class="py-opt" data-g="고3" onclick="pyG(this)">고3</span></div></div>
     <div class="py-f"><div class="py-fl">과목 (과목당 따로 계산 · 묶음 할인 없음, 대신 포인트 적립)</div>
-      <div class="subj"><div class="subj-ic">📐</div><div style="flex:1"><div class="subj-n">수학</div><div class="subj-m">주2회 · 90분</div></div><div class="subj-p">460,000원</div><button class="subj-d"><i class="ti ti-x"></i></button></div>
-      <div class="subj"><div class="subj-ic">📖</div><div style="flex:1"><div class="subj-n">영어</div><div class="subj-m">주2회 · 90분</div></div><div class="subj-p">460,000원</div><button class="subj-d"><i class="ti ti-x"></i></button></div>
-      <div class="subj-add"><i class="ti ti-plus"></i> 과목 추가</div>
+      <div id="pySubjList"></div>
     </div>
-    <div class="py-f" style="margin-bottom:0"><div class="py-fl">수업 옵션 (전 과목 공통)</div><div class="py-opts"><span class="py-opt" onclick="pyO(this)">주1회</span><span class="py-opt on" onclick="pyO(this)">주2회</span><span class="py-opt" onclick="pyO(this)">주3회</span><span class="py-opt" onclick="pyO(this)" style="margin-left:8px">60분</span><span class="py-opt on" onclick="pyO(this)">90분</span></div></div>
+    <div class="py-f" style="margin-bottom:0"><div class="py-fl">수업 옵션 (전 과목 공통)</div><div class="py-opts"><span class="py-opt on" data-t="freq" data-v="2" onclick="pyO(this)">주2회</span><span class="py-opt" data-t="freq" data-v="3" onclick="pyO(this)">주3회</span><span class="py-opt" data-t="min" data-v="60" onclick="pyO(this)" style="margin-left:8px">60분</span><span class="py-opt on" data-t="min" data-v="90" onclick="pyO(this)">90분</span></div></div>
   </div>
   <div class="py-card">
     <div class="py-step"><span class="py-sn">2</span> 구독 플랜 <span style="font-size:10px;color:var(--text3);font-weight:400">· 할인 없음, 길게 끊으면 포인트 적립</span></div>
-    <div class="plan" onclick="pyP(this)"><div class="plan-row"><div class="plan-rd"></div><div style="flex:1"><div class="plan-n">월간</div><div class="plan-de">매월 자동 결제 · 적립 없음</div></div><div><div class="plan-pv">920,000원</div><div class="plan-pp">/ 월</div></div></div></div>
-    <div class="plan sel" onclick="pyP(this)"><span class="plan-bt">🥒 인기</span><div class="plan-row"><div class="plan-rd"></div><div style="flex:1"><div class="plan-n">6개월</div><div class="plan-de">정가 · 1% 포인트 적립</div></div><div><div class="plan-pv">5,520,000원</div><div class="plan-pp">+55,200 P</div></div></div></div>
-    <div class="plan" onclick="pyP(this)"><div class="plan-row"><div class="plan-rd"></div><div style="flex:1"><div class="plan-n">연간</div><div class="plan-de">정가 · 2% 포인트 적립</div></div><div><div class="plan-pv">11,040,000원</div><div class="plan-pp">+220,800 P</div></div></div></div>
+    <div id="pyPlans">
+      <div class="plan" data-p="월간" onclick="pyP(this)"><div class="plan-row"><div class="plan-rd"></div><div style="flex:1"><div class="plan-n">월간</div><div class="plan-de">매월 자동 결제 · 적립 없음</div></div><div><div class="plan-pv">920,000원</div><div class="plan-pp">/ 월</div></div></div></div>
+      <div class="plan sel" data-p="6개월" onclick="pyP(this)"><span class="plan-bt">🥒 인기</span><div class="plan-row"><div class="plan-rd"></div><div style="flex:1"><div class="plan-n">6개월</div><div class="plan-de">정가 · 1% 포인트 적립</div></div><div><div class="plan-pv">5,520,000원</div><div class="plan-pp">+55,200 P</div></div></div></div>
+      <div class="plan" data-p="연간" onclick="pyP(this)"><div class="plan-row"><div class="plan-rd"></div><div style="flex:1"><div class="plan-n">연간</div><div class="plan-de">정가 · 2% 포인트 적립</div></div><div><div class="plan-pv">11,040,000원</div><div class="plan-pp">+220,800 P</div></div></div></div>
+    </div>
   </div>
   <div class="py-card">
     <div class="py-step"><span class="py-sn">3</span> 자동결제 카드 등록 (지갑)</div>
@@ -1260,16 +1409,16 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
     <div style="font-size:10px;color:#a8b29c;margin-top:8px;line-height:1.5"><i class="ti ti-lock" style="color:var(--green)"></i> KISPG 빌링키 방식 · 카드번호는 저장하지 않고 빌링키만 안전하게 보관</div>
   </div>
   <div class="py-sum">
-    <div class="sr"><span class="sr-l">수학 + 영어 (2과목 · 고2 90분)</span><span>920,000원/월</span></div>
-    <div class="sr tot"><span>6개월 결제 금액</span><span>5,520,000원</span></div>
-    <div class="sr-pt"><i class="ti ti-coins"></i> 결제 즉시 <b>55,200 피클포인트</b> 적립 → 교재·플래너 구매 (할인 대신 포인트)</div>
+    <div class="sr" id="pySumSubj"><span class="sr-l">수학 + 영어 (2과목 · 고1·2 90분 주2회)</span><span>920,000원/월</span></div>
+    <div class="sr tot" id="pySumTot"><span>6개월 결제 금액</span><span>5,520,000원</span></div>
+    <div class="sr-pt" id="pySumPt"><i class="ti ti-coins"></i> 결제 즉시 <b>55,200 픽클포인트</b> 적립 → 교재·플래너 구매 (할인 대신 포인트)</div>
   </div>
   <button class="py-pay" onclick="openModal('card')"><i class="ti ti-shield-check"></i> 카드 등록하고 자동결제 시작</button>
   <div class="py-pg"><i class="ti ti-lock"></i> KISPG 정기결제 · 매월 자동 갱신 · 갱신 3일 전 안내</div>
 </div></div>
 </div>
 
-<!-- ========== 고객: 피클 상점 ========== -->
+<!-- ========== 고객: 픽클 상점 ========== -->
 <div class="screen" id="scr-shop">
 <style>
 .sp-pad{background:var(--bg);min-height:100%;display:flex;justify-content:center}
@@ -1299,22 +1448,22 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
 .sp-note i{color:var(--green);flex-shrink:0;margin-top:1px}
 </style>
 <div class="sp-pad"><div class="sp-wrap">
-  <div class="sp-h"><div class="sp-t"><span class="sp-ti"><i class="ti ti-leaf"></i></span> 피클 상점</div></div>
-  <div class="sp-bal"><div class="sp-bi">🥒</div><div style="flex:1"><div class="sp-bl">보유 피클포인트</div><div class="sp-bv">55,200 P</div><div class="sp-bs">= 55,200원 어치</div></div><div class="sp-bh">교재 전용<br>현금 출금 불가</div></div>
+  <div class="sp-h"><div class="sp-t"><span class="sp-ti"><i class="ti ti-leaf"></i></span> 픽클 상점</div></div>
+  <div class="sp-bal"><div class="sp-bi">🥒</div><div style="flex:1"><div class="sp-bl">보유 픽클포인트</div><div class="sp-bv">55,200 P</div><div class="sp-bs">= 55,200원 어치</div></div><div class="sp-bh">교재 전용<br>현금 출금 불가</div></div>
   <div class="sp-cat"><div class="sp-cc on">전체</div><div class="sp-cc">교재</div><div class="sp-cc">플래너</div><div class="sp-cc">단어장</div><div class="sp-cc">문구</div></div>
   <div class="sp-grid">
-    <div class="item"><div class="item-img">📔<span class="item-tag">플래너</span></div><div class="item-bd"><div class="item-n">피클 학습 플래너</div><div class="item-de">주간 계획 + 숙성 기록장</div><div class="item-ft"><div class="item-p">🥒 12,000</div><button class="item-b">구매</button></div></div></div>
+    <div class="item"><div class="item-img">📔<span class="item-tag">플래너</span></div><div class="item-bd"><div class="item-n">픽클 학습 플래너</div><div class="item-de">주간 계획 + 자습 기록장</div><div class="item-ft"><div class="item-p">🥒 12,000</div><button class="item-b">구매</button></div></div></div>
     <div class="item"><div class="item-img">📕<span class="item-tag">단어장</span></div><div class="item-bd"><div class="item-n">고등 필수 영단어</div><div class="item-de">3,000단어 + 음원 QR</div><div class="item-ft"><div class="item-p">🥒 11,000</div><button class="item-b">구매</button></div></div></div>
     <div class="item"><div class="item-img">📘<span class="item-tag">교재</span></div><div class="item-bd"><div class="item-n">자이스토리 고2 수학</div><div class="item-de">수업 연계 교재</div><div class="item-ft"><div class="item-p">🥒 16,000</div><button class="item-b">구매</button></div></div></div>
-    <div class="item"><div class="item-img">✏️<span class="item-tag">문구</span></div><div class="item-bd"><div class="item-n">피클 굿노트 펜세트</div><div class="item-de">한정판 굿즈</div><div class="item-ft"><div class="item-p">🥒 8,000</div><button class="item-b">구매</button></div></div></div>
+    <div class="item"><div class="item-img">✏️<span class="item-tag">문구</span></div><div class="item-bd"><div class="item-n">픽클 굿노트 펜세트</div><div class="item-de">한정판 굿즈</div><div class="item-ft"><div class="item-p">🥒 8,000</div><button class="item-b">구매</button></div></div></div>
     <div class="item"><div class="item-img">📗<span class="item-tag">교재</span></div><div class="item-bd"><div class="item-n">마더텅 고2 영어</div><div class="item-de">독해 보강용</div><div class="item-ft"><div class="item-p">🥒 14,500</div><button class="item-b">구매</button></div></div></div>
     <div class="item"><div class="item-img">📙<span class="item-tag">교재</span></div><div class="item-bd"><div class="item-n">수능특강 세트</div><div class="item-de">62,000P · 포인트 부족</div><div class="item-ft"><div class="item-p">🥒 62,000</div><button class="item-b dim">부족</button></div></div></div>
   </div>
-  <div class="sp-note"><i class="ti ti-info-circle"></i><span>피클포인트는 <b>6개월 이상 결제 시 적립</b>되며, 교재·플래너·단어장·문구 구매에만 사용돼요. 현금 환급은 되지 않으며, 구매 상품은 등록 주소로 배송됩니다.</span></div>
+  <div class="sp-note"><i class="ti ti-info-circle"></i><span>픽클포인트는 <b>6개월 이상 결제 시 적립</b>되며, 교재·플래너·단어장·문구 구매에만 사용돼요. 현금 환급은 되지 않으며, 구매 상품은 등록 주소로 배송됩니다.</span></div>
 </div></div>
 </div>
 
-<!-- ========== 강사: 피클 약속 (교습보증) ========== -->
+<!-- ========== 강사: 픽클 약속 (교습보증) ========== -->
 <div class="screen" id="scr-promise">
 <style>
 .pm-pad{padding:20px;background:var(--bg);min-height:100%}
@@ -1343,7 +1492,7 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
 .ru-tag{font-size:9px;padding:1px 7px;border-radius:20px;background:#eef3e4;color:var(--text2);margin-left:5px}
 </style>
 <div class="pm-pad">
-  <div class="pm-cc"><div class="pm-ct"><i class="ti ti-leaf"></i> 피클 약속이란?</div><div class="pm-cs">매칭을 수락하면 <b>"이 학생과 최소 3개월은 숙성시키겠다"</b>는 약속이에요. 오이가 피클이 되려면 시간이 필요하듯, 학생도 꾸준한 수업이 있어야 성장해요. 약속을 지키면 티어가 오르고, 중도 포기하면 피클뱅크에서 위약금이 빠져요.</div></div>
+  <div class="pm-cc"><div class="pm-ct"><i class="ti ti-leaf"></i> 픽클 약속이란?</div><div class="pm-cs">매칭을 수락하면 <b>"이 학생과 최소 3개월은 숙성시키겠다"</b>는 약속이에요. 오이가 픽클이 되려면 시간이 필요하듯, 학생도 꾸준한 수업이 있어야 성장해요. 약속을 지키면 티어가 오르고, 중도 포기하면 픽클뱅크에서 위약금이 빠져요.</div></div>
   <div class="pm-st"><i class="ti ti-hourglass"></i> 진행 중인 약속</div>
   <div class="pp"><div class="pp-top"><div class="pp-av">강다</div><div style="flex:1"><div class="pp-n">강다은 (고2) · 수학</div><div class="pp-s">매칭일 6/1 · 3개월 약속</div></div><span class="pp-st k">약속 진행중</span></div><div class="pp-bar"><div class="pp-fl" style="width:30%"></div></div><div class="pp-bl"><span>회차 기준 <b>4 / 12회</b></span><span>완료까지 8회</span></div></div>
   <div class="pp"><div class="pp-top"><div class="pp-av">이준</div><div style="flex:1"><div class="pp-n">이준혁 (초5) · 수학</div><div class="pp-s">매칭일 5/12 · 3개월 약속</div></div><span class="pp-st so">완료 임박</span></div><div class="pp-bar"><div class="pp-fl" style="width:83%"></div></div><div class="pp-bl"><span>회차 기준 <b>10 / 12회</b></span><span>완료까지 2회</span></div></div>
@@ -1351,13 +1500,128 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
   <div class="pm-st" style="margin-top:16px"><i class="ti ti-book-2"></i> 약속 규정</div>
   <div class="pm-rules">
     <div class="ru"><div class="ru-ic r-ok"><i class="ti ti-check"></i></div><div><div class="ru-t">3개월(회차 기준) 약속 <span class="ru-tag">기본</span></div><div class="ru-s">매칭 수락 시 최소 3개월(정규 회차) 수업 지속. 무료 수업은 회차에서 제외.</div></div></div>
-    <div class="ru"><div class="ru-ic r-w"><i class="ti ti-alert-circle"></i></div><div><div class="ru-t">강사 사유 중도 포기 <span class="ru-tag">위약금</span></div><div class="ru-s">3개월 전 강사 사유 중단 시 피클뱅크에서 위약금 차감. 중단 요청 후 2주 분 수업 진행.</div></div></div>
+    <div class="ru"><div class="ru-ic r-w"><i class="ti ti-alert-circle"></i></div><div><div class="ru-t">강사 사유 중도 포기 <span class="ru-tag">위약금</span></div><div class="ru-s">3개월 전 강사 사유 중단 시 픽클뱅크에서 위약금 차감. 중단 요청 후 2주 분 수업 진행.</div></div></div>
     <div class="ru"><div class="ru-ic r-i"><i class="ti ti-shield"></i></div><div><div class="ru-t">학생에게 먼저 알리지 않기 <span class="ru-tag">필수</span></div><div class="ru-s">중단 희망 시 학생보다 본사에 먼저 알림. 본사가 학부모 안내 후 절차 진행.</div></div></div>
     <div class="ru"><div class="ru-ic r-ok"><i class="ti ti-mood-happy"></i></div><div><div class="ru-t">학생 불성실로 중단 <span class="ru-tag">위약금 면제</span></div><div class="ru-s">학생 반복 불성실·잦은 일정 변경 시 학부모 상담(증빙) 후 중단하면 위약금 없음. 강사 손해 없음.</div></div></div>
   </div>
 </div>
 </div>
 
+<!-- ========== 고객: 월간 리포트 (AI 월간 분석) ========== -->
+<div class="screen" id="scr-monthly-report">
+<style>
+.mr-pad{padding:0;background:var(--bg);min-height:100%;display:flex;justify-content:center}
+.mr-wrap{max-width:520px;width:100%;padding-bottom:28px}
+.mr-h{background:var(--green);padding:22px 24px 26px;color:#fff;position:relative;overflow:hidden}
+.mr-h::after{content:'';position:absolute;right:-30px;top:-30px;width:140px;height:140px;border-radius:50%;background:rgba(199,232,122,0.18)}
+.mr-mon{font-size:13px;color:rgba(255,255,255,0.82);position:relative;z-index:1}
+.mr-name{font-size:22px;font-weight:600;margin-top:4px;position:relative;z-index:1}
+.mr-sub{font-size:12px;color:rgba(255,255,255,0.78);margin-top:6px;position:relative;z-index:1}
+.mr-ai{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:600;background:rgba(199,232,122,0.22);color:var(--lime);padding:4px 11px;border-radius:20px;margin-top:12px;position:relative;z-index:1}
+.mr-note{background:var(--lime-soft);border:1px solid #cfe6bf;border-radius:14px;margin:-16px 20px 0;padding:12px 15px;display:flex;gap:9px;font-size:11px;color:var(--green-dark);line-height:1.5;position:relative}
+.mr-note i{color:var(--green);font-size:16px;flex-shrink:0;margin-top:1px}
+.mr-sec{margin:20px 20px 0}
+.mr-st{font-size:13px;font-weight:600;margin-bottom:11px;display:flex;align-items:center;gap:7px}
+.mr-st .aitag{font-size:9px;font-weight:600;padding:1px 7px;border-radius:20px;background:#efe9fb;color:#5a3db0;margin-left:auto}
+.mr-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.mr-stat{background:#fff;border:1px solid var(--line);border-radius:14px;padding:13px 6px;text-align:center}
+.mr-sv{font-size:19px;font-weight:700;color:var(--green-dark)}
+.mr-sl{font-size:9px;color:var(--text3);margin-top:3px}
+.mr-trend{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px 18px}
+.mr-bars{display:flex;align-items:flex-end;gap:10px;height:90px;margin:6px 0 8px}
+.mr-bar{flex:1;display:flex;flex-direction:column;align-items:center;gap:5px;justify-content:flex-end;height:100%}
+.mr-bb{width:100%;background:linear-gradient(180deg,#a8d65a,var(--green));border-radius:7px 7px 0 0}
+.mr-bn{font-size:10px;color:var(--text2)}
+.mr-bp{font-size:10px;font-weight:600;color:var(--green-dark)}
+.mr-two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.mr-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px 16px}
+.mr-ch{font-size:12px;font-weight:600;margin-bottom:9px;display:flex;align-items:center;gap:6px}
+.mr-ch.good{color:var(--green-dark)}.mr-ch.weak{color:#854f0b}
+.mr-li{font-size:11px;color:var(--text2);line-height:1.5;padding:4px 0;display:flex;gap:7px}
+.mr-li i{font-size:13px;flex-shrink:0;margin-top:1px}
+.mr-li.good i{color:var(--green)}.mr-li.weak i{color:#d08a2a}
+.mr-tip{background:#fff;border:1px solid var(--line);border-radius:16px;padding:15px 17px}
+.mr-tr{display:flex;gap:10px;padding:8px 0;border-bottom:1px dashed var(--line);font-size:12px;color:var(--text)}
+.mr-tr:last-child{border-bottom:none}
+.mr-tr .ic{width:24px;height:24px;border-radius:8px;background:var(--lime-soft);color:var(--green);display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0}
+.mr-todo{background:#1f2e1a;border-radius:16px;padding:16px 18px;color:#e8efe0}
+.mr-todo .h{font-size:12px;font-weight:600;color:var(--lime);margin-bottom:11px;display:flex;align-items:center;gap:6px}
+.mr-td{display:flex;align-items:flex-start;gap:9px;font-size:12px;padding:6px 0;color:#dbe6cf;line-height:1.5}
+.mr-td .n{width:18px;height:18px;border-radius:6px;background:rgba(199,232,122,0.18);color:var(--lime);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;flex-shrink:0;margin-top:1px}
+.mr-disc{margin:16px 20px 0;font-size:10px;color:var(--text3);line-height:1.5;display:flex;gap:6px}
+.mr-disc i{color:#5a3db0;flex-shrink:0;margin-top:1px}
+</style>
+<div class="mr-pad"><div class="mr-wrap">
+  <div class="mr-h">
+    <div class="mr-mon">2026년 6월 · 월간 리포트</div>
+    <div class="mr-name">이준혁 학생</div>
+    <div class="mr-sub">초5 · 수학 · 김하늘 선생님</div>
+    <div class="mr-ai"><i class="ti ti-sparkles"></i> AI 월간 분석</div>
+  </div>
+  <div class="mr-note"><i class="ti ti-stack-2"></i><span>이번 달 <b>수업 리포트 8회</b>가 쌓여, 진도·숙제·이해도 기록을 <b>AI가 자동 분석</b>해 요약했어요. 매일 보는 수업 리포트와 별개로 한 달에 한 번 제공돼요.</span></div>
+
+  <div class="mr-sec">
+    <div class="mr-st"><i class="ti ti-chart-bar" style="color:var(--green)"></i> 이번 달 한눈에</div>
+    <div class="mr-stats">
+      <div class="mr-stat"><div class="mr-sv">8</div><div class="mr-sl">수업 완료</div></div>
+      <div class="mr-stat"><div class="mr-sv">100%</div><div class="mr-sl">출석률</div></div>
+      <div class="mr-stat"><div class="mr-sv">88%</div><div class="mr-sl">숙제 완료</div></div>
+      <div class="mr-stat"><div class="mr-sv">😊</div><div class="mr-sl">평균 이해도</div></div>
+    </div>
+  </div>
+
+  <div class="mr-sec">
+    <div class="mr-st"><i class="ti ti-trending-up" style="color:var(--green)"></i> 정답률 개선 추이 <span class="aitag">AI 집계</span></div>
+    <div class="mr-trend">
+      <div class="mr-bars">
+        <div class="mr-bar"><span class="mr-bp">62%</span><div class="mr-bb" style="height:62%"></div><span class="mr-bn">1주</span></div>
+        <div class="mr-bar"><span class="mr-bp">71%</span><div class="mr-bb" style="height:71%"></div><span class="mr-bn">2주</span></div>
+        <div class="mr-bar"><span class="mr-bp">80%</span><div class="mr-bb" style="height:80%"></div><span class="mr-bn">3주</span></div>
+        <div class="mr-bar"><span class="mr-bp">85%</span><div class="mr-bb" style="height:85%"></div><span class="mr-bn">4주</span></div>
+      </div>
+      <div style="font-size:11px;color:var(--text2);line-height:1.5"><b style="color:var(--green-dark)">3주 연속 상승 중</b> — 분수 단원 반복 학습 효과가 나타나고 있어요.</div>
+    </div>
+  </div>
+
+  <div class="mr-sec">
+    <div class="mr-two">
+      <div class="mr-card">
+        <div class="mr-ch good"><i class="ti ti-thumb-up"></i> 잘하는 부분</div>
+        <div class="mr-li good"><i class="ti ti-check"></i><span>분수 곱셈·약분이 안정적이에요</span></div>
+        <div class="mr-li good"><i class="ti ti-check"></i><span>연산 속도가 한 달 전보다 빨라졌어요</span></div>
+        <div class="mr-li good"><i class="ti ti-check"></i><span>숙제를 꾸준히 제출해요</span></div>
+      </div>
+      <div class="mr-card">
+        <div class="mr-ch weak"><i class="ti ti-target-arrow"></i> 보충할 부분</div>
+        <div class="mr-li weak"><i class="ti ti-alert-circle"></i><span>분수 나눗셈 개념이 아직 약해요</span></div>
+        <div class="mr-li weak"><i class="ti ti-alert-circle"></i><span>서술형 풀이 과정을 생략하는 편이에요</span></div>
+        <div class="mr-li weak"><i class="ti ti-alert-circle"></i><span>실수 줄이기 위한 검산 습관이 필요해요</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mr-sec">
+    <div class="mr-st"><i class="ti ti-bulb" style="color:var(--green)"></i> 이렇게 공부해요 <span class="aitag">AI 추천</span></div>
+    <div class="mr-tip">
+      <div class="mr-tr"><span class="ic"><i class="ti ti-repeat"></i></span><span>틀린 3문제는 <b>다음 날 다시 풀기</b> 루틴을 유지하면 실수가 더 줄어요.</span></div>
+      <div class="mr-tr"><span class="ic"><i class="ti ti-pencil"></i></span><span>서술형은 <b>"식 → 이유 → 답"</b> 3줄로 쓰는 연습을 추천해요.</span></div>
+      <div class="mr-tr"><span class="ic"><i class="ti ti-books"></i></span><span>자습실 <b>주 4회 출석</b>을 유지하면 복습 리듬이 잡혀요.</span></div>
+    </div>
+  </div>
+
+  <div class="mr-sec">
+    <div class="mr-st"><i class="ti ti-calendar-check" style="color:var(--green)"></i> 다음 달 할 일 <span class="aitag">AI 예측</span></div>
+    <div class="mr-todo">
+      <div class="h"><i class="ti ti-sparkles"></i> 7월 학습 플랜 (예측)</div>
+      <div class="mr-td"><span class="n">1</span><span>분수 나눗셈 개념 집중 보강 (2~3회차 배정 권장)</span></div>
+      <div class="mr-td"><span class="n">2</span><span>분수 단원평가 대비 — 7월 둘째 주 목표</span></div>
+      <div class="mr-td"><span class="n">3</span><span>도형(각도·둘레) 단원 선행 시작</span></div>
+    </div>
+  </div>
+
+  <div class="mr-disc"><i class="ti ti-info-circle"></i><span>AI 분석·예측은 수업 리포트 데이터를 기반으로 자동 생성된 참고 자료예요. 실제 진도는 선생님과 상의해 조정돼요.</span></div>
+</div></div>
+</div>
 
     </div>
   </div>
@@ -1434,7 +1698,7 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
     <div style="font-size:12px;color:#5a6450;margin-bottom:14px">한○○ (고1) 수학 → 이민준 강사에게 제안</div>
     <div style="font-size:11px;font-weight:600;color:#1f2e1a;margin-bottom:6px">강사 알림톡 미리보기</div>
     <div style="background:#f4f5f3;border-radius:8px;padding:12px;font-size:11px;color:#26261f;line-height:1.8;margin-bottom:14px">
-      🥒 피클과외 새 배정 제안<br><b>학년·과목:</b> 고1 수학<br><b>희망 시간:</b> 화·목 19:00<br><b>수업 성향:</b> 차분한 설명 선호 · 기초 보강 단계<br><br>상세 내용은 아래 버튼에서 확인 후 수락/거절해주세요.
+      🥒 픽클 새 배정 제안<br><b>학년·과목:</b> 고1 수학<br><b>희망 시간:</b> 화·목 19:00<br><b>수업 성향:</b> 차분한 설명 선호 · 기초 보강 단계<br><br>상세 내용은 아래 버튼에서 확인 후 수락/거절해주세요.
     </div>
     <div style="background:#e6f1fb;border-radius:8px;padding:10px 12px;font-size:11px;color:#0c447c;display:flex;gap:7px;margin-bottom:14px"><i class="ti ti-info-circle"></i><span>알림톡엔 핵심만 담겨요. 버튼을 누르면 <b>강사용 페이지</b>에서 상세 확인 후 수락/거절합니다. 강사 수락 시 관리자에게 알림이 와요.</span></div>
     <button onclick="closeModal();showToast('배정 제안 알림톡 발송 완료 ✓')" style="width:100%;padding:13px;border-radius:12px;border:none;background:#3a8e3f;color:#fff;font-size:14px;font-weight:600;cursor:pointer">알림톡 발송</button>
@@ -1504,18 +1768,19 @@ const SCREENS = {
   'admin-channel':{title:'채널 관리', sub:'관리자 어드민 · 유입소스'},
   'admin-match':  {title:'매칭·배정', sub:'관리자 어드민'},
   'admin-attend': {title:'출결·보강', sub:'관리자 어드민'},
-  'admin-settle': {title:'정산 · 피클 티어제', sub:'관리자 어드민'},
+  'admin-settle': {title:'정산 · 픽클 티어제', sub:'관리자 어드민'},
   'admin-trial':  {title:'시강 진화 로드맵', sub:'관리자 어드민'},
   'teacher-dash': {title:'강사 대시보드', sub:'강사 화면'},
-  'teacher-timetable':{title:'시간표 허브', sub:'강사 화면'},
+  'teacher-timetable':{title:'시간표·프로필', sub:'강사 화면 · 스킬 포트폴리오'},
   'teacher-proposal':{title:'배정 제안 받기', sub:'강사 화면'},
-  'teacher-bank': {title:'피클뱅크', sub:'강사 정산'},
-  'parent-web':   {title:'학부모 웹', sub:'고객 화면 · 피클 그린톤'},
+  'teacher-bank': {title:'픽클뱅크', sub:'강사 정산'},
+  'parent-web':   {title:'학부모 웹', sub:'고객 화면 · 픽클 그린톤'},
   'student-web':  {title:'학생 웹', sub:'고객 화면'},
-  'study-room':   {title:'피클 숙성실', sub:'고객 화면 · 캠스터디'},
+  'study-room':   {title:'자습실', sub:'고객 화면 · 캠스터디'},
   'payment':      {title:'결제 · 구독', sub:'고객 화면 · KISPG 자동결제'},
-  'shop':         {title:'피클 상점', sub:'고객 화면 · 포인트 사용'},
-  'promise':      {title:'피클 약속', sub:'강사 · 교습 보증 제도'},
+  'shop':         {title:'픽클 상점', sub:'고객 화면 · 포인트 사용'},
+  'promise':      {title:'픽클 약속', sub:'강사 · 교습 보증 제도'},
+  'monthly-report':{title:'월간 리포트', sub:'고객 화면 · AI 월간 분석'},
 };
 
 function switchScreen(id){
@@ -1551,6 +1816,113 @@ function closeModal(){
   overlay.style.display = 'none';
   document.querySelectorAll('.modal-box').forEach(m => m.style.display = 'none');
 }
+
+/* ===== 리드 관리: 필터 · 정렬 · 모아보기 ===== */
+const LEAD = {ch:'all', status:'all', sort:'prio', group:'none'};
+const CH_LABEL = {meta:'메타', naver:'네이버', daangn:'당근', kakao:'카카오', google:'구글', tenping:'텐핑'};
+const ST_LABEL = {new:'신규', trial:'시강예정', visit:'방문예정', wait:'배정대기', hold:'보류', more:'추가관리'};
+function leadRows(){ return Array.from(document.querySelectorAll('#leadBody tr.lead-data')); }
+function leadCh(el, ch){
+  document.querySelectorAll('.lf-chip').forEach(c=>c.classList.remove('on'));
+  el.classList.add('on'); LEAD.ch = ch; leadApply();
+}
+function leadTab(el, st){
+  document.querySelectorAll('.lead-vtab .lv').forEach(c=>c.classList.remove('on'));
+  el.classList.add('on'); LEAD.status = st; leadApply();
+}
+function leadSort(kind, v){ if(kind==='group') LEAD.group=v; else LEAD.sort=v; leadApply(); }
+function leadApply(){
+  const body = document.getElementById('leadBody');
+  if(!body) return;
+  body.querySelectorAll('tr.grp-row').forEach(r=>r.remove());
+  let rows = leadRows();
+  rows.forEach(r=>{
+    const okCh = LEAD.ch==='all' || r.dataset.ch===LEAD.ch;
+    const okSt = LEAD.status==='all' || r.dataset.group===LEAD.status;
+    r.style.display = (okCh && okSt) ? '' : 'none';
+  });
+  const vis = rows.filter(r=>r.style.display!=='none');
+  const bySort = (a,b)=>{
+    if(LEAD.sort==='elapsed') return b.dataset.days - a.dataset.days;
+    if(LEAD.sort==='recent')  return a.dataset.days - b.dataset.days;
+    return b.dataset.prio - a.dataset.prio;
+  };
+  if(LEAD.group==='none'){
+    vis.sort(bySort).forEach(r=>body.appendChild(r));
+  } else {
+    const key = LEAD.group==='ch' ? 'ch' : 'group';
+    const label = LEAD.group==='ch' ? CH_LABEL : ST_LABEL;
+    const groups = {};
+    vis.forEach(r=>{ (groups[r.dataset[key]] = groups[r.dataset[key]]||[]).push(r); });
+    Object.keys(groups).sort().forEach(g=>{
+      const hr = document.createElement('tr');
+      hr.className = 'grp-row';
+      hr.innerHTML = '<td colspan="8">'+ (label[g]||g) +' · '+ groups[g].length +'건</td>';
+      body.appendChild(hr);
+      groups[g].sort(bySort).forEach(r=>body.appendChild(r));
+    });
+  }
+}
+
+/* ===== 결제 · 수업 옵션 금액 계산기 ===== */
+const PRICE = {
+  '초등': {60:240000, 90:340000},
+  '중등': {60:284000, 90:426000},
+  '고1·2':{60:320000, 90:460000},
+  '고3':  {60:360000, 90:500000}
+};
+const PY = {grade:'고1·2', freq:2, min:90, subjects:['수학','영어'], plan:'6개월'};
+const SUBJ_ICON = {'수학':'📐','영어':'📖','국어':'📚','과학':'🔬','사회':'🗺️'};
+const SUBJ_POOL = ['국어','과학','사회','영어','수학'];
+function won(n){ return n.toLocaleString('ko-KR') + '원'; }
+function pySubjPrice(){ return Math.round(PRICE[PY.grade][PY.min] * (PY.freq/2)); }
+function pyG(el){ document.querySelectorAll('#pyGrade .py-opt').forEach(o=>o.classList.remove('on')); el.classList.add('on'); PY.grade = el.dataset.g; pyRender(); }
+function pyO(el){
+  const t = el.dataset.t, v = el.dataset.v;
+  el.parentNode.querySelectorAll('.py-opt[data-t="'+t+'"]').forEach(o=>o.classList.remove('on'));
+  el.classList.add('on');
+  if(t==='freq') PY.freq = +v; else PY.min = +v;
+  pyRender();
+}
+function pyP(el){ document.querySelectorAll('#pyPlans .plan').forEach(p=>p.classList.remove('sel')); el.classList.add('sel'); PY.plan = el.dataset.p; pyRender(); }
+function pyAddSubj(){
+  const next = SUBJ_POOL.find(s=>!PY.subjects.includes(s));
+  if(next){ PY.subjects.push(next); pyRender(); }
+}
+function pyDelSubj(s){ PY.subjects = PY.subjects.filter(x=>x!==s); pyRender(); }
+function pyRender(){
+  const box = document.getElementById('pySubjList');
+  if(!box) return;
+  const per = pySubjPrice();
+  box.innerHTML = PY.subjects.map(s=>(
+    '<div class="subj"><div class="subj-ic">'+(SUBJ_ICON[s]||'📘')+'</div><div style="flex:1"><div class="subj-n">'+s+'</div>'+
+    '<div class="subj-m">주'+PY.freq+'회 · '+PY.min+'분</div></div><div class="subj-p">'+won(per)+'</div>'+
+    '<button class="subj-d" onclick="pyDelSubj(\''+s+'\')"><i class="ti ti-x"></i></button></div>'
+  )).join('') + '<div class="subj-add" onclick="pyAddSubj()"><i class="ti ti-plus"></i> 과목 추가</div>';
+
+  const monthly = per * PY.subjects.length;
+  const planMul = {'월간':1,'6개월':6,'연간':12}[PY.plan];
+  const ptRate  = {'월간':0,'6개월':0.01,'연간':0.02}[PY.plan];
+  const total = monthly * planMul;
+  const pts = Math.round(total * ptRate);
+  // 플랜 카드 금액 갱신
+  document.querySelectorAll('#pyPlans .plan').forEach(p=>{
+    const pl = p.dataset.p, mul={'월간':1,'6개월':6,'연간':12}[pl], rate={'월간':0,'6개월':0.01,'연간':0.02}[pl];
+    const amt = monthly*mul, pv = p.querySelector('.plan-pv'), pp = p.querySelector('.plan-pp');
+    if(pl==='월간'){ pv.textContent = won(monthly); if(pp) pp.textContent='/ 월'; }
+    else { pv.textContent = won(amt); if(pp) pp.textContent = '+'+Math.round(amt*rate).toLocaleString('ko-KR')+' P'; }
+  });
+  // 요약
+  const sj = document.getElementById('pySumSubj'), st = document.getElementById('pySumTot'), pt = document.getElementById('pySumPt');
+  if(sj) sj.innerHTML = '<span class="sr-l">'+PY.subjects.join(' + ')+' ('+PY.subjects.length+'과목 · '+PY.grade+' '+PY.min+'분 주'+PY.freq+'회)</span><span>'+won(monthly)+'/월</span>';
+  if(st) st.innerHTML = '<span>'+PY.plan+' 결제 금액</span><span>'+won(total)+'</span>';
+  if(pt){
+    if(pts>0) pt.innerHTML = '<i class="ti ti-coins"></i> 결제 즉시 <b>'+pts.toLocaleString('ko-KR')+' 픽클포인트</b> 적립 → 교재·플래너 구매 (할인 대신 포인트)';
+    else pt.innerHTML = '<i class="ti ti-coins"></i> 월간 결제는 포인트 적립이 없어요 · 6개월 이상부터 적립';
+  }
+}
+
+window.addEventListener('DOMContentLoaded', ()=>{ leadApply(); pyRender(); });
 </script>
 </body>
 </html>
