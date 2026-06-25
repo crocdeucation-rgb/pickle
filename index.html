@@ -149,7 +149,7 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
 
     <div class="sb-group">
       <div class="sb-group-label" style="color:#9cc579">유입 · 공개</div>
-      <div class="sb-nav" data-screen="exam"><i class="ti ti-clipboard-data"></i> 학습유형검사</div>
+      <div class="sb-nav" data-screen="exam"><i class="ti ti-clipboard-data"></i> 학습전략검사</div>
     </div>
 
     <div class="sb-group">
@@ -314,7 +314,7 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
 .ch-pill{font-size:10px;padding:2px 8px;border-radius:5px}
 .cp-meta{background:var(--info-bg);color:var(--info-tx)}.cp-kakao{background:var(--warn-bg);color:var(--warn-tx)}
 .cp-naver{background:var(--succ-bg);color:var(--succ-tx)}.cp-daangn{background:#faeeda;color:#854f0b}
-.cp-google{background:#fcebeb;color:#a32d2d}.cp-tenping{background:#eeedfe;color:#3c3489}
+.cp-google{background:#fcebeb;color:#a32d2d}.cp-tenping{background:#eeedfe;color:#3c3489}.cp-exam{background:#e3f3e6;color:#2c6b30}
 .dtag{font-size:10px;font-weight:500;padding:1px 6px;border-radius:20px}
 .d0{background:var(--danger-bg);color:var(--danger-tx)}.d1{background:var(--warn-bg);color:var(--warn-tx)}.d2{background:var(--adm-bg);color:var(--adm-text2)}
 .mgr-none{color:var(--danger-tx)}
@@ -369,6 +369,7 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
       <span class="lf-chip" onclick="leadCh(this,'kakao')">카카오</span>
       <span class="lf-chip" onclick="leadCh(this,'google')">구글</span>
       <span class="lf-chip" onclick="leadCh(this,'tenping')">텐핑</span>
+      <span class="lf-chip" onclick="leadCh(this,'exam')">학습전략검사</span>
     </div>
     <div class="lf-right">
       <select class="lf-sel" onchange="leadSort('sort',this.value)">
@@ -388,6 +389,8 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
     <table class="lead-tbl">
       <thead><tr><th>이름</th><th>학년·과목</th><th>상태</th><th>경과</th><th>채널</th><th>담당</th><th>메모</th><th>액션</th></tr></thead>
       <tbody id="leadBody">
+        <tr data-ch="exam" data-group="more" data-days="0" data-prio="74" class="urg lead-data"><td><b>김서윤</b><div style="font-size:10px;color:var(--adm-text3)">010-2845-7193</div></td><td>초5 · 진단대기</td><td><span class="lbadge lb-call sel">검사 신청 <i class="ti ti-chevron-down cv"></i></span></td><td><span class="dtag d2">오늘</span></td><td><span class="ch-pill cp-exam">학습전략검사</span></td><td><span class="mgr-none">미배정</span></td><td>검사지 발송 예정 · "학원 다녀도 그대로"</td><td><button class="lbtn">검사지 발송</button></td></tr>
+        <tr data-ch="exam" data-group="trial" data-days="1" data-prio="58" class="lead-data"><td><b>이준호</b><div style="font-size:10px;color:var(--adm-text3)">010-3361-0427</div></td><td>중2 · 진단완료</td><td><span class="lbadge lb-visit sel">결과 상담 <i class="ti ti-chevron-down cv"></i></span></td><td><span class="dtag d1">1일</span></td><td><span class="ch-pill cp-exam">학습전략검사</span></td><td>신상준</td><td>LQ 81 · 결과지 상담 후 매칭 예정</td><td><button class="lbtn">상세</button></td></tr>
         <tr data-ch="tenping" data-group="wait" data-days="3" data-prio="95" class="urg lead-data"><td><b>한도윤</b></td><td>고1 · 수학</td><td><span class="lbadge lb-wait sel">배정대기 <i class="ti ti-chevron-down cv"></i></span></td><td><span class="dtag d0">3일</span></td><td><span class="ch-pill cp-tenping">텐핑</span></td><td>신상준</td><td>긴급</td><td><button class="lbtn hand">관리자 인계 →</button></td></tr>
         <tr data-ch="google" data-group="more" data-days="2" data-prio="80" class="urg lead-data"><td><b>정민준</b></td><td>고3 · 수학</td><td><span class="lbadge lb-call sel">미연락 <i class="ti ti-chevron-down cv"></i></span></td><td><span class="dtag d0">2일</span></td><td><span class="ch-pill cp-google">구글</span></td><td><span class="mgr-none">미배정</span></td><td style="color:var(--adm-text3)">—</td><td><button class="lbtn">재통화</button></td></tr>
         <tr class="lead-data" data-ch="meta" data-group="visit" data-days="0" data-prio="68"><td><b>강다은</b></td><td>고2 · 수학</td><td><span class="lbadge lb-visit sel">방문예정 <i class="ti ti-chevron-down cv"></i></span></td><td><span class="dtag d2">오늘</span></td><td><span class="ch-pill cp-meta">메타</span></td><td>장윤호</td><td>오늘 18시</td><td><button class="lbtn">결과</button></td></tr>
@@ -1193,11 +1196,11 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
     </div>
     <div class="pw-today">
       <div class="pw-tl"><i class="ti ti-calendar-event"></i> 오늘 수업</div>
-      <div class="pw-tm"><div class="pw-tt"><div class="pw-tth">17:00</div><div class="pw-ttd">10분 후</div></div><div style="flex:1"><div class="pw-ts">수학 · 60분</div><div class="pw-tte">김하늘 선생님</div></div><button class="pw-en"><i class="ti ti-video"></i> 입장</button></div>
+      <div class="pw-tm"><div class="pw-tt"><div class="pw-tth">17:00</div><div class="pw-ttd">10분 후</div></div><div style="flex:1"><div class="pw-ts">수학 · 60분</div><div class="pw-tte">김하늘 선생님</div></div><div style="text-align:right;flex-shrink:0"><span style="display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:600;color:var(--green-dark);background:var(--lime-soft);padding:6px 11px;border-radius:20px"><i class="ti ti-clock-hour-5"></i> 곧 시작</span></div></div>
       <div style="margin-top:10px;border-top:1px solid #eef3e4;padding-top:10px">
         <div style="display:flex;gap:8px;font-size:11px;color:var(--text2);line-height:1.5;padding:2px 0"><span style="color:var(--green);min-width:54px;font-weight:500;flex-shrink:0">지난 수업</span><span>분수 곱셈 · 약분 활용 문제풀이</span></div>
         <div style="display:flex;gap:8px;font-size:11px;color:var(--text2);line-height:1.5;padding:2px 0"><span style="color:var(--green);min-width:54px;font-weight:500;flex-shrink:0">오늘 숙제</span><span>쎈 78~81p · 오답 3문제</span></div>
-        <div style="font-size:10px;color:var(--text3);margin-top:6px;display:flex;align-items:center;gap:5px"><i class="ti ti-device-laptop" style="color:var(--green)"></i> 수업 10분 전 자동 개설 · 패드/노트북에서만 입장돼요</div>
+        <div style="font-size:10px;color:var(--text3);margin-top:6px;display:flex;align-items:center;gap:5px"><i class="ti ti-device-laptop" style="color:var(--green)"></i> 입장은 아이가 패드·노트북으로 해요 (10분 전 자동 개설) · 입장하면 알림톡으로 알려드려요</div>
       </div>
     </div>
     <div class="pw-sec">
@@ -1711,80 +1714,127 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
 </div></div>
 </div>
 
-<!-- ========== 유입: 학습유형검사 (공개) ========== -->
+<!-- ========== 유입: 학습전략검사 (공개) ========== -->
 <div class="screen" id="scr-exam">
 <style>
 .ex-pad{background:var(--bg);min-height:100%;display:flex;justify-content:center}
 .ex-wrap{max-width:480px;width:100%;padding-bottom:30px}
-.ex-h{background:linear-gradient(160deg,var(--green),#2c6b30);padding:30px 24px 34px;color:#fff;text-align:center;position:relative;overflow:hidden}
+.ex-h{background:linear-gradient(160deg,var(--green),#2c6b30);padding:28px 24px 32px;color:#fff;text-align:center;position:relative;overflow:hidden}
 .ex-h::after{content:'';position:absolute;left:-40px;bottom:-50px;width:160px;height:160px;border-radius:50%;background:rgba(199,232,122,0.14)}
 .ex-badge{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:600;background:rgba(199,232,122,0.2);color:var(--lime);padding:4px 12px;border-radius:20px;margin-bottom:14px;position:relative;z-index:1}
 .ex-hl{font-size:23px;font-weight:700;line-height:1.4;position:relative;z-index:1}
 .ex-sub{font-size:12.5px;color:rgba(255,255,255,0.82);margin-top:9px;line-height:1.6;position:relative;z-index:1}
-.ex-card{background:#fff;border:1px solid var(--line);border-radius:16px;margin:18px 20px 0;padding:18px}
+.ex-live{background:#fff;border:1px solid #e6eedb;border-radius:16px;margin:-16px 20px 0;padding:14px 16px;box-shadow:0 8px 24px rgba(58,142,63,0.1);position:relative;z-index:2}
+.ex-live-h{display:flex;align-items:center;gap:7px;font-size:12px;font-weight:600;color:var(--green-dark)}
+.ex-ld{width:7px;height:7px;border-radius:50%;background:#e8513e;animation:expulse 1.4s infinite}
+@keyframes expulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(232,81,62,0.4)}50%{opacity:0.6;box-shadow:0 0 0 5px rgba(232,81,62,0)}}
+.ex-lstat{font-size:11px;color:var(--text2);margin-top:3px}.ex-lstat b{color:var(--green-dark)}
+.ex-feed{margin-top:10px;display:flex;flex-direction:column;gap:6px;min-height:108px}
+.ex-fi{display:flex;align-items:center;gap:9px;background:var(--lime-soft);border-radius:10px;padding:8px 11px;font-size:12px;animation:exslide 0.5s ease}
+@keyframes exslide{from{opacity:0;transform:translateY(-7px)}to{opacity:1;transform:translateY(0)}}
+.ex-fi-av{width:26px;height:26px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;color:var(--green-dark);flex-shrink:0}
+.ex-fi-n{font-weight:600;color:var(--green-dark)}.ex-fi-t{margin-left:auto;font-size:10px;color:var(--text3);flex-shrink:0}
+.ex-sec{margin:20px 20px 0}
+.ex-st{font-size:14px;font-weight:700;color:var(--green-dark);margin-bottom:9px;display:flex;align-items:center;gap:7px}
+.ex-p{font-size:12px;color:var(--text2);line-height:1.7}
+.ex-grp{background:#fff;border:1px solid var(--line);border-radius:12px;padding:11px 13px;margin-bottom:8px}
+.ex-gn{font-size:12px;font-weight:600;color:var(--text);margin-bottom:7px;display:flex;align-items:center;gap:6px}
+.ex-gn i{color:var(--green)}
+.ex-chips{display:flex;flex-wrap:wrap;gap:5px}
+.ex-chip{font-size:10.5px;padding:3px 9px;border-radius:14px;background:var(--lime-soft);color:var(--green-dark)}
+.ex-mini{display:flex;gap:10px;margin-top:10px}
+.ex-mc{flex:1;background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px;text-align:center}
+.ex-mcv{font-size:18px;font-weight:700;color:var(--green-dark)}.ex-mcl{font-size:10px;color:var(--text3);margin-top:2px}
+.ex-rep{background:#fff;border:1px solid var(--line);border-radius:14px;padding:15px;margin-top:10px}
+.ex-rep-h{display:flex;justify-content:space-between;align-items:center;font-size:11px;color:var(--text3);border-bottom:1px solid var(--line);padding-bottom:8px;margin-bottom:11px}
+.ex-lq-bar{height:9px;border-radius:6px;background:#eef3e4;overflow:hidden;margin-top:6px}
+.ex-lq-fill{height:100%;width:78%;border-radius:6px;background:linear-gradient(90deg,var(--green),var(--lime))}
+.ex-card{background:#fff;border:1px solid var(--line);border-radius:16px;margin:20px 20px 0;padding:18px}
 .ex-fl{font-size:11px;font-weight:600;color:var(--green-dark);margin:0 0 6px}
 .ex-in{width:100%;padding:11px 13px;border:1px solid #e6eedb;border-radius:10px;font-size:13px;font-family:inherit;box-sizing:border-box;margin-bottom:12px}
 .ex-cta{width:100%;padding:14px;border:none;border-radius:12px;background:var(--green);color:#fff;font-size:15px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:7px}
-.ex-meta{display:flex;justify-content:center;gap:18px;margin:14px 20px 0;font-size:11px;color:var(--text2)}
+.ex-meta{display:flex;justify-content:center;gap:16px;margin:13px 20px 0;font-size:11px;color:var(--text2)}
 .ex-meta b{color:var(--green-dark)}
-.ex-rh{background:var(--lime-soft);border:1px solid #cfe6bf;border-radius:16px;margin:18px 20px 0;padding:18px;text-align:center}
-.ex-type{font-size:20px;font-weight:700;color:var(--green-dark)}
-.ex-rec{display:flex;gap:11px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px;margin:10px 20px 0}
-.ex-rec-ph{width:46px;height:46px;border-radius:12px;background:var(--lime-soft);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:600;color:var(--green-dark);flex-shrink:0}
-.ex-rec-n{font-size:13.5px;font-weight:600}
-.ex-rec-s{font-size:11px;color:var(--text2);margin-top:2px}
-.ex-rec-m{font-size:10px;color:var(--green);margin-top:3px;font-weight:600}
-.ex-fit{margin-left:auto;text-align:center;flex-shrink:0}
-.ex-fitv{font-size:16px;font-weight:700;color:var(--green-dark)}
-.ex-fitl{font-size:9px;color:var(--text3)}
+.ex-done{background:var(--lime-soft);border:1px solid #cfe6bf;border-radius:16px;margin:20px 20px 0;padding:24px 20px;text-align:center}
 </style>
 <div class="ex-pad"><div class="ex-wrap">
   <div class="ex-h">
-    <div class="ex-badge"><i class="ti ti-check"></i> 인싸이트 학습유형검사 제휴</div>
+    <div class="ex-badge"><i class="ti ti-check"></i> 인싸이트 MLST-II 제휴</div>
     <div class="ex-hl">우리 아이 공부 유형,<br>알고 계신가요?</div>
-    <div class="ex-sub">무료 진단 후, 우리 아이에게 딱 맞는<br>검증된 전담 선생님을 연결해드려요.</div>
+    <div class="ex-sub">학습전략·자기주도 학습지수(LQ)를 진단하고,<br>결과는 담당 상담쌤이 함께 풀어드려요.</div>
   </div>
 
+  <!-- 실시간 신청 현황 (사회적 증거) -->
+  <div class="ex-live">
+    <div class="ex-live-h"><span class="ex-ld"></span> 지금 신청 현황</div>
+    <div class="ex-lstat">오늘 <b>37명</b> · 이번 주 <b>214명</b>이 무료 진단을 신청했어요</div>
+    <div class="ex-feed" id="examFeed"></div>
+    <div style="font-size:9.5px;color:var(--text3);margin-top:7px;text-align:center"><i class="ti ti-lock" style="color:var(--green)"></i> 개인정보 보호를 위해 이름은 가려서 표시돼요</div>
+  </div>
+
+  <!-- 검사 소개 -->
+  <div class="ex-sec">
+    <div class="ex-st"><i class="ti ti-clipboard-data" style="color:var(--green)"></i> 학습전략검사(MLST-II)란?</div>
+    <div class="ex-p">학생의 학습전략이 얼마나 효과적인지 진단해 <b>자신의 장점·단점을 이해하고 보완점을 찾는</b> 검사예요. 자기주도 학습지수(LQ)로 \u201C스스로 공부하는 힘\u201D을 수치로 보여줘요. 학습전략은 노력·의지에 따라 충분히 바뀔 수 있어요.</div>
+  </div>
+
+  <!-- 검사 구성 6영역 -->
+  <div class="ex-sec">
+    <div class="ex-st"><i class="ti ti-list-check" style="color:var(--green)"></i> 무엇을 진단하나요? · 6개 영역</div>
+    <div class="ex-grp"><div class="ex-gn"><i class="ti ti-shield-check"></i> 신뢰성 지표</div><div class="ex-chips"><span class="ex-chip">반응일관성</span><span class="ex-chip">연속동일반응</span><span class="ex-chip">사회적 바람직성</span><span class="ex-chip">무응답</span></div></div>
+    <div class="ex-grp"><div class="ex-gn"><i class="ti ti-info-circle"></i> 부가정보</div><div class="ex-chips"><span class="ex-chip">성적</span><span class="ex-chip">학습시간</span><span class="ex-chip">성적만족도</span><span class="ex-chip">심리적 불편감</span></div></div>
+    <div class="ex-grp"><div class="ex-gn"><i class="ti ti-mood-smile"></i> 성격특성</div><div class="ex-chips"><span class="ex-chip">효능감</span><span class="ex-chip">결과기대</span><span class="ex-chip">성실성</span></div></div>
+    <div class="ex-grp"><div class="ex-gn"><i class="ti ti-heart"></i> 정서특성</div><div class="ex-chips"><span class="ex-chip">우울</span><span class="ex-chip">짜증</span><span class="ex-chip">불안</span></div></div>
+    <div class="ex-grp"><div class="ex-gn"><i class="ti ti-flame"></i> 동기특성</div><div class="ex-chips"><span class="ex-chip">학습</span><span class="ex-chip">경쟁</span><span class="ex-chip">회피</span></div></div>
+    <div class="ex-grp"><div class="ex-gn"><i class="ti ti-target-arrow"></i> 행동특성</div><div class="ex-chips"><span class="ex-chip">시간관리</span><span class="ex-chip">공부환경</span><span class="ex-chip">수업듣기</span><span class="ex-chip">노트필기</span><span class="ex-chip">집중전략</span><span class="ex-chip">읽기전략</span><span class="ex-chip">기억전략</span><span class="ex-chip">시험전략</span></div></div>
+  </div>
+
+  <!-- 문항·시간 + 결과 예시 -->
+  <div class="ex-sec">
+    <div class="ex-st"><i class="ti ti-report-analytics" style="color:var(--green)"></i> 어떤 결과를 받나요?</div>
+    <div class="ex-mini">
+      <div class="ex-mc"><div class="ex-mcv">185</div><div class="ex-mcl">문항 (예시)</div></div>
+      <div class="ex-mc"><div class="ex-mcv">약 50분</div><div class="ex-mcl">소요시간</div></div>
+      <div class="ex-mc"><div class="ex-mcv">LQ</div><div class="ex-mcl">자기주도 학습지수</div></div>
+    </div>
+    <div class="ex-rep">
+      <div class="ex-rep-h"><span><b style="color:var(--green-dark)">MLST-II</b> Interpretive Report</span><span>해석 리포트</span></div>
+      <div style="font-size:11px;color:var(--text2);line-height:1.6">하위척도별 점수(T점수·백분위)와 <b>레이더 차트</b>로 강·약점을 한눈에 보여주고,</div>
+      <div style="font-size:11.5px;font-weight:600;color:var(--green-dark);margin-top:11px;display:flex;justify-content:space-between"><span>자기주도 학습지수 (LQ)</span><span>93.05</span></div>
+      <div class="ex-lq-bar"><div class="ex-lq-fill"></div></div>
+      <div style="font-size:10px;color:var(--text3);margin-top:8px;line-height:1.5">* 상담쌤이 결과지를 함께 보며 우리 아이에게 맞는 공부법·선생님을 안내해드려요.</div>
+    </div>
+  </div>
+
+  <!-- 신청 폼 -->
   <div id="examIntro">
     <div class="ex-card">
+      <div style="font-size:13px;font-weight:600;color:var(--green-dark);margin-bottom:4px">무료 진단 신청</div>
+      <div style="font-size:11px;color:var(--text2);margin-bottom:14px;line-height:1.55">신청하시면 담당 상담쌤이 <b>검사 링크를 보내드리고</b>, 검사 후 결과를 <b>함께 풀어드려요.</b></div>
       <div class="ex-fl">학생 이름</div>
       <input class="ex-in" placeholder="예) 이준혁">
       <div class="ex-fl">학부모 연락처</div>
       <input class="ex-in" placeholder="010-0000-0000">
       <div class="ex-fl">학년</div>
       <input class="ex-in" placeholder="예) 초5">
-      <button class="ex-cta" onclick="examStart()"><i class="ti ti-clipboard-data"></i> 무료 학습유형검사 시작</button>
+      <div class="ex-fl">고민 (선택)</div>
+      <input class="ex-in" placeholder="예) 학원 다녀도 성적이 그대로예요" style="margin-bottom:14px">
+      <button class="ex-cta" onclick="examApply()"><i class="ti ti-clipboard-plus"></i> 무료 학습전략검사 신청하기</button>
     </div>
-    <div class="ex-meta"><span>⏱ 약 <b>10분</b> 소요</span><span>💸 <b>100% 무료</b></span><span>🎁 결과 즉시 확인</span></div>
+    <div class="ex-meta"><span>💸 <b>100% 무료</b></span><span>📩 상담쌤이 <b>검사지 발송</b></span><span>🎯 결과 <b>1:1 해석</b></span></div>
   </div>
 
-  <div id="examResult" style="display:none">
-    <div class="ex-rh">
-      <div style="font-size:11px;color:var(--green);font-weight:600;margin-bottom:6px">이준혁 학생의 학습유형</div>
-      <div class="ex-type">🔎 꼼꼼 분석형</div>
-      <div style="font-size:12px;color:var(--green-dark);margin-top:8px;line-height:1.6">개념을 천천히 짚어주면 깊게 이해하는 타입이에요. 빠른 진도보다 <b>차분히 설명하고 확인하는 선생님</b>과 잘 맞아요.</div>
+  <div id="examDone" style="display:none">
+    <div class="ex-done">
+      <div style="width:54px;height:54px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto 13px;box-shadow:0 6px 18px rgba(58,142,63,0.18)"><i class="ti ti-check" style="font-size:28px;color:var(--green)"></i></div>
+      <div style="font-size:16px;font-weight:700;color:var(--green-dark)">신청이 완료됐어요!</div>
+      <div style="font-size:12px;color:var(--green-dark);margin-top:8px;line-height:1.7">담당 상담쌤이 <b>검사 링크와 함께 곧 연락</b>드려요.<br>(보통 1영업일 이내) 검사 후 결과는 함께 풀어드려요.</div>
+      <div style="font-size:10.5px;color:var(--text3);margin-top:12px">진행 상황은 카카오 알림톡으로도 안내드려요</div>
     </div>
-    <div style="font-size:13px;font-weight:600;color:var(--green-dark);margin:18px 20px 0;display:flex;align-items:center;gap:6px"><i class="ti ti-sparkles" style="color:var(--green)"></i> 이 유형에 맞는 선생님 3명</div>
-    <div class="ex-rec">
-      <div class="ex-rec-ph">김</div>
-      <div style="flex:1;min-width:0"><div class="ex-rec-n">김하늘 선생님 <span style="font-size:9px;background:#eef6e0;color:#2c6b30;padding:1px 6px;border-radius:10px">검증완료</span></div><div class="ex-rec-s">서울교대 · 차분한 개념 설명형</div><div class="ex-rec-m">⭐ 신원·성범죄경력·학력 검증 완료</div></div>
-      <div class="ex-fit"><div class="ex-fitv">98%</div><div class="ex-fitl">유형 적합</div></div>
-    </div>
-    <div class="ex-rec">
-      <div class="ex-rec-ph">정</div>
-      <div style="flex:1;min-width:0"><div class="ex-rec-n">정유진 선생님 <span style="font-size:9px;background:#eef6e0;color:#2c6b30;padding:1px 6px;border-radius:10px">검증완료</span></div><div class="ex-rec-s">이화여대 · 단계별 확인 수업</div><div class="ex-rec-m">⭐ 신원·성범죄경력·학력 검증 완료</div></div>
-      <div class="ex-fit"><div class="ex-fitv">94%</div><div class="ex-fitl">유형 적합</div></div>
-    </div>
-    <div class="ex-rec">
-      <div class="ex-rec-ph">박</div>
-      <div style="flex:1;min-width:0"><div class="ex-rec-n">박도윤 선생님 <span style="font-size:9px;background:#eef6e0;color:#2c6b30;padding:1px 6px;border-radius:10px">검증완료</span></div><div class="ex-rec-s">고려대 · 기초 탄탄 반복형</div><div class="ex-rec-m">⭐ 신원·성범죄경력·학력 검증 완료</div></div>
-      <div class="ex-fit"><div class="ex-fitv">91%</div><div class="ex-fitl">유형 적합</div></div>
-    </div>
-    <div style="margin:18px 20px 0"><button class="ex-cta" onclick="showToast('무료 체험수업 신청이 접수됐어요 ✓')"><i class="ti ti-gift"></i> 1순위 선생님께 무료 체험 신청</button></div>
-    <div style="text-align:center;font-size:11px;color:var(--text3);margin-top:10px">결과는 카카오 알림톡으로도 보내드려요</div>
   </div>
 </div></div>
 </div>
+
 
 <!-- ========== 강사: 가입 · 검증 (서류 제출) ========== -->
 <div class="screen" id="scr-teacher-verify">
@@ -2153,7 +2203,7 @@ const SCREENS = {
   'shop':         {title:'픽클 상점', sub:'고객 화면 · 포인트 사용'},
   'promise':      {title:'픽클 약속', sub:'강사 · 교습 보증 제도'},
   'monthly-report':{title:'월간 리포트', sub:'고객 화면 · AI 월간 분석'},
-  'exam':         {title:'학습유형검사', sub:'유입 · 공개 페이지'},
+  'exam':         {title:'학습전략검사', sub:'유입 · 공개 페이지'},
 };
 
 function switchScreen(id){
@@ -2215,24 +2265,50 @@ function resetMonthly(){
   if(btn){ btn.disabled = false; btn.innerHTML = '<i class="ti ti-sparkles"></i> AI 월간 분석 생성'; }
 }
 
-/* ===== 학습유형검사: 검사 → 결과 ===== */
-function examStart(){
+/* ===== 학습전략검사: 신청 접수 + 실시간 신청 현황(마스킹 피드) ===== */
+function examApply(){
   const intro = document.getElementById('examIntro');
-  const res = document.getElementById('examResult');
+  const done = document.getElementById('examDone');
   if(intro) intro.style.display = 'none';
-  if(res) res.style.display = 'block';
-  showToast('학습유형 분석 완료 · 맞춤 선생님을 찾았어요 ✨');
+  if(done) done.style.display = 'block';
+  showToast('무료 진단 신청 완료 · 상담쌤이 곧 연락드려요 ✓');
+  document.getElementById('screenArea').scrollTop = 0;
+}
+const EX_SURN = ['이','김','박','최','정','윤','장','임','한','조','강','오','서','신','권'];
+const EX_GRADE = ['초3','초4','초5','초6','중1','중2','중3','고1','고2'];
+const EX_TIMES = ['방금 전','1분 전','2분 전','4분 전','7분 전'];
+let exFeedTimer = null;
+function exMakeItem(t){
+  const s = EX_SURN[Math.floor(Math.random()*EX_SURN.length)];
+  const g = EX_GRADE[Math.floor(Math.random()*EX_GRADE.length)];
+  const d = document.createElement('div');
+  d.className = 'ex-fi';
+  d.innerHTML = '<div class="ex-fi-av">'+s+'</div><div><span class="ex-fi-n">'+s+'○○</span> 학부모님 · '+g+'</div><span class="ex-fi-t">'+t+' 신청</span>';
+  return d;
+}
+function startExamFeed(){
+  const feed = document.getElementById('examFeed');
+  if(!feed) return;
+  feed.innerHTML = '';
+  ['방금 전','2분 전','5분 전','9분 전'].forEach(t=>feed.appendChild(exMakeItem(t)));
+  if(exFeedTimer) clearInterval(exFeedTimer);
+  exFeedTimer = setInterval(()=>{
+    if(!document.getElementById('scr-exam').classList.contains('active')){ clearInterval(exFeedTimer); exFeedTimer=null; return; }
+    feed.insertBefore(exMakeItem('방금 전'), feed.firstChild);
+    while(feed.children.length>4) feed.removeChild(feed.lastChild);
+  }, 3800);
 }
 function examReset(){
   const intro = document.getElementById('examIntro');
-  const res = document.getElementById('examResult');
+  const done = document.getElementById('examDone');
   if(intro) intro.style.display = '';
-  if(res) res.style.display = 'none';
+  if(done) done.style.display = 'none';
+  startExamFeed();
 }
 
 /* ===== 리드 관리: 필터 · 정렬 · 모아보기 ===== */
 const LEAD = {ch:'all', status:'all', sort:'prio', group:'none'};
-const CH_LABEL = {meta:'메타', naver:'네이버', daangn:'당근', kakao:'카카오', google:'구글', tenping:'텐핑'};
+const CH_LABEL = {meta:'메타', naver:'네이버', daangn:'당근', kakao:'카카오', google:'구글', tenping:'텐핑', exam:'학습전략검사'};
 const ST_LABEL = {new:'신규', trial:'시강예정', visit:'방문예정', wait:'배정대기', hold:'보류', more:'추가관리'};
 function leadRows(){ return Array.from(document.querySelectorAll('#leadBody tr.lead-data')); }
 function leadCh(el, ch){
