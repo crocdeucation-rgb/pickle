@@ -143,7 +143,7 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
       <div class="sb-nav" data-screen="teacher-verify"><i class="ti ti-license"></i> 가입·검증</div>
       <div class="sb-nav" data-screen="teacher-timetable"><i class="ti ti-calendar"></i> 시간표·프로필</div>
       <div class="sb-nav" data-screen="teacher-proposal"><i class="ti ti-inbox"></i> 배정 제안 받기</div>
-      <div class="sb-nav" data-screen="teacher-bank"><i class="ti ti-leaf"></i> 픽클뱅크</div>
+      <div class="sb-nav" data-screen="teacher-bank"><i class="ti ti-coin"></i> 픽클뱅크</div>
       <div class="sb-nav" data-screen="promise"><i class="ti ti-shield-check"></i> 픽클 약속</div>
     </div>
 
@@ -903,7 +903,7 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
       <div style="margin-top:10px;font-size:11px;color:var(--text2);background:var(--lime-soft);border-radius:8px;padding:8px 10px;line-height:1.5"><i class="ti ti-info-circle" style="color:var(--green)"></i> 리포트 작성하면 학부모에게 자동 발송 · 연장 결정에 큰 영향</div>
     </div>
     <div class="tpanel">
-      <div class="tea-sect"><span><i class="ti ti-leaf" style="vertical-align:-2px;color:var(--green)"></i> 픽클뱅크</span> <a onclick="switchScreen('teacher-bank')">상세 →</a></div>
+      <div class="tea-sect"><span><i class="ti ti-coin" style="vertical-align:-2px;color:var(--green)"></i> 픽클뱅크</span> <a onclick="switchScreen('teacher-bank')">상세 →</a></div>
       <div style="font-size:24px;font-weight:700;color:var(--green-dark);margin:6px 0">1,847,200 <span style="font-size:13px;color:var(--text2)">픽클</span></div>
       <div style="font-size:11px;color:var(--text2);line-height:1.6">= 1,847,200원 · 1픽클 = 1원<br>이번달 적립 1,730,350픽클 (세후)</div>
       <div style="margin-top:12px;border-top:1px solid var(--line);padding-top:12px">
@@ -1099,12 +1099,13 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
 <div class="bk-pad">
   <div class="bk-wrap">
     <div class="bk-bank">
-      <div class="bk-top"><div class="bk-name"><span class="bk-ni"><i class="ti ti-leaf"></i></span> 픽클뱅크</div><div class="bk-tier">🥒 오이 티어</div></div>
+      <div class="bk-top"><div class="bk-name"><span class="bk-ni"><i class="ti ti-coin"></i></span> 픽클뱅크</div><div class="bk-tier">🥒 오이 티어</div></div>
       <div class="bk-bl">김하늘 선생님 · 출금 가능 잔액</div>
       <div class="bk-bal">1,847,200 <span class="u">픽클</span></div>
       <div class="bk-won">= 1,847,200원 · 1픽클 = 1원 (세후 적립 기준)</div>
       <button class="bk-wd" onclick="openModal('kakaoauth')"><i class="ti ti-cash"></i> 출금 신청하기</button>
       <div style="margin-top:9px;font-size:10.5px;color:rgba(255,255,255,0.72);display:flex;align-items:center;justify-content:center;gap:5px"><i class="ti ti-shield-lock" style="color:var(--lime)"></i> 출금 등 민감 동작은 <b style="color:#fff">카카오 본인인증</b>을 한 번 더 거쳐요</div>
+      <div style="margin-top:6px;font-size:10.5px;color:rgba(255,255,255,0.72);display:flex;align-items:center;justify-content:center;gap:5px"><i class="ti ti-calendar-time" style="color:var(--lime)"></i> 정기 지급일 운영 — <b style="color:#fff">주 1회 또는 월 1회</b> (협의 결정) · 신청분은 정산 마감 후 지급</div>
     </div>
     <div class="bk-rate"><i class="ti ti-info-circle"></i><span><b>1픽클 = 1원</b> 고정 · 수업 완료 시 3.3% 사업소득세를 먼저 뗀 세후 금액으로 적립 · 출금 = 정산 신청</span></div>
     <div class="bk-sect">이번 달 적립 (6월)</div>
@@ -1860,6 +1861,17 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
 .tv-dd{font-size:10.5px;color:var(--text3);margin-top:2px;line-height:1.5}
 .tv-up{margin-top:11px;border:1.5px dashed #cdd9c0;border-radius:10px;padding:11px;text-align:center;font-size:12px;color:var(--green-dark);cursor:pointer;background:#fafdf5}
 .tv-up.done{border-style:solid;border-color:var(--green);background:#eef6e0}
+.tv-card{background:#fff;border:1px solid var(--line);border-radius:13px;padding:14px 15px;margin-bottom:10px}
+.tv-fl{font-size:11.5px;font-weight:600;color:var(--green-dark);margin:0 0 7px;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.tv-fl .opt{font-weight:400;color:var(--text3);font-size:10px}
+.tv-chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:13px}
+.tv-chip{font-size:12px;padding:6px 13px;border-radius:18px;border:1px solid #e6eedb;background:#fff;color:var(--text2);cursor:pointer}
+.tv-chip.on{background:var(--green);color:#fff;border-color:var(--green);font-weight:500}
+.tv-chip.wk{border-color:#e6c79a;color:#9a6b1a}
+.tv-chip.wk.on{background:#e8941e;border-color:#e8941e;color:#fff}
+.tv-tin{width:100%;padding:9px 12px;border:1px solid #e6eedb;border-radius:9px;font-size:12.5px;font-family:inherit;box-sizing:border-box}
+.tv-trow{display:flex;gap:8px;align-items:center;margin-bottom:9px}
+.tv-trow .tv-tlbl{font-size:11px;color:var(--text2);min-width:62px;flex-shrink:0}
 </style>
 <div class="tv-pad"><div class="tv-wrap">
   <div class="tv-steps">
@@ -1868,9 +1880,60 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
     <div class="tv-step"><div class="tv-sd">3</div><div class="tv-sl">승인 대기</div></div>
   </div>
 
+  <div class="tv-sec">기본정보</div>
+  <div class="tv-card">
+    <div class="tv-fl"><i class="ti ti-book" style="color:var(--green)"></i> 가능 과목 — 메인 <span class="opt">(1개)</span></div>
+    <div class="tv-chips">
+      <span class="tv-chip on" onclick="this.parentNode.querySelectorAll('.tv-chip').forEach(x=>x.classList.remove('on'));this.classList.add('on')">수학</span>
+      <span class="tv-chip" onclick="this.parentNode.querySelectorAll('.tv-chip').forEach(x=>x.classList.remove('on'));this.classList.add('on')">영어</span>
+      <span class="tv-chip" onclick="this.parentNode.querySelectorAll('.tv-chip').forEach(x=>x.classList.remove('on'));this.classList.add('on')">국어</span>
+      <span class="tv-chip" onclick="this.parentNode.querySelectorAll('.tv-chip').forEach(x=>x.classList.remove('on'));this.classList.add('on')">과학</span>
+      <span class="tv-chip" onclick="this.parentNode.querySelectorAll('.tv-chip').forEach(x=>x.classList.remove('on'));this.classList.add('on')">사회</span>
+    </div>
+    <div class="tv-fl"><i class="ti ti-books" style="color:var(--green)"></i> 가능 과목 — 서브 <span class="opt">(복수 선택)</span></div>
+    <div class="tv-chips">
+      <span class="tv-chip" onclick="this.classList.toggle('on')">수학</span>
+      <span class="tv-chip on" onclick="this.classList.toggle('on')">과학</span>
+      <span class="tv-chip" onclick="this.classList.toggle('on')">영어</span>
+      <span class="tv-chip" onclick="this.classList.toggle('on')">국어</span>
+      <span class="tv-chip" onclick="this.classList.toggle('on')">사회</span>
+    </div>
+    <div class="tv-fl"><i class="ti ti-school" style="color:var(--green)"></i> 가능 학년 <span class="opt">(복수 선택)</span></div>
+    <div class="tv-chips" style="margin-bottom:0">
+      <span class="tv-chip on" onclick="this.classList.toggle('on')">초등</span>
+      <span class="tv-chip on" onclick="this.classList.toggle('on')">중등</span>
+      <span class="tv-chip" onclick="this.classList.toggle('on')">고등</span>
+    </div>
+  </div>
+
+  <div class="tv-sec">가능 시간 <span style="font-weight:400;color:var(--text3);text-transform:none">· 주말 포함 · 정확히 입력</span></div>
+  <div class="tv-card">
+    <div style="background:#fff8ec;border:1px solid #f0e0c0;border-radius:9px;padding:9px 11px;font-size:10.5px;color:#8a6516;line-height:1.5;display:flex;gap:6px;margin-bottom:12px"><i class="ti ti-info-circle" style="margin-top:1px"></i><span>재학·직장 병행이면 가능 시간이 갈려요. 주말·야간 가능 여부까지 <b>정확히</b> 적어주셔야 매칭이 빨라요.</span></div>
+    <div class="tv-fl"><i class="ti ti-user" style="color:var(--green)"></i> 현재 상황 <span class="opt">(매칭 참고)</span></div>
+    <div class="tv-chips">
+      <span class="tv-chip on" onclick="this.parentNode.querySelectorAll('.tv-chip').forEach(x=>x.classList.remove('on'));this.classList.add('on')">대학 재학</span>
+      <span class="tv-chip" onclick="this.parentNode.querySelectorAll('.tv-chip').forEach(x=>x.classList.remove('on'));this.classList.add('on')">직장 병행(투잡)</span>
+      <span class="tv-chip" onclick="this.parentNode.querySelectorAll('.tv-chip').forEach(x=>x.classList.remove('on'));this.classList.add('on')">전업 강사</span>
+    </div>
+    <div class="tv-fl"><i class="ti ti-calendar" style="color:var(--green)"></i> 가능 요일 <span class="opt">(주말 포함)</span></div>
+    <div class="tv-chips">
+      <span class="tv-chip on" onclick="this.classList.toggle('on')">월</span>
+      <span class="tv-chip" onclick="this.classList.toggle('on')">화</span>
+      <span class="tv-chip on" onclick="this.classList.toggle('on')">수</span>
+      <span class="tv-chip" onclick="this.classList.toggle('on')">목</span>
+      <span class="tv-chip on" onclick="this.classList.toggle('on')">금</span>
+      <span class="tv-chip wk on" onclick="this.classList.toggle('on')">토</span>
+      <span class="tv-chip wk" onclick="this.classList.toggle('on')">일</span>
+    </div>
+    <div class="tv-fl"><i class="ti ti-clock" style="color:var(--green)"></i> 가능 시간대 <span class="opt">(요일군별 입력)</span></div>
+    <div class="tv-trow"><span class="tv-tlbl">평일</span><input class="tv-tin" value="17:00 ~ 22:00"></div>
+    <div class="tv-trow"><span class="tv-tlbl">토요일</span><input class="tv-tin" value="10:00 ~ 18:00"></div>
+    <div class="tv-trow" style="margin-bottom:0"><span class="tv-tlbl">일요일</span><input class="tv-tin" placeholder="예) 불가 / 14:00 ~ 18:00"></div>
+  </div>
+
+  <div class="tv-sec">서류 제출 <span style="font-weight:400;color:var(--text3);text-transform:none">· 법적 필수</span></div>
   <div style="background:#fdf3f3;border:1px solid #f3d6d6;border-radius:12px;padding:12px 14px;display:flex;gap:9px;align-items:flex-start;margin-bottom:6px"><i class="ti ti-gavel" style="color:#c0392b;font-size:17px;flex-shrink:0;margin-top:1px"></i><div style="font-size:11px;color:#9a3b3b;line-height:1.6">미성년 학생을 가르치는 만큼 <b>성범죄경력 조회·학력 확인은 법적 필수</b>예요(아동·청소년의 성보호에 관한 법률 제56조). 서류는 본인이 정부24·경찰서에서 발급해 올려주시면 됩니다.</div></div>
 
-  <div class="tv-sec">법적 필수 서류</div>
   <div class="tv-doc">
     <div class="tv-dtop"><div class="tv-di" style="background:#fdeaea;color:#c0392b"><i class="ti ti-shield-lock"></i></div><div style="flex:1"><div class="tv-dn">성범죄경력·아동학대전력 조회 회신서 <span class="tv-tag tv-req">필수</span></div><div class="tv-dd">정부24·경찰서에서 본인 발급 → 업로드 (발급일이 가입일 이전이어야 인정)</div></div></div>
     <div class="tv-up done" onclick="this.classList.toggle('done');this.innerHTML=this.classList.contains('done')?'<i class=\'ti ti-circle-check\'></i> 회신서_이준혁.pdf 업로드됨':'<i class=\'ti ti-upload\'></i> 파일 선택 또는 촬영'"><i class="ti ti-circle-check"></i> 회신서_이준혁.pdf 업로드됨</div>
@@ -1884,10 +1947,12 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
     <div class="tv-up" onclick="this.classList.toggle('done');this.innerHTML=this.classList.contains('done')?'<i class=\'ti ti-circle-check\'></i> 신분증 업로드됨':'<i class=\'ti ti-upload\'></i> 파일 선택 또는 촬영'"><i class="ti ti-upload"></i> 파일 선택 또는 촬영</div>
   </div>
 
-  <div class="tv-sec">선택 (품질·운영)</div>
+  <div class="tv-sec">필수 동의</div>
   <div class="tv-doc">
-    <div class="tv-dtop"><div class="tv-di" style="background:#eef6e0;color:var(--green)"><i class="ti ti-video"></i></div><div style="flex:1"><div class="tv-dn">화상수업 녹화 동의 <span class="tv-tag tv-opt">선택</span></div><div class="tv-dd">품질 점검·분쟁 대비용 · 개인정보 동의 기반</div></div><label style="cursor:pointer"><input type="checkbox" style="width:18px;height:18px;accent-color:var(--green)"></label></div>
+    <div class="tv-dtop"><div class="tv-di" style="background:#fdeaea;color:#c0392b"><i class="ti ti-video"></i></div><div style="flex:1"><div class="tv-dn">화상수업 녹화 동의 <span class="tv-tag tv-req">필수</span></div><div class="tv-dd">모든 수업은 녹화돼요 — 품질 점검·분쟁 대비·아동 보호 장치 (개인정보 동의 기반). 가입 시 동의 필요.</div></div><label style="cursor:pointer"><input type="checkbox" checked style="width:18px;height:18px;accent-color:var(--green)"></label></div>
   </div>
+
+  <div class="tv-sec">선택 (품질·운영)</div>
   <div class="tv-doc">
     <div class="tv-dtop"><div class="tv-di" style="background:#eef6e0;color:var(--green)"><i class="ti ti-award"></i></div><div style="flex:1"><div class="tv-dn">경력증명·자격증 <span class="tv-tag tv-opt">선택</span></div><div class="tv-dd">프로필 신뢰도·티어 심사에 반영</div></div></div>
     <div class="tv-up" onclick="this.classList.toggle('done');this.innerHTML=this.classList.contains('done')?'<i class=\'ti ti-circle-check\'></i> 업로드됨':'<i class=\'ti ti-upload\'></i> 파일 선택 (선택)'"><i class="ti ti-upload"></i> 파일 선택 (선택)</div>
@@ -1934,7 +1999,7 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
     <div class="ap-chk"><div class="ap-ci ap-ok"><i class="ti ti-check"></i></div><div class="ap-cl"><span class="ap-clt">성범죄경력·아동학대 회신서<span class="ap-req">법적</span></span><div class="ap-cv">발급 2026.06.20 · 가입일 이전 · 이상 없음</div></div></div>
     <div class="ap-chk"><div class="ap-ci ap-ok"><i class="ti ti-check"></i></div><div class="ap-cl"><span class="ap-clt">최종학력증명서<span class="ap-req">법적</span></span><div class="ap-cv">이화여대 학사 · 전문대졸 이상 충족</div></div></div>
     <div class="ap-chk"><div class="ap-ci ap-ok"><i class="ti ti-check"></i></div><div class="ap-cl"><span class="ap-clt">신분증 본인확인<span class="ap-req">필수</span></span><div class="ap-cv">실명·예금주 일치</div></div></div>
-    <div class="ap-chk"><div class="ap-ci ap-ok"><i class="ti ti-check"></i></div><div class="ap-cl"><span class="ap-clt">화상 녹화 동의 <span style="font-size:9px;color:var(--adm-text2)">(선택)</span></span><div class="ap-cv">동의함</div></div></div>
+    <div class="ap-chk"><div class="ap-ci ap-ok"><i class="ti ti-check"></i></div><div class="ap-cl"><span class="ap-clt">화상 녹화 동의<span class="ap-req">필수</span></span><div class="ap-cv">동의함</div></div></div>
     <div class="ap-act"><button class="ap-approve" onclick="showToast('정유진 강사 승인 완료 · 배정 가능 상태로 전환 ✓')">승인 (배정 가능)</button><button class="ap-reject" onclick="showToast('반려 사유를 강사에게 안내했어요')">반려</button></div>
   </div>
 
