@@ -532,36 +532,165 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
 </style>
 <div class="mt-pad">
   <div style="display:flex;align-items:flex-start;gap:8px;font-size:11px;color:#185fa5;background:var(--info-bg);border:1px solid var(--info-bd);border-radius:9px;padding:9px 12px;margin-bottom:12px;line-height:1.5"><i class="ti ti-user-plus" style="font-size:15px;flex-shrink:0;margin-top:1px"></i><span><b>최초 가입은 "학생 기준"으로 등록돼요.</b> 희망/가능 시간 · 과목 · 원하는 교재 · 특이사항이 먼저 정리된 상태로 넘어와, 강사 스킬 포트폴리오·빈 슬롯과 매칭만 하면 됩니다.</span></div>
-  <div class="mt-target">
-    <div class="mt-av">이준</div>
-    <div class="mt-tinfo"><div class="mt-tname">이준혁 <span style="font-size:11px;color:var(--adm-text2);font-weight:400">초5 · 배정 대기 3일</span></div><div class="mt-tsub">차분한 선생님 선호</div></div>
-    <div class="mt-conds"><span class="mt-cond">수학</span><span class="mt-cond">주2회·60분</span><span class="mt-cond">화·목 17~19시</span><span class="mt-cond">성별 무관</span><span class="mt-cond">교재: 디딤돌</span></div>
+  <style>
+.pmx-lbl{font-size:11px;font-weight:600;color:var(--adm-text2);margin:2px 0 7px;display:flex;align-items:center;gap:6px}
+.pmx-strip{display:flex;gap:9px;overflow-x:auto;padding-bottom:6px;margin-bottom:14px}
+.pmx-scard{flex:0 0 auto;min-width:148px;background:#fff;border:1px solid var(--adm-line);border-radius:11px;padding:10px 13px;cursor:pointer;transition:.15s}
+.pmx-scard:hover{border-color:var(--info-bd)}
+.pmx-scard.on{border:2px solid var(--info-bd);background:var(--info-bg)}
+.pmx-sn{font-size:13px;font-weight:600;display:flex;align-items:center;gap:6px}
+.pmx-sg{font-size:10px;color:var(--adm-text2);font-weight:400}
+.pmx-ssub{font-size:10px;color:var(--adm-text2);margin-top:3px}
+.pmx-swait{font-size:9px;padding:1px 7px;border-radius:20px;background:var(--warn-bg);color:var(--warn-tx);font-weight:600}
+.pmx-fbar{background:#fff;border:1px solid var(--adm-line);border-radius:11px;padding:11px 13px;margin-bottom:12px}
+.pmx-frow{display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.pmx-fchip{font-size:11px;padding:4px 8px 4px 11px;border-radius:20px;background:var(--info-bg);color:var(--info-tx);font-weight:500;display:inline-flex;align-items:center;gap:5px}
+.pmx-fchip .x{cursor:pointer;width:15px;height:15px;border-radius:50%;background:rgba(24,95,165,.16);display:inline-flex;align-items:center;justify-content:center;font-size:11px;line-height:1}
+.pmx-fchip.day{background:#eef6e0;color:#2c6b30}
+.pmx-fchip.day .x{background:rgba(44,107,48,.16)}
+.pmx-add{font-size:11px;padding:4px 10px;border-radius:20px;border:1px dashed var(--adm-line2);background:transparent;color:var(--adm-text2);cursor:pointer}
+.pmx-pal{margin-top:9px;padding-top:9px;border-top:1px dashed var(--adm-line);display:none;flex-wrap:wrap;gap:6px}
+.pmx-pal.show{display:flex}
+.pmx-palc{font-size:11px;padding:3px 9px;border-radius:20px;border:1px solid var(--adm-line2);background:var(--adm-bg);color:var(--adm-text2);cursor:pointer}
+.pmx-palc:hover{border-color:var(--info-bd);color:var(--info-tx)}
+.pmx-cnt{font-size:11px;color:var(--adm-text2);margin:2px 0 9px}
+.pmx-cnt b{color:var(--info-tx)}
+.pmx-empty{text-align:center;font-size:12px;color:var(--adm-text2);padding:26px 0;background:#fff;border:1px dashed var(--adm-line2);border-radius:11px}
+.mc-books{font-size:10px;color:var(--adm-text2);margin-top:3px}
+.mc-books .bk{display:inline-block;background:var(--adm-bg);border-radius:5px;padding:1px 6px;margin-right:4px}
+</style>
+
+  <div class="pmx-lbl"><i class="ti ti-user-search" style="color:var(--info-tx)"></i> 배정 대기 학생 — 카드를 선택하면 그 조건으로 강사가 필터링됩니다</div>
+  <div class="pmx-strip" id="pmxStrip"></div>
+
+  <div class="mt-flow"><i class="ti ti-route"></i><span class="cur">① 학생 선택</span><span>→</span><span>② 강사 필터·선택</span><span>→</span><span>③ 배정 제안</span><span>→</span><span>④ 강사 수락</span><span>→</span><span>⑤ 확정 (BODA+알림톡)</span></div>
+
+  <div class="pmx-fbar">
+    <div class="pmx-frow" id="pmxFilters"></div>
+    <div class="pmx-pal" id="pmxPal"></div>
   </div>
-  <div class="mt-flow"><i class="ti ti-route"></i><span class="cur">① 강사 선택</span><span>→</span><span>② 배정 제안</span><span>→</span><span>③ 강사 수락</span><span>→</span><span>④ 확정 (BODA+알림톡)</span></div>
-  <div class="mc best">
-    <div class="mc-row">
-      <div class="mc-ph">김</div>
-      <div class="mc-id"><div class="mc-name">김하늘 <span class="gt gf">여</span> <span class="tt">🥒</span> <span class="bb">추천</span></div><div class="mc-uni">서울교대 초등교육 · 경력 2년 · 교재 디딤돌·쎈</div><div class="mc-match"><span style="color:var(--adm-text2)">겹치는 슬롯:</span><span class="ms">화 17:00</span><span class="ms">목 17:00</span><span style="color:#3b6d11;font-size:10px">주2회 완벽</span></div></div>
-      <div class="mc-mt"><div><span class="mc-mv" style="color:#3b6d11">+4</span><span class="mc-ml">여유</span></div><div><span class="mc-mv">4.9</span><span class="mc-ml">평점</span></div></div>
-      <div class="mc-act"><button class="bprop" onclick="openModal('propose')">배정 제안 →</button><button class="bskip">협의완료·즉시확정</button></div>
-    </div>
-  </div>
-  <div class="mc prop">
-    <div class="mc-row">
-      <div class="mc-ph">정</div>
-      <div class="mc-id"><div class="mc-name">정유진 <span class="gt gf">여</span> <span class="tt">🥒</span></div><div class="mc-uni">이화여대 수학교육 · 경력 3년</div><div class="mc-match"><span style="color:var(--adm-text2)">겹치는 슬롯:</span><span class="ms">목 17:00</span><span style="color:var(--warn-tx);font-size:10px">화요일 협의 필요</span></div></div>
-      <div class="mc-mt"><div><span class="mc-mv" style="color:#3b6d11">+3</span><span class="mc-ml">여유</span></div><div><span class="mc-mv">4.8</span><span class="mc-ml">평점</span></div></div>
-    </div>
-    <div class="sbox sb-w"><i class="ti ti-clock"></i><span><b>제안 발송됨</b> · 14:32 · 강사 응답 대기중 (알림톡 전송)</span></div>
-  </div>
-  <div class="mc acc">
-    <div class="mc-row">
-      <div class="mc-ph">이</div>
-      <div class="mc-id"><div class="mc-name">이민준 <span class="gt gm">남</span> <span class="tt">🫙</span></div><div class="mc-uni">연세대 수학과 · 경력 4년</div><div class="mc-match"><span style="color:var(--adm-text2)">겹치는 슬롯:</span><span class="ms">화 17:00</span><span class="ms">목 18:00</span></div></div>
-      <div class="mc-mt"><div><span class="mc-mv" style="color:var(--warn-tx)">+2</span><span class="mc-ml">여유</span></div><div><span class="mc-mv">4.9</span><span class="mc-ml">평점</span></div></div>
-    </div>
-    <div class="sbox sb-a"><i class="ti ti-circle-check"></i><span><b>강사 수락 완료</b> · "화·목 가능합니다" · 14:40</span><button class="bconf">확정하기</button></div>
-  </div>
+
+  <div class="pmx-cnt" id="pmxCnt"></div>
+  <div id="pmxList"></div>
+
+  <script>
+  (function(){
+    var STUDENTS=[
+      {id:'s1',name:'이준혁',av:'이준',grade:'초5',band:'초',subject:'수학',days:['화','목'],time:'17~19시',book:'디딤돌',note:'차분한 선생님 선호',wait:'3일'},
+      {id:'s2',name:'김서연',av:'김서',grade:'중2',band:'중',subject:'영어',days:['월','수','금'],time:'18~20시',book:'능률',note:'기초 회화 보강',wait:'1일'},
+      {id:'s3',name:'박민준',av:'박민',grade:'고1',band:'고',subject:'수학',days:['화','금'],time:'19~21시',book:'쎈',note:'내신 대비',wait:'2일'},
+      {id:'s4',name:'정하윤',av:'정하',grade:'중3',band:'중',subject:'국어',days:['토'],time:'10~12시',book:'디딤돌',note:'서술형 약함',wait:'오늘'}
+    ];
+    var TEACHERS=[
+      {name:'김하늘',gender:'여',tier:'🥒',bands:['초','중'],subMain:'수학',subSub:['과학'],days:['화','목','금'],time:'15~20시',books:['디딤돌','쎈'],uni:'서울교대 초등교육',exp:'2년',rating:4.9,slot:'+4'},
+      {name:'정유진',gender:'여',tier:'🥒',bands:['중','고'],subMain:'수학',subSub:[],days:['월','목','토'],time:'16~21시',books:['쎈','일품'],uni:'이화여대 수학교육',exp:'3년',rating:4.8,slot:'+3'},
+      {name:'이민준',gender:'남',tier:'🫙',bands:['중','고'],subMain:'수학',subSub:['물리'],days:['화','수','목'],time:'17~22시',books:['쎈','마플'],uni:'연세대 수학과',exp:'4년',rating:4.9,slot:'+2'},
+      {name:'최서아',gender:'여',tier:'🥒',bands:['초','중'],subMain:'영어',subSub:['국어'],days:['월','수','금'],time:'17~21시',books:['능률','EBS'],uni:'한국외대 영어교육',exp:'3년',rating:4.7,slot:'+5'},
+      {name:'한지호',gender:'남',tier:'🌱',bands:['중','고'],subMain:'영어',subSub:[],days:['화','목','토'],time:'18~22시',books:['능률','자이'],uni:'고려대 영문',exp:'1년',rating:4.6,slot:'+6'},
+      {name:'오세린',gender:'여',tier:'🫙',bands:['중','고'],subMain:'국어',subSub:['논술'],days:['토','일'],time:'09~14시',books:['디딤돌','마더텅'],uni:'서울대 국어교육',exp:'5년',rating:4.9,slot:'+3'},
+      {name:'유지호',gender:'남',tier:'🌱',bands:['초','중'],subMain:'수학',subSub:[],days:['월','화','수'],time:'16~19시',books:['디딤돌','우공비'],uni:'경인교대 수학',exp:'1년',rating:4.5,slot:'+5'}
+    ];
+    var ALLDAYS=['월','화','수','목','금','토','일'];
+    var ALLSUBS=['수학','영어','국어','과학','사회','논술'];
+    var ALLBANDS=['초','중','고'];
+    var sel=null, F={band:null,subject:null,days:[]};
+
+    function esc(x){return String(x).replace(/&/g,'&amp;').replace(/</g,'&lt;');}
+
+    function selectStudent(id){
+      sel=id; var st=STUDENTS.filter(function(s){return s.id===id;})[0];
+      F={band:st.band,subject:st.subject,days:st.days.slice()};
+      render();
+    }
+
+    function pass(t){
+      if(F.band && t.bands.indexOf(F.band)<0) return false;
+      if(F.subject && t.subMain!==F.subject && t.subSub.indexOf(F.subject)<0) return false;
+      return true;
+    }
+    function dayInfo(t){
+      if(!F.days.length) return {cls:'',txt:'',score:0,full:false};
+      var ov=F.days.filter(function(d){return t.days.indexOf(d)>=0;});
+      if(ov.length===F.days.length) return {cls:'ok',txt:'요일 완벽',score:2,full:true,ov:ov};
+      if(ov.length>0) return {cls:'part',txt:'일부 가능 · 협의',score:1,full:false,ov:ov};
+      return {cls:'no',txt:'시간 협의 필요',score:0,full:false,ov:[]};
+    }
+
+    function renderStrip(){
+      document.getElementById('pmxStrip').innerHTML=STUDENTS.map(function(s){
+        return '<div class="pmx-scard'+(sel===s.id?' on':'')+'" onclick="PMX_sel(\''+s.id+'\')">'+
+          '<div class="pmx-sn">'+esc(s.name)+' <span class="pmx-sg">'+esc(s.grade)+'</span></div>'+
+          '<div class="pmx-ssub">'+esc(s.subject)+' · '+s.days.join('·')+' · '+esc(s.time)+'</div>'+
+          '<div style="margin-top:5px"><span class="pmx-swait">대기 '+esc(s.wait)+'</span></div>'+
+        '</div>';
+      }).join('');
+    }
+
+    function renderFilters(){
+      if(!sel){document.getElementById('pmxFilters').innerHTML='<span style="font-size:11px;color:var(--adm-text2)">위에서 학생 카드를 선택하세요.</span>';document.getElementById('pmxPal').className='pmx-pal';return;}
+      var h='';
+      if(F.band) h+='<span class="pmx-fchip">학년 '+esc(F.band)+'<span class="x" onclick="PMX_rm(\'band\')">×</span></span>';
+      if(F.subject) h+='<span class="pmx-fchip">과목 '+esc(F.subject)+'<span class="x" onclick="PMX_rm(\'subject\')">×</span></span>';
+      F.days.forEach(function(d){ h+='<span class="pmx-fchip day">'+esc(d)+'<span class="x" onclick="PMX_rmday(\''+d+'\')">×</span></span>'; });
+      h+='<button class="pmx-add" onclick="PMX_pal()"><i class="ti ti-plus" style="font-size:11px;vertical-align:-1px"></i> 조건 추가</button>';
+      document.getElementById('pmxFilters').innerHTML=h;
+      // palette
+      var pal='';
+      if(!F.band) ALLBANDS.forEach(function(b){pal+='<span class="pmx-palc" onclick="PMX_addband(\''+b+'\')">학년 '+b+'</span>';});
+      if(!F.subject) ALLSUBS.forEach(function(s){pal+='<span class="pmx-palc" onclick="PMX_addsub(\''+s+'\')">과목 '+s+'</span>';});
+      ALLDAYS.filter(function(d){return F.days.indexOf(d)<0;}).forEach(function(d){pal+='<span class="pmx-palc" onclick="PMX_addday(\''+d+'\')">+ '+d+'요일</span>';});
+      document.getElementById('pmxPal').innerHTML=pal||'<span style="font-size:11px;color:var(--adm-text2)">추가할 조건이 없습니다.</span>';
+    }
+
+    function renderList(){
+      var box=document.getElementById('pmxList'), cnt=document.getElementById('pmxCnt');
+      if(!sel){box.innerHTML='';cnt.innerHTML='';return;}
+      var rows=TEACHERS.filter(pass).map(function(t){return {t:t,d:dayInfo(t)};});
+      rows.sort(function(a,b){ return (b.d.score-a.d.score)||(b.t.rating-a.t.rating); });
+      cnt.innerHTML='조건에 맞는 강사 <b>'+rows.length+'명</b> · 강사 허브에서 자동 필터링';
+      if(!rows.length){box.innerHTML='<div class="pmx-empty">조건에 맞는 강사가 없습니다. 위 조건을 일부 제거해 보세요.</div>';return;}
+      box.innerHTML=rows.map(function(r,idx){
+        var t=r.t,d=r.d;
+        var gcl=t.gender==='여'?'gf':'gm';
+        var slotCol=(parseInt(t.slot)>=3)?'#3b6d11':'var(--warn-tx)';
+        var daysTxt='';
+        if(d.txt){
+          var ovTags=(d.ov||[]).map(function(x){return '<span class="ms">'+x+'</span>';}).join('');
+          var col=d.cls==='ok'?'#3b6d11':(d.cls==='part'?'var(--warn-tx)':'var(--danger-tx)');
+          daysTxt='<div class="mc-match"><span style="color:var(--adm-text2)">겹치는 요일:</span>'+(ovTags||'<span style="color:var(--adm-text2)">없음</span>')+'<span style="color:'+col+';font-size:10px">'+d.txt+'</span></div>';
+        }
+        var books=t.books.map(function(b){return '<span class="bk">'+b+'</span>';}).join('');
+        var best=(idx===0 && d.full)?' best':'';
+        var badge=(idx===0 && d.full)?' <span class="bb">추천</span>':'';
+        return '<div class="mc'+best+'">'+
+          '<div class="mc-row">'+
+            '<div class="mc-ph">'+t.name.charAt(0)+'</div>'+
+            '<div class="mc-id">'+
+              '<div class="mc-name">'+esc(t.name)+' <span class="gt '+gcl+'">'+t.gender+'</span> <span class="tt">'+t.tier+'</span>'+badge+'</div>'+
+              '<div class="mc-uni">'+esc(t.uni)+' · 경력 '+t.exp+' · '+esc(t.subMain)+(t.subSub.length?'('+t.subSub.join('·')+')':'')+'</div>'+
+              '<div class="mc-books">지도 교재: '+books+'</div>'+
+              daysTxt+
+            '</div>'+
+            '<div class="mc-mt"><div><span class="mc-mv" style="color:'+slotCol+'">'+t.slot+'</span><span class="mc-ml">여유</span></div><div><span class="mc-mv">'+t.rating+'</span><span class="mc-ml">평점</span></div></div>'+
+            '<div class="mc-act"><button class="bprop" onclick="openModal(\'propose\')">배정 제안 →</button><button class="bskip" onclick="showToast(\'협의 완료 · 즉시 확정 처리\')">즉시 확정</button></div>'+
+          '</div>'+
+        '</div>';
+      }).join('');
+    }
+
+    function render(){renderStrip();renderFilters();renderList();}
+
+    window.PMX_sel=selectStudent;
+    window.PMX_rm=function(k){F[k]=null;render();};
+    window.PMX_rmday=function(d){F.days=F.days.filter(function(x){return x!==d;});render();};
+    window.PMX_addband=function(b){F.band=b;render();};
+    window.PMX_addsub=function(s){F.subject=s;render();};
+    window.PMX_addday=function(d){if(F.days.indexOf(d)<0)F.days.push(d);render();};
+    window.PMX_pal=function(){var p=document.getElementById('pmxPal');p.className='pmx-pal'+(p.className.indexOf('show')<0?' show':'');};
+
+    selectStudent('s1');
+  })();
+  </script>
 
   <div style="margin-top:22px;display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--adm-text)"><i class="ti ti-mood-heart" style="color:#3a8e3f"></i> 케어 요청 <span style="font-size:10px;font-weight:600;background:var(--warn-bg);color:var(--warn-tx);padding:1px 8px;border-radius:20px">선생님 변경 상담 2</span></div>
   <div style="font-size:11px;color:var(--adm-text2);margin:6px 0 12px;line-height:1.5">학부모가 "수업이 안 맞는다"고 알리면 <b>즉시 교체가 아니라 여기로</b> 들어와요. 매니저가 먼저 상담·조정하고, 안 풀리면 재매칭으로 올립니다. (남용 방지 + 강사 보호)</div>
@@ -627,17 +756,17 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
   <div class="at-case urg">
     <div class="at-top"><div class="at-ic ic-no"><i class="ti ti-user-x"></i></div><div class="at-info"><div class="at-name">김지우 (중2) 수학 — 학생 무단결석</div><div class="at-meta">이민준 · 어제 19:30 · 강사 시간 비우고 대기함</div></div></div>
     <div class="at-vd"><div class="vr"><span class="vk">학생</span><span class="v-d">수업권 1회 차감</span><span class="vt">자동 판정</span></div><div class="vr"><span class="vk">강사</span><span class="v-p">보강 시 100% · 차감 시 50% 보상</span></div><div class="vr"><span class="vk">근거</span><span style="color:var(--adm-text2)">강사가 시간 비움 → 보강하면 100%, 차감 시 50% 보상</span></div></div>
-    <div class="at-act"><button class="atb mk" onclick="openModal('makeup')">보강 권유 (우선)</button><button class="atb">차감 확정</button></div>
+    <div class="at-act"><button class="atb mk" onclick="atResolve(this,'보강 진행 → 강사 100% 보전 · 학생 수업권 1회 차감 · 보강 슬롯 생성','ok')">보강 권유 (우선)</button><button class="atb" onclick="atResolve(this,'차감 확정 → 강사 50% 보전 · 학생 수업권 1회 차감','warn')">차감 확정</button></div>
   </div>
   <div class="at-case">
     <div class="at-top"><div class="at-ic ic-ta"><i class="ti ti-user-off"></i></div><div class="at-info"><div class="at-name">이준혁 (초5) 수학 — 강사 결석</div><div class="at-meta">박지훈 · 오늘 18:30 · 강사 사정으로 결석</div></div></div>
     <div class="at-vd"><div class="vr"><span class="vk">학생</span><span class="v-n">차감 없음</span><span class="vt">자동 판정</span></div><div class="vr"><span class="vk">강사</span><span style="color:var(--adm-text2)">정산 없음</span></div><div class="vr"><span class="vk">처리</span><span style="color:var(--adm-text2)">보강 or 무료수업 1회 (학생 손해 방지)</span></div></div>
-    <div class="at-act"><button class="atb mk" onclick="openModal('makeup')">보강 잡기</button><button class="atb">무료수업 1회</button></div>
+    <div class="at-act"><button class="atb mk" onclick="atResolve(this,'보강 잡기 → 학생 차감 없음 · 강사 정산 없음 · 보강 슬롯 생성','ok')">보강 잡기</button><button class="atb" onclick="atResolve(this,'무료수업 1회 제공 → 학생 손해 방지 · 강사 정산 없음','ok')">무료수업 1회</button></div>
   </div>
   <div class="at-case">
     <div class="at-top"><div class="at-ic ic-fo"><i class="ti ti-alert-octagon"></i></div><div class="at-info"><div class="at-name">최예준 (초6) 수학 — 불가항력 (입원)</div><div class="at-meta">정유진 · 6/23 17:00 · 사전연락 + 증빙 제출</div></div></div>
     <div class="at-vd"><div class="vr"><span class="vk">학생</span><span class="v-n">차감 없음</span><span class="vt">증빙 확인됨</span></div><div class="vr"><span class="vk">강사</span><span class="v-p">보강 시 정산</span></div><div class="vr"><span class="vk">조건</span><span style="color:var(--adm-text2)">증빙·사전연락 충족 → 예외 인정 (남용 방지)</span></div></div>
-    <div class="at-act"><button class="atb mk" onclick="openModal('makeup')">보강 잡기</button><button class="atb">증빙 확인</button></div>
+    <div class="at-act"><button class="atb mk" onclick="atResolve(this,'보강 잡기 → 증빙 인정 · 학생 차감 없음 · 강사 보강 시 정산','ok')">보강 잡기</button><button class="atb" onclick="atResolve(this,'증빙 확인 완료 → 예외 인정 (차감 없음)','ok')">증빙 확인</button></div>
   </div>
   <div class="policy">
     <div class="pt"><i class="ti ti-book-2" style="vertical-align:-2px;color:var(--info-tx)"></i> 출결 정책 (타3사 검증 표준 · 자동 판정 기준)</div>
@@ -1065,7 +1194,10 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
 <div class="screen" id="scr-teacher-bank">
 <style>
 .bk-pad{padding:20px;background:var(--bg);min-height:100%;display:flex;justify-content:center}
-.bk-wrap{max-width:520px;width:100%}
+.bk-wrap{max-width:920px;width:100%}
+.bk-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}
+.bk-grid .bk-sect{margin-top:0}
+@media(max-width:760px){.bk-grid{grid-template-columns:1fr}}
 .bk-bank{background:var(--green-dark);border-radius:18px;padding:22px 24px;color:#fff;position:relative;overflow:hidden}
 .bk-bank::after{content:'';position:absolute;right:-30px;top:-40px;width:150px;height:150px;border-radius:50%;background:rgba(199,232,122,0.15)}
 .bk-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;position:relative;z-index:1}
@@ -1108,6 +1240,8 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
       <div style="margin-top:6px;font-size:10.5px;color:rgba(255,255,255,0.72);display:flex;align-items:center;justify-content:center;gap:5px"><i class="ti ti-calendar-time" style="color:var(--lime)"></i> 정기 지급일 운영 — <b style="color:#fff">주 1회 또는 월 1회</b> (협의 결정) · 신청분은 정산 마감 후 지급</div>
     </div>
     <div class="bk-rate"><i class="ti ti-info-circle"></i><span><b>1픽클 = 1원</b> 고정 · 수업 완료 시 3.3% 사업소득세를 먼저 뗀 세후 금액으로 적립 · 출금 = 정산 신청</span></div>
+    <div class="bk-grid">
+    <div>
     <div class="bk-sect">이번 달 적립 (6월)</div>
     <div class="bk-calc">
       <div class="bcr"><span>담당 수업 순매출</span><span style="font-weight:600">3,890,000원</span></div>
@@ -1116,11 +1250,15 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
       <div class="bcr m"><span>− 기기/사은품 <span class="bct">해당 시</span></span><span style="font-weight:600">−0원</span></div>
       <div class="bcr res"><span>이번 달 픽클 적립</span><span>1,730,350 픽클</span></div>
     </div>
+    </div>
+    <div>
     <div class="bk-sect">최근 거래</div>
     <div class="bk-tx">
       <div class="btr"><div class="bti bt-e"><i class="ti ti-plus"></i></div><div style="flex:1"><div class="btt">이준혁 (초5) 수학 · 12회차 완료</div><div class="bts">6월 22일 · 90분 · 세후 적립</div></div><div class="bta"><div class="btav p">+12,837</div><div class="btas">픽클</div></div></div>
       <div class="btr"><div class="bti bt-e"><i class="ti ti-refresh"></i></div><div style="flex:1"><div class="btt">김지우 (중2) · 6개월 연장 결제 🎉</div><div class="bts">6월 20일 · 연장 보너스 + 티어 가산점</div></div><div class="bta"><div class="btav p">+50,000</div><div class="btas">연장 보너스</div></div></div>
       <div class="btr"><div class="bti bt-o"><i class="ti ti-cash"></i></div><div style="flex:1"><div class="btt">5월 정산 출금</div><div class="bts">6월 4일 · 계좌 입금 완료</div></div><div class="bta"><div class="btav mi">−1,620,400</div><div class="btas">출금</div></div></div>
+    </div>
+    </div>
     </div>
   </div>
 </div>
@@ -1130,7 +1268,10 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
 <div class="screen" id="scr-parent-web">
 <style>
 .pw-pad{padding:0;background:var(--bg);min-height:100%;display:flex;justify-content:center}
-.pw-wrap{max-width:520px;width:100%;padding-bottom:28px}
+.pw-wrap{max-width:1040px;width:100%;padding-bottom:28px}
+.pw-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:22px 20px 0;align-items:start}
+.pw-grid .pw-sec{margin:0}
+@media(max-width:760px){.pw-grid{grid-template-columns:1fr}}
 .pw-h{background:var(--green);padding:22px 24px 30px;color:#fff;position:relative;overflow:hidden}
 .pw-h::after{content:'';position:absolute;right:-30px;top:-30px;width:140px;height:140px;border-radius:50%;background:rgba(199,232,122,0.18)}
 .pw-br{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;position:relative;z-index:1}
@@ -1204,6 +1345,7 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
         <div style="font-size:10px;color:var(--text3);margin-top:6px;display:flex;align-items:center;gap:5px"><i class="ti ti-device-laptop" style="color:var(--green)"></i> 입장은 아이가 패드·노트북으로 해요 (10분 전 자동 개설) · 입장하면 알림톡으로 알려드려요</div>
       </div>
     </div>
+    <div class="pw-grid">
     <div class="pw-sec">
       <div class="pw-st"><span>학습 진행 상황</span> <a>자세히 →</a></div>
       <div class="pw-prog">
@@ -1257,6 +1399,7 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
         <div style="margin-top:9px;font-size:10px;color:var(--text3);text-align:center">타사는 변경 버튼이 곧 교체예요. 픽클은 <b style="color:var(--green)">상담이 먼저</b>예요.</div>
       </div>
     </div>
+    </div>
   </div>
 </div>
 </div>
@@ -1265,14 +1408,17 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
 <div class="screen" id="scr-student-web">
 <style>
 .sw-pad{padding:0;background:var(--bg);min-height:100%;display:flex;justify-content:center}
-.sw-wrap{max-width:480px;width:100%;padding-bottom:28px}
+.sw-wrap{max-width:960px;width:100%;padding-bottom:28px}
+.sw-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 20px 0;align-items:start}
+.sw-grid .sw-sec{margin:0}
+@media(max-width:760px){.sw-grid{grid-template-columns:1fr}}
 .sw-h{background:var(--green);padding:24px 24px 28px;color:#fff;position:relative;overflow:hidden}
 .sw-h::after{content:'';position:absolute;right:-40px;top:-40px;width:160px;height:160px;border-radius:50%;background:rgba(199,232,122,0.18)}
 .sw-br{font-size:16px;font-weight:600;display:flex;align-items:center;gap:7px;position:relative;z-index:1}
 .sw-bi{width:30px;height:30px;border-radius:10px;background:var(--lime);color:var(--green-dark);display:flex;align-items:center;justify-content:center;font-size:16px}
 .sw-hi{font-size:24px;font-weight:600;margin-top:18px;position:relative;z-index:1}
 .sw-his{font-size:13px;color:rgba(255,255,255,0.8);margin-top:5px;position:relative;z-index:1}
-.sw-now{background:#fff;border-radius:24px;margin:-18px 20px 0;padding:24px 22px;box-shadow:0 10px 32px rgba(58,142,63,0.14);text-align:center}
+.sw-now{background:#fff;border-radius:24px;margin:-18px auto 0;max-width:560px;padding:24px 22px;box-shadow:0 10px 32px rgba(58,142,63,0.14);text-align:center}
 .sw-nb{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:500;color:var(--green);background:var(--lime-soft);padding:6px 14px;border-radius:20px;margin-bottom:18px}
 .sw-nb .p{width:7px;height:7px;border-radius:50%;background:var(--green)}
 .sw-ns{font-size:22px;font-weight:600}
@@ -1310,6 +1456,7 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
       <button class="sw-eb"><i class="ti ti-video"></i> 수업 들어가기</button>
       <div class="sw-eh">수업 10분 전 자동으로 열려요 · <b>패드/노트북에서만</b> 입장돼요 (휴대폰 X)</div>
     </div>
+    <div class="sw-grid">
     <div class="sw-sec">
       <div class="sw-stt">지난 수업 · 오늘 숙제</div>
       <div style="background:#fff;border-radius:16px;border:1px solid var(--line);padding:14px 16px">
@@ -1329,6 +1476,7 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
       <div class="sw-stt">오늘 할 일</div>
       <div class="sw-task"><div class="sw-tc done">✓</div><div style="flex:1"><div class="sw-tt2 done">오늘 수업 듣기</div><div class="sw-ts2">오후 5시 · 수학</div></div></div>
       <div class="sw-task"><div class="sw-tc"></div><div style="flex:1"><div class="sw-tt2">숙제 풀기</div><div class="sw-ts2">쎈 78~81p · 오답 3문제</div></div></div>
+    </div>
     </div>
   </div>
 </div>
@@ -1410,7 +1558,13 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
 <div class="screen" id="scr-payment">
 <style>
 .py-pad{background:var(--bg);min-height:100%;display:flex;justify-content:center}
-.py-wrap{max-width:480px;width:100%;padding-bottom:28px}
+.py-wrap{max-width:1000px;width:100%;padding-bottom:28px}
+.py-cols{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:14px 20px 0;align-items:start}
+.py-cols .py-card{margin:0 0 14px}
+.py-cols .py-sum{margin:0 0 14px}
+.py-cols .py-pay{margin:0 0 10px;width:100%}
+.py-cols .py-pg{margin:0 0 4px}
+@media(max-width:760px){.py-cols{grid-template-columns:1fr}}
 .py-h{background:var(--green);padding:18px 24px 22px;color:#fff;position:relative;overflow:hidden}
 .py-h::after{content:'';position:absolute;right:-30px;top:-30px;width:120px;height:120px;border-radius:50%;background:rgba(199,232,122,0.18)}
 .py-t{font-size:18px;font-weight:600;position:relative;z-index:1}
@@ -1454,6 +1608,8 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
 </style>
 <div class="py-pad"><div class="py-wrap">
   <div class="py-h"><div class="py-t">수업 구성하고 결제하기</div><div class="py-s">강다은 학생 (고2) · 김하늘 선생님</div></div>
+  <div class="py-cols">
+  <div class="py-col">
   <div class="py-card">
     <div class="py-step"><span class="py-sn">1</span> 수업 구성 <span style="font-size:10px;color:var(--text3);font-weight:400">· 학년·과목·횟수·시간 고르면 금액 자동 계산</span></div>
     <div class="py-f"><div class="py-fl">학년</div><div class="py-opts" id="pyGrade"><span class="py-opt" data-g="초등" onclick="pyG(this)">초등</span><span class="py-opt" data-g="중등" onclick="pyG(this)">중등</span><span class="py-opt on" data-g="고1·2" onclick="pyG(this)">고1·2</span><span class="py-opt" data-g="고3" onclick="pyG(this)">고3</span></div></div>
@@ -1470,6 +1626,8 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
       <div class="plan" data-p="연간" onclick="pyP(this)"><div class="plan-row"><div class="plan-rd"></div><div style="flex:1"><div class="plan-n">연간</div><div class="plan-de">정가 · 2% 포인트 적립</div></div><div><div class="plan-pv">11,040,000원</div><div class="plan-pp">+220,800 P</div></div></div></div>
     </div>
   </div>
+  </div>
+  <div class="py-col">
   <div class="py-card">
     <div class="py-step"><span class="py-sn">3</span> 자동결제 카드 등록 (지갑)</div>
     <div class="wcard"><div class="wc-i"><i class="ti ti-credit-card"></i></div><div style="flex:1"><div class="wc-n">신한 ···· 4821</div><div class="wc-s">매월 자동 결제 카드</div></div><span class="wc-b">등록됨</span></div>
@@ -1497,6 +1655,8 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
     <div style="font-size:10px;color:#a8b29c;line-height:1.5;margin-bottom:12px"><i class="ti ti-info-circle" style="color:var(--green)"></i> 학원의 설립·운영 및 과외교습에 관한 법률 시행령 기준. 결제수수료·사은품 가격은 환불액에서 공제. 회사 사정으로 수업을 제공할 수 없는 경우는 잔여분 전액 환불.</div>
     <button onclick="openModal('cancel')" style="width:100%;padding:11px;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--text2);font-size:13px;font-weight:600;cursor:pointer">구독 해지 · 환불 신청</button>
   </div>
+  </div>
+  </div>
 </div></div>
 </div>
 
@@ -1504,7 +1664,7 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
 <div class="screen" id="scr-shop">
 <style>
 .sp-pad{background:var(--bg);min-height:100%;display:flex;justify-content:center}
-.sp-wrap{max-width:480px;width:100%;padding-bottom:28px}
+.sp-wrap{max-width:960px;width:100%;padding-bottom:28px}
 .sp-h{background:var(--green);padding:18px 24px 26px;color:#fff;position:relative;overflow:hidden}
 .sp-h::after{content:'';position:absolute;right:-30px;top:-30px;width:120px;height:120px;border-radius:50%;background:rgba(199,232,122,0.18)}
 .sp-t{font-size:18px;font-weight:600;display:flex;align-items:center;gap:7px;position:relative;z-index:1}
@@ -1516,7 +1676,7 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
 .sp-cat{display:flex;gap:7px;margin:18px 20px 0;overflow-x:auto;padding-bottom:2px}
 .sp-cc{font-size:12px;padding:6px 14px;border-radius:20px;border:1px solid var(--line);background:#fff;color:var(--text2);cursor:pointer;white-space:nowrap}
 .sp-cc.on{background:var(--green);color:#fff;border-color:var(--green);font-weight:500}
-.sp-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 20px 0}
+.sp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;margin:14px 20px 0}
 .item{background:#fff;border-radius:16px;border:1px solid var(--line);overflow:hidden}
 .item-img{height:100px;background:var(--lime-soft);display:flex;align-items:center;justify-content:center;font-size:36px;position:relative}
 .item-tag{position:absolute;top:8px;left:8px;font-size:9px;font-weight:600;padding:2px 8px;border-radius:20px;background:#fff;color:var(--green)}
@@ -1593,7 +1753,7 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
 <div class="screen" id="scr-monthly-report">
 <style>
 .mr-pad{padding:0;background:var(--bg);min-height:100%;display:flex;justify-content:center}
-.mr-wrap{max-width:520px;width:100%;padding-bottom:28px}
+.mr-wrap{max-width:920px;width:100%;padding-bottom:28px}
 .mr-h{background:var(--green);padding:22px 24px 26px;color:#fff;position:relative;overflow:hidden}
 .mr-h::after{content:'';position:absolute;right:-30px;top:-30px;width:140px;height:140px;border-radius:50%;background:rgba(199,232,122,0.18)}
 .mr-mon{font-size:13px;color:rgba(255,255,255,0.82);position:relative;z-index:1}
@@ -1719,7 +1879,7 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
 <div class="screen" id="scr-exam">
 <style>
 .ex-pad{background:var(--bg);min-height:100%;display:flex;justify-content:center}
-.ex-wrap{max-width:480px;width:100%;padding-bottom:30px}
+.ex-wrap{max-width:760px;width:100%;padding-bottom:30px}
 .ex-h{background:linear-gradient(160deg,var(--green),#2c6b30);padding:28px 24px 32px;color:#fff;text-align:center;position:relative;overflow:hidden}
 .ex-h::after{content:'';position:absolute;left:-40px;bottom:-50px;width:160px;height:160px;border-radius:50%;background:rgba(199,232,122,0.14)}
 .ex-badge{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:600;background:rgba(199,232,122,0.2);color:var(--lime);padding:4px 12px;border-radius:20px;margin-bottom:14px;position:relative;z-index:1}
@@ -1915,20 +2075,48 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
       <span class="tv-chip" onclick="this.parentNode.querySelectorAll('.tv-chip').forEach(x=>x.classList.remove('on'));this.classList.add('on')">직장 병행(투잡)</span>
       <span class="tv-chip" onclick="this.parentNode.querySelectorAll('.tv-chip').forEach(x=>x.classList.remove('on'));this.classList.add('on')">전업 강사</span>
     </div>
-    <div class="tv-fl"><i class="ti ti-calendar" style="color:var(--green)"></i> 가능 요일 <span class="opt">(주말 포함)</span></div>
-    <div class="tv-chips">
-      <span class="tv-chip on" onclick="this.classList.toggle('on')">월</span>
-      <span class="tv-chip" onclick="this.classList.toggle('on')">화</span>
-      <span class="tv-chip on" onclick="this.classList.toggle('on')">수</span>
-      <span class="tv-chip" onclick="this.classList.toggle('on')">목</span>
-      <span class="tv-chip on" onclick="this.classList.toggle('on')">금</span>
-      <span class="tv-chip wk on" onclick="this.classList.toggle('on')">토</span>
-      <span class="tv-chip wk" onclick="this.classList.toggle('on')">일</span>
-    </div>
-    <div class="tv-fl"><i class="ti ti-clock" style="color:var(--green)"></i> 가능 시간대 <span class="opt">(요일군별 입력)</span></div>
-    <div class="tv-trow"><span class="tv-tlbl">평일</span><input class="tv-tin" value="17:00 ~ 22:00"></div>
-    <div class="tv-trow"><span class="tv-tlbl">토요일</span><input class="tv-tin" value="10:00 ~ 18:00"></div>
-    <div class="tv-trow" style="margin-bottom:0"><span class="tv-tlbl">일요일</span><input class="tv-tin" placeholder="예) 불가 / 14:00 ~ 18:00"></div>
+    <div class="tv-fl"><i class="ti ti-calendar-time" style="color:var(--green)"></i> 가능 시간 <span class="opt">(드래그해서 칠하세요 · 주말 포함)</span></div>
+    <style>
+    .ttg-wrap{overflow-x:auto;border:1px solid #e6eedb;border-radius:10px;padding:2px}
+    .ttg{border-collapse:collapse;width:100%;min-width:540px}
+    .ttg th,.ttg td{border:1px solid #eef3e6;text-align:center}
+    .ttg th{background:#f6faf2;color:#5a6450;padding:7px 0;font-size:11px;font-weight:600}
+    .ttg th.wk{color:#c98a2b}
+    .ttg .tt-time{background:#fafdf7;color:#9aa48f;font-size:10px;padding:4px 7px;white-space:nowrap;width:52px}
+    .ttg-cell{height:30px;cursor:pointer;-webkit-user-select:none;user-select:none;touch-action:none;font-size:10px;color:transparent}
+    .ttg-cell.wk{background:#fffaf3}
+    .ttg-cell.on{background:#cfe8b8;color:#2c6b30;font-weight:600}
+    .ttg-hint{font-size:10.5px;color:var(--text3);margin-top:7px;display:flex;align-items:center;gap:6px}
+    </style>
+    <div class="ttg-wrap"><table class="ttg" id="ttgGrid"></table></div>
+    <div class="ttg-hint"><i class="ti ti-hand-finger" style="color:var(--green)"></i> 셀을 누른 채 드래그하면 여러 칸이 한 번에 칠해져요. 다시 칠하면 해제됩니다.</div>
+    <script>
+    (function(){
+      var days=['월','화','수','목','금','토','일'];
+      var times=['14:00','15:00','16:00','17:00','18:00','19:00','20:00','21:00'];
+      var pre={ '월':['17:00','18:00','19:00','20:00'],'수':['17:00','18:00','19:00','20:00'],'금':['17:00','18:00','19:00'],'토':['10:00','11:00'] };
+      var g=document.getElementById('ttgGrid');
+      var html='<tr><th></th>'+days.map(function(d,i){return '<th class="'+(i>=5?'wk':'')+'">'+d+'</th>';}).join('')+'</tr>';
+      times.forEach(function(t){
+        html+='<tr><td class="tt-time">'+t+'</td>'+days.map(function(d,i){
+          var on=(pre[d]&&pre[d].indexOf(t)>=0)?' on':'';
+          return '<td class="ttg-cell'+(i>=5?' wk':'')+on+'" data-d="'+d+'" data-t="'+t+'">가능</td>';
+        }).join('')+'</tr>';
+      });
+      g.innerHTML=html;
+      var painting=false, mode=false;
+      function cellAt(x,y){var el=document.elementFromPoint(x,y);return (el&&el.classList&&el.classList.contains('ttg-cell'))?el:null;}
+      g.addEventListener('pointerdown',function(e){
+        var td=e.target.closest('.ttg-cell'); if(!td)return;
+        e.preventDefault(); painting=true; mode=!td.classList.contains('on'); td.classList.toggle('on',mode);
+      });
+      g.addEventListener('pointermove',function(e){
+        if(!painting)return; var td=cellAt(e.clientX,e.clientY); if(td) td.classList.toggle('on',mode);
+      });
+      window.addEventListener('pointerup',function(){painting=false;});
+      window.addEventListener('pointercancel',function(){painting=false;});
+    })();
+    </script>
   </div>
 
   <div class="tv-sec">서류 제출</div>
@@ -2467,6 +2655,18 @@ function pyRender(){
     if(pts>0) pt.innerHTML = '<i class="ti ti-coins"></i> 결제 즉시 <b>'+pts.toLocaleString('ko-KR')+' 픽클포인트</b> 적립 → 교재·플래너 구매 (할인 대신 포인트)';
     else pt.innerHTML = '<i class="ti ti-coins"></i> 월간 결제는 포인트 적립이 없어요 · 6개월 이상부터 적립';
   }
+}
+
+/* ===== 출결·보강 분기 처리 ===== */
+function atResolve(btn, msg, tone){
+  var card = btn.closest('.at-case'); if(!card) return;
+  var act = card.querySelector('.at-act'); if(!act) return;
+  var bg = tone==='warn' ? 'var(--warn-bg)' : 'var(--succ-bg)';
+  var bd = tone==='warn' ? 'var(--warn-bd)' : 'var(--succ-bd)';
+  var tx = tone==='warn' ? 'var(--warn-tx)' : 'var(--succ-tx)';
+  var ic = tone==='warn' ? 'ti-arrow-down-circle' : 'ti-circle-check';
+  card.style.borderColor = bd;
+  act.outerHTML = '<div style="display:flex;align-items:center;gap:8px;font-size:11.5px;font-weight:600;background:'+bg+';border:1px solid '+bd+';color:'+tx+';border-radius:8px;padding:9px 12px"><i class="ti '+ic+'" style="font-size:15px"></i><span>처리 완료 · '+msg+'</span></div>';
 }
 
 window.addEventListener('DOMContentLoaded', ()=>{ leadApply(); pyRender(); });
