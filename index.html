@@ -127,7 +127,6 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
       <div class="sb-nav" data-screen="admin-match"><i class="ti ti-adjustments"></i> 매칭·배정</div>
       <div class="sb-nav" data-screen="admin-attend"><i class="ti ti-clipboard-check"></i> 출결·보강</div>
       <div class="sb-nav" data-screen="admin-settle"><i class="ti ti-coin"></i> 정산 (티어)</div>
-      <div class="sb-nav" data-screen="admin-trial"><i class="ti ti-stairs-up"></i> 시강 진화</div>
       <div class="sb-nav" data-screen="admin-approve"><i class="ti ti-user-shield"></i> 강사 승인</div>
     </div>
 
@@ -696,7 +695,7 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
               daysTxt+
             '</div>'+
             '<div class="mc-mt"><div><span class="mc-mv" style="color:'+slotCol+'">'+t.slot+'</span><span class="mc-ml">여유</span></div><div><span class="mc-mv">'+t.rating+'</span><span class="mc-ml">평점</span></div></div>'+
-            '<div class="mc-act"><button class="bprop" onclick="openModal(\'propose\')">배정 제안 →</button><button class="bskip" onclick="showToast(\'협의 완료 · 즉시 확정 처리\')">즉시 확정</button></div>'+
+            '<div class="mc-act"><button class="bprop" onclick="openModal(\'propose\')">정식 배정 →</button><button class="bskip" onclick="openModal(\'trial\')" style="border-color:#e0b878;color:#9a6b1a;background:#fff8ec">시강 먼저</button></div>'+
           '</div>'+
         '</div>';
       }).join('');
@@ -899,61 +898,6 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
 </div>
 </div>
 
-<!-- ========== 관리자: 시강 진화 ========== -->
-<div class="screen" id="scr-admin-trial">
-<style>
-.ev-pad{padding:20px;background:var(--adm-bg);min-height:100%}
-.ev-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:16px}
-.ev-col{background:#fff;border:1px solid var(--adm-line);border-radius:12px;overflow:hidden}
-.ev-col.now{border:2px solid var(--info-bd)}
-.ev-ch{padding:13px 14px;border-bottom:1px solid var(--adm-line)}
-.ev-stage{font-size:10px;font-weight:500;color:var(--adm-text2);margin-bottom:4px;display:flex;align-items:center;gap:6px}
-.ev-sb{font-size:9px;padding:1px 7px;border-radius:20px}
-.bn2{background:var(--info-bg);color:var(--info-tx)}.bx2{background:var(--adm-bg);color:var(--adm-text2)}
-.ev-ph{font-size:14px;font-weight:600}
-.ev-tr{font-size:11px;color:var(--adm-text2);margin-top:4px;line-height:1.4}
-.ev-body{padding:12px 14px;display:flex;flex-direction:column;gap:12px}
-.ev-al{font-size:10px;color:var(--adm-text3);margin-bottom:5px;display:flex;align-items:center;gap:5px}
-.ev-av{font-size:12px;color:var(--adm-text);line-height:1.4}
-.ev-as{font-size:11px;color:var(--adm-text2);margin-top:3px;line-height:1.4}
-.evtag{display:inline-block;font-size:10px;padding:2px 8px;border-radius:20px;margin:2px 3px 0 0}
-.tg-a{background:#faeeda;color:#854f0b}.tg-p{background:#eeedfe;color:#3c3489}.tg-d{background:var(--info-bg);color:var(--info-tx)}.tg-au{background:var(--succ-bg);color:var(--succ-tx)}.tg-m{background:var(--adm-bg);color:var(--adm-text2)}
-.ev-msg{background:var(--lime-soft);border:1px solid #cfe6bf;border-radius:10px;padding:12px 14px;font-size:12px;color:var(--green-dark);line-height:1.6}
-.ev-msg i{color:var(--green)}
-.ev-msg b{font-weight:600}
-</style>
-<div class="ev-pad">
-  <div style="font-size:12px;color:var(--adm-text2);margin-bottom:14px">시강은 "전담 맛보기 → 클로징 무기"에서 출발, 규모 커지면 정규 프로세스로 진화 · MVP는 1단계만, 2·3단계는 확장 포인트로</div>
-  <div class="ev-grid">
-    <div class="ev-col now">
-      <div class="ev-ch"><div class="ev-stage"><i class="ti ti-seeding"></i> 1단계 <span class="ev-sb bn2">MVP · 현재</span></div><div class="ev-ph">전담 고정</div><div class="ev-tr">리드 적음 · 전담 강사 1~2명</div></div>
-      <div class="ev-body">
-        <div><div class="ev-al"><i class="ti ti-user-star"></i> 누가 시강하나</div><div class="ev-av">전담 강사 고정</div><div class="ev-as">"시스템 맛보기" 최고 무기</div><span class="evtag tg-a">전담 1~2명</span></div>
-        <div><div class="ev-al"><i class="ti ti-hand-click"></i> 어떻게 배정</div><div class="ev-av">관리자 수동 배정</div><span class="evtag tg-m">수동</span></div>
-        <div><div class="ev-al"><i class="ti ti-chart-dots"></i> 무엇을 측정</div><div class="ev-av">기본 기록만</div><span class="evtag tg-m">측정 최소</span></div>
-      </div>
-    </div>
-    <div class="ev-col">
-      <div class="ev-ch"><div class="ev-stage"><i class="ti ti-trending-up"></i> 2단계 <span class="ev-sb bx2">성장기</span></div><div class="ev-ph">시강 풀 양성</div><div class="ev-tr">리드 폭증 · 전담 병목</div></div>
-      <div class="ev-body">
-        <div><div class="ev-al"><i class="ti ti-user-star"></i> 누가 시강하나</div><div class="ev-av">전담 + 백업 풀</div><div class="ev-as">전환 잘하는 강사 양성 · 병목 해소</div><span class="evtag tg-a">전담</span><span class="evtag tg-p">백업</span></div>
-        <div><div class="ev-al"><i class="ti ti-adjustments"></i> 어떻게 배정</div><div class="ev-av">반자동 추천</div><span class="evtag tg-p">반자동</span></div>
-        <div><div class="ev-al"><i class="ti ti-chart-dots"></i> 무엇을 측정</div><div class="ev-av">시강→등록 전환율</div><span class="evtag tg-d">전환율 집계</span></div>
-      </div>
-    </div>
-    <div class="ev-col">
-      <div class="ev-ch"><div class="ev-stage"><i class="ti ti-building-skyscraper"></i> 3단계 <span class="ev-sb bx2">확장기</span></div><div class="ev-ph">전환율 기반 매칭</div><div class="ev-tr">정규 프로세스 · 지국 확장</div></div>
-      <div class="ev-body">
-        <div><div class="ev-al"><i class="ti ti-user-star"></i> 누가 시강하나</div><div class="ev-av">전환율 랭킹 기반</div><div class="ev-as">유형 × 전환율로 최적 추천</div><span class="evtag tg-p">시강 전문 트랙</span></div>
-        <div><div class="ev-al"><i class="ti ti-adjustments"></i> 어떻게 배정</div><div class="ev-av">전환율·시간 매칭</div><span class="evtag tg-au">데이터 매칭</span></div>
-        <div><div class="ev-al"><i class="ti ti-chart-dots"></i> 무엇을 측정</div><div class="ev-av">전환율 → 인센티브</div><span class="evtag tg-d">랭킹</span><span class="evtag tg-au">인센티브 연동</span></div>
-      </div>
-    </div>
-  </div>
-  <div class="ev-msg"><i class="ti ti-bulb"></i> <b>위트플러스 전달:</b> MVP는 1단계만 개발. 단, 데이터 구조에 <b>"시강 강사 / 수업 강사 분리"</b>와 <b>"시강 결과(전환 여부) 기록 필드"</b>는 처음부터 — 2·3단계 끼워넣기 어려우므로. 권한 레벨 설계와 동일 원칙.</div>
-</div>
-</div>
-
 <!-- ========== 강사: 대시보드 ========== -->
 <div class="screen" id="scr-teacher-dash">
 <style>
@@ -1007,9 +951,9 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
 .dev-note i{font-size:15px;flex-shrink:0}
 </style>
 <div class="tea-pad">
-  <div class="tea-greet"><div class="tea-gt">안녕하세요, 김하늘 선생님 🥒 오이 티어</div><div class="tea-gs">2026년 6월 24일 (화) · 오늘 수업 3개가 있어요</div></div>
+  <div class="tea-greet"><div class="tea-gt">안녕하세요, 김하늘 선생님 🥒 오이 티어</div><div class="tea-gs">2026년 6월 24일 (화) · 오늘 수업 4개가 있어요 (시강 1 포함)</div></div>
   <div class="tea-sum">
-    <div class="tea-sc"><div class="tea-scl">오늘 수업</div><div class="tea-scv gI">3</div><div class="tea-scs">완료 1 · 남음 2</div></div>
+    <div class="tea-sc"><div class="tea-scl">오늘 수업</div><div class="tea-scv gI">4</div><div class="tea-scs">완료 1 · 남음 3 (시강 1)</div></div>
     <div class="tea-sc"><div class="tea-scl">이번달 타임</div><div class="tea-scv">142</div><div class="tea-scs">담당 학생 12명</div></div>
     <div class="tea-sc"><div class="tea-scl">픽클뱅크 잔액</div><div class="tea-scv gI">1.84M</div><div class="tea-scs">출금 가능</div></div>
     <div class="tea-sc"><div class="tea-scl">연장 결제</div><div class="tea-scv">6건 ★</div><div class="tea-scs">숙성까지 72%</div></div>
@@ -1046,6 +990,14 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
       <div class="lc-er"><span class="ek">지난 수업</span><span>7회차 · 이차방정식 근의공식 유도 + 활용</span></div>
       <div class="lc-er"><span class="ek">내준 숙제</span><span>쎈 B단계 12문제 · 오답노트 정리</span></div>
       <div class="lc-share"><i class="ti ti-users"></i> 강사·학생·학부모 모두에게 동일하게 표시</div>
+    </div>
+  </div>
+  <div class="lcw">
+    <div class="lc-top"><div class="lct"><div class="lcth">21:00</div><div class="lctd">시강</div></div><div class="lci"><div class="lcs">박지아 (고1) · 영어 <span style="font-size:9px;padding:1px 7px;border-radius:20px;background:#fff8ec;color:#9a6b1a;border:1px solid #e0b878;font-weight:600;margin-left:4px">시강·맛보기</span></div><div class="lcm">60분 · 비회원 게스트 입장</div></div><div style="display:flex;gap:8px;align-items:center"><span class="lcb lb-d">예정</span><button class="benter dim"><i class="ti ti-clock"></i> 10분 전 자동 개설</button></div></div>
+    <div class="lc-ext">
+      <div class="lc-er"><span class="ek">유형</span><span>맛보기 1회 · 가입 전 학부모가 게스트 링크로 입장</span></div>
+      <div class="lc-er"><span class="ek">안내</span><span>수업 후 전환되면 정식 배정·결제로 이어져요</span></div>
+      <div class="lc-share"><i class="ti ti-device-laptop"></i> 강사는 평소처럼 입장 · 학생(학부모)은 BODA 게스트 링크로</div>
     </div>
   </div>
   <div class="tea-bot" style="margin-top:18px">
@@ -2363,6 +2315,28 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
   </div>
 </div>
 
+<!-- 시강(맛보기) 잡기 모달 -->
+<div id="modal-trial" class="modal-box" style="display:none;max-width:460px;width:100%;background:#fff;border-radius:18px;overflow:hidden">
+  <div style="background:#1f2e1a;padding:16px 20px;display:flex;align-items:center;justify-content:space-between">
+    <div style="color:#fff;font-weight:600;font-size:14px;display:flex;align-items:center;gap:8px"><i class="ti ti-player-play" style="color:#c7e87a"></i> 시강(맛보기) 잡기</div>
+    <button onclick="closeModal()" style="background:none;border:none;color:rgba(255,255,255,0.6);font-size:20px;cursor:pointer;line-height:1">×</button>
+  </div>
+  <div style="padding:18px 20px">
+    <div style="font-size:12px;color:#5a6450;margin-bottom:14px">이준혁 (초5) 수학 · 김하늘 강사 → 맛보기 1회</div>
+    <div style="background:#fff8ec;border:1px solid #f0e0c0;border-radius:9px;padding:10px 12px;font-size:11px;color:#8a6516;display:flex;gap:7px;margin-bottom:14px;line-height:1.5"><i class="ti ti-info-circle" style="margin-top:1px"></i><span>시강은 <b>가입 없이</b> 들어와요. BODA 게스트 입장 링크를 만들어 학부모 번호로 보내면, 링크만 눌러 입장합니다.</span></div>
+    <div style="display:flex;gap:7px;margin-bottom:10px">
+      <input style="flex:1;padding:10px 12px;border:1px solid #e6eedb;border-radius:9px;font-size:12.5px;font-family:inherit;box-sizing:border-box" placeholder="학부모 휴대폰 번호" inputmode="numeric" value="010-2845-7193">
+      <input style="flex:0 0 130px;padding:10px 12px;border:1px solid #e6eedb;border-radius:9px;font-size:12.5px;font-family:inherit;box-sizing:border-box" placeholder="시강 일시" value="6/28 17:00">
+    </div>
+    <div style="font-size:11px;font-weight:600;color:#1f2e1a;margin:10px 0 6px">발송 알림톡 미리보기</div>
+    <div style="background:#f4f5f3;border-radius:8px;padding:12px;font-size:11px;color:#26261f;line-height:1.7;margin-bottom:14px">
+      🥒 픽클 맛보기 수업 안내<br><b>📅 일시:</b> 6월 28일 (토) 오후 5시<br><b>👩‍🏫 선생님:</b> 김하늘<br>아래 버튼을 누르면 <b>가입 없이 바로 입장</b>돼요.<br>[ 수업 입장하기 ] ← BODA 게스트 링크
+    </div>
+    <div style="background:#eef6e0;border-radius:8px;padding:9px 11px;font-size:10.5px;color:#2c6b30;display:flex;gap:6px;margin-bottom:14px;line-height:1.5"><i class="ti ti-shield-lock" style="margin-top:1px"></i><span>링크는 <b>1회성·해당 시강 시간대만</b> 유효하고, 발송한 휴대폰 번호에 묶여요.</span></div>
+    <button onclick="closeModal();showToast('게스트 링크 발급 · 학부모 번호로 알림톡 발송 완료 ✓')" style="width:100%;padding:13px;border-radius:12px;border:none;background:#3a8e3f;color:#fff;font-size:14px;font-weight:600;cursor:pointer"><i class="ti ti-link" style="vertical-align:-2px"></i> 게스트 링크 발급 + 알림톡 발송</button>
+  </div>
+</div>
+
 <!-- ③ 배정 제안 모달 -->
 <div id="modal-propose" class="modal-box" style="display:none;max-width:460px;width:100%;background:#fff;border-radius:18px;overflow:hidden">
   <div style="background:#1f2e1a;padding:16px 20px;display:flex;align-items:center;justify-content:space-between">
@@ -2510,7 +2484,6 @@ const SCREENS = {
   'admin-match':  {title:'매칭·배정', sub:'관리자 어드민'},
   'admin-attend': {title:'출결·보강', sub:'관리자 어드민'},
   'admin-settle': {title:'정산 · 픽클 티어제', sub:'관리자 어드민'},
-  'admin-trial':  {title:'시강 진화 로드맵', sub:'관리자 어드민'},
   'admin-approve':{title:'강사 승인 · 검증', sub:'관리자 어드민 · 강사 자격 확인'},
   'teacher-dash': {title:'강사 대시보드', sub:'강사 화면'},
   'teacher-verify':{title:'강사 가입 · 검증', sub:'강사 화면 · 서류 제출'},
