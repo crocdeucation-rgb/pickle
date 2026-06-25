@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>픽클과외 시스템 프로토타입</title>
+<title>픽클 시스템 프로토타입</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.47.0/tabler-icons.min.css">
 <style>
 :root{
@@ -133,7 +133,6 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
     <div class="sb-group">
       <div class="sb-group-label" style="color:#7fb0db">마케터 전용 <span style="color:rgba(223,232,212,0.3)">· 내부 IP</span></div>
       <div class="sb-nav" data-screen="admin-lead"><i class="ti ti-users"></i> 리드 관리 <span class="eye"><i class="ti ti-eye"></i>마케터</span></div>
-      <div class="sb-nav" data-screen="admin-channel"><i class="ti ti-broadcast"></i> 채널 관리 <span class="eye"><i class="ti ti-eye"></i>마케터</span></div>
     </div>
 
     <div class="sb-group">
@@ -428,88 +427,6 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
     </table>
   </div>
   <div style="margin-top:10px;font-size:11px;color:var(--adm-text2)">노션식 인라인 편집 · 상태 칩 클릭으로 즉시 변경 · "안 함"도 <b>보류</b>로 계속 관리 · 전 채널 모수 통합 (메타·네이버·당근·카카오·구글·텐핑 + 추후 확장)</div>
-</div>
-</div>
-
-<!-- ========== 관리자: 채널 관리 ========== -->
-<div class="screen" id="scr-admin-channel">
-<style>
-.cm-pad{padding:20px;background:var(--adm-bg);min-height:100%}
-.cm-ep{background:#fff;border:1px solid var(--adm-line);border-radius:12px;padding:14px 16px;margin-bottom:16px;display:flex;align-items:center;gap:13px}
-.cm-ep i{font-size:22px;color:var(--info-tx)}
-.cm-ep-l{font-size:11px;color:var(--adm-text2);margin-bottom:3px}
-.cm-ep-url{font-family:monospace;font-size:12px;background:var(--adm-bg);border:1px solid var(--adm-line);border-radius:5px;padding:3px 9px;display:inline-block}
-.cm-ep-note{margin-left:auto;font-size:11px;color:var(--adm-text2);text-align:right}
-.cm-dl{font-size:11px;color:var(--adm-text3);margin:14px 0 8px}
-.cm-card{background:#fff;border:1px solid var(--adm-line);border-radius:12px;padding:14px 16px;margin-bottom:8px;display:flex;align-items:center;gap:14px}
-.cm-card.unmap{border-color:var(--warn-bd);background:var(--warn-bg)}
-.cm-card.off{opacity:0.55}
-.cm-ic{width:38px;height:38px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
-.ic-meta{background:var(--info-bg);color:var(--info-tx)}.ic-kakao{background:var(--warn-bg);color:var(--warn-tx)}
-.ic-naver{background:var(--succ-bg);color:var(--succ-tx)}.ic-daangn{background:#faeeda;color:#854f0b}
-.ic-google{background:#fcebeb;color:#a32d2d}.ic-unknown{background:var(--adm-bg);color:var(--adm-text2)}
-.cm-main{flex:1}
-.cm-name{font-size:13px;font-weight:500;display:flex;align-items:center;gap:8px}
-.cm-sub{font-size:11px;color:var(--adm-text2);margin-top:3px;display:flex;gap:10px;flex-wrap:wrap}
-.cm-tag{font-size:10px;padding:1px 7px;border-radius:20px;background:var(--adm-bg);color:var(--adm-text2)}
-.cm-stat{text-align:right;flex-shrink:0}
-.cm-stat-v{font-size:16px;font-weight:600}
-.cm-stat-l{font-size:10px;color:var(--adm-text2)}
-.cm-tog{width:36px;height:20px;border-radius:20px;background:#3b6d11;position:relative;flex-shrink:0}
-.cm-tog.off{background:var(--adm-line2)}
-.cm-tog::after{content:'';position:absolute;top:2px;left:18px;width:14px;height:14px;border-radius:50%;background:#fff}
-.cm-tog.off::after{left:2px}
-.cm-map{font-size:11px;padding:5px 13px;border-radius:7px;border:1px solid var(--warn-bd);background:#fff;color:var(--warn-tx);cursor:pointer;font-weight:500}
-.cm-add{font-size:12px;padding:7px 14px;border-radius:8px;border:1px solid var(--info-bd);background:var(--info-bg);color:var(--info-tx);cursor:pointer;display:flex;align-items:center;gap:6px}
-</style>
-<div class="cm-pad">
-  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
-    <div style="font-size:12px;color:var(--adm-text2);max-width:440px;line-height:1.5">리드가 들어오는 모든 채널을 여기서 관리 · 새 채널 추가·매핑은 개발자 없이 이 화면에서</div>
-    <button class="cm-add" onclick="openModal('channel')"><i class="ti ti-plus"></i> 새 채널 추가</button>
-  </div>
-  <div class="cm-ep">
-    <i class="ti ti-plug-connected"></i>
-    <div><div class="cm-ep-l">모든 채널 공통 수신 엔드포인트 (Universal Webhook)</div><span class="cm-ep-url">POST /api/leads/inbound</span></div>
-    <div class="cm-ep-note">메타·카카오·구글·텐핑 등<br>어떤 채널이든 이 입구 하나로</div>
-  </div>
-  <div class="cm-dl">⚠ 매핑 대기 — 알 수 없는 채널에서 유입됨 (데이터는 보존됨)</div>
-  <div class="cm-card unmap">
-    <div class="cm-ic ic-unknown"><i class="ti ti-help-circle"></i></div>
-    <div class="cm-main"><div class="cm-name">tenping_aff <span class="cm-tag" style="background:var(--warn-bg);color:var(--warn-tx)">미매핑</span></div><div class="cm-sub"><span>source=tenping_aff</span><span>최초 수신: 오늘 11:23</span></div></div>
-    <div class="cm-stat"><div class="cm-stat-v">7</div><div class="cm-stat-l">보류중</div></div>
-    <button class="cm-map" onclick="openModal('channel')">매핑하기 →</button>
-  </div>
-  <div class="cm-card unmap">
-    <div class="cm-ic ic-unknown"><i class="ti ti-help-circle"></i></div>
-    <div class="cm-main"><div class="cm-name">gads_search <span class="cm-tag" style="background:var(--warn-bg);color:var(--warn-tx)">미매핑</span></div><div class="cm-sub"><span>source=gads_search</span><span>최초 수신: 오늘 09:41</span></div></div>
-    <div class="cm-stat"><div class="cm-stat-v">3</div><div class="cm-stat-l">보류중</div></div>
-    <button class="cm-map" onclick="openModal('channel')">매핑하기 →</button>
-  </div>
-  <div class="cm-dl">활성 채널</div>
-  <div class="cm-card">
-    <div class="cm-ic ic-meta"><i class="ti ti-brand-meta"></i></div>
-    <div class="cm-main"><div class="cm-name">메타 (인스타·페북)</div><div class="cm-sub"><span>source=meta_ad</span><span class="cm-tag">자동배정: 신상준</span><span class="cm-tag">픽셀 연결됨</span></div></div>
-    <div class="cm-stat"><div class="cm-stat-v c-info" style="color:#185fa5">21</div><div class="cm-stat-l">오늘</div></div>
-    <div class="cm-tog"></div>
-  </div>
-  <div class="cm-card">
-    <div class="cm-ic ic-kakao"><i class="ti ti-message-circle"></i></div>
-    <div class="cm-main"><div class="cm-name">카카오</div><div class="cm-sub"><span>source=kakao_bizform</span><span class="cm-tag">자동배정: 라운드로빈</span><span class="cm-tag">알림톡 연결됨</span></div></div>
-    <div class="cm-stat"><div class="cm-stat-v">8</div><div class="cm-stat-l">오늘</div></div>
-    <div class="cm-tog"></div>
-  </div>
-  <div class="cm-card">
-    <div class="cm-ic ic-naver"><i class="ti ti-brand-naver"></i></div>
-    <div class="cm-main"><div class="cm-name">네이버</div><div class="cm-sub"><span>source=naver_ad</span><span class="cm-tag">자동배정: 신상준</span></div></div>
-    <div class="cm-stat"><div class="cm-stat-v">9</div><div class="cm-stat-l">오늘</div></div>
-    <div class="cm-tog"></div>
-  </div>
-  <div class="cm-card off">
-    <div class="cm-ic ic-google"><i class="ti ti-brand-google"></i></div>
-    <div class="cm-main"><div class="cm-name">구글 애즈 <span class="cm-tag">설정 완료 · 대기중</span></div><div class="cm-sub"><span>source=gads_search</span></div></div>
-    <div class="cm-stat"><div class="cm-stat-v">—</div><div class="cm-stat-l">대기</div></div>
-    <div class="cm-tog off"></div>
-  </div>
 </div>
 </div>
 
@@ -2354,30 +2271,6 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
   </div>
 </div>
 
-<!-- ④ 채널 추가 모달 -->
-<div id="modal-channel" class="modal-box" style="display:none;max-width:440px;width:100%;background:#fff;border-radius:18px;overflow:hidden">
-  <div style="background:#1f2e1a;padding:16px 20px;display:flex;align-items:center;justify-content:space-between">
-    <div style="color:#fff;font-weight:600;font-size:14px;display:flex;align-items:center;gap:8px"><i class="ti ti-broadcast" style="color:#c7e87a"></i> 새 채널 추가</div>
-    <button onclick="closeModal()" style="background:none;border:none;color:rgba(255,255,255,0.6);font-size:20px;cursor:pointer;line-height:1">×</button>
-  </div>
-  <div style="padding:18px 20px">
-    <div style="margin-bottom:12px">
-      <div style="font-size:11px;font-weight:600;color:#1f2e1a;margin-bottom:6px">채널명</div>
-      <input style="width:100%;padding:9px 12px;border:1px solid #e8e8e4;border-radius:8px;font-size:13px;font-family:inherit;box-sizing:border-box" placeholder="예) 카카오모먼트">
-    </div>
-    <div style="margin-bottom:12px">
-      <div style="font-size:11px;font-weight:600;color:#1f2e1a;margin-bottom:6px">Webhook URL</div>
-      <input style="width:100%;padding:9px 12px;border:1px solid #e8e8e4;border-radius:8px;font-size:13px;font-family:inherit;box-sizing:border-box" placeholder="https://...">
-    </div>
-    <div style="margin-bottom:16px">
-      <div style="font-size:11px;font-weight:600;color:#1f2e1a;margin-bottom:6px">UTM 소스 매핑</div>
-      <input style="width:100%;padding:9px 12px;border:1px solid #e8e8e4;border-radius:8px;font-size:13px;font-family:inherit;box-sizing:border-box" placeholder="예) kakao_moment">
-    </div>
-    <div style="background:#eef6e0;border-radius:8px;padding:10px 12px;font-size:11px;color:#3a6b1a;display:flex;gap:7px;margin-bottom:14px"><i class="ti ti-bulb"></i><span>추가하면 이 채널의 리드가 자동으로 통합 테이블에 유입됩니다. 코드 배포 없이 설정만으로 작동해요.</span></div>
-    <button onclick="closeModal();showToast('채널이 추가됐어요 ✓')" style="width:100%;padding:13px;border-radius:12px;border:none;background:#3a8e3f;color:#fff;font-size:14px;font-weight:600;cursor:pointer">채널 추가하기</button>
-  </div>
-</div>
-
 <!-- ⑤ 카드 등록 모달 (빌링키) -->
 <div id="modal-card" class="modal-box" style="display:none;max-width:420px;width:100%;background:#fff;border-radius:18px;overflow:hidden">
   <div style="background:#2c6b30;padding:16px 20px;display:flex;align-items:center;justify-content:space-between">
@@ -2480,7 +2373,6 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
 const SCREENS = {
   'admin-dash':   {title:'운영 대시보드', sub:'관리자 어드민'},
   'admin-lead':   {title:'리드 관리', sub:'관리자 어드민 · 전 채널 통합'},
-  'admin-channel':{title:'채널 관리', sub:'관리자 어드민 · 유입소스'},
   'admin-match':  {title:'매칭·배정', sub:'관리자 어드민'},
   'admin-attend': {title:'출결·보강', sub:'관리자 어드민'},
   'admin-settle': {title:'정산 · 픽클 티어제', sub:'관리자 어드민'},
