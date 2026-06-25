@@ -78,6 +78,31 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
   <circle cx="29.8" cy="25.6" r="1.5" fill="#eef6e0"/>
   <path d="M28.8 29 Q30 30.2 31.2 28.8" fill="none" stroke="#eef6e0" stroke-width="1.3" stroke-linecap="round"/>
 </symbol></svg>
+<!-- 픽클 티어 엠블럼 (귀여운 마스터 픽클) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><symbol id="pickleTier" viewBox="0 0 32 32">
+  <ellipse cx="15.5" cy="17.5" rx="8.2" ry="11.5" transform="rotate(-8 15.5 17.5)" fill="#3c8a40"/>
+  <ellipse cx="11.8" cy="12.5" rx="3" ry="7" transform="rotate(-8 11.8 12.5)" fill="#5aa84e" opacity="0.7"/>
+  <g fill="#2c6b30">
+    <circle cx="20" cy="11" r="1.1"/><circle cx="10.5" cy="23" r="1.1"/><circle cx="21" cy="20" r="1.1"/><circle cx="13.5" cy="27.5" r="1.1"/>
+  </g>
+  <g fill="#fff"><circle cx="13" cy="16.5" r="1.7"/><circle cx="19" cy="15.5" r="1.7"/></g>
+  <g fill="#21401f"><circle cx="13.3" cy="16.7" r="0.9"/><circle cx="19.3" cy="15.7" r="0.9"/></g>
+  <g fill="#f2a79a" opacity="0.8"><ellipse cx="11" cy="19.5" rx="2" ry="1.3"/><ellipse cx="21" cy="18.5" rx="2" ry="1.3"/></g>
+  <path d="M14 20.5 Q16.2 22.6 18.4 19.9" fill="none" stroke="#21401f" stroke-width="1.3" stroke-linecap="round"/>
+  <path d="M25 8 l1 2.4 2.4 1 -2.4 1 -1 2.4 -1-2.4 -2.4-1 2.4-1 z" fill="#ffd84d"/>
+</symbol></svg>
+<!-- 골든픽클 티어 엠블럼 (왕관 쓴 금색 픽클 · 원장) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><symbol id="pickleTierGold" viewBox="0 0 32 32">
+  <ellipse cx="16" cy="19.8" rx="8.2" ry="10.6" transform="rotate(-8 16 19.8)" fill="#e7b53d"/>
+  <ellipse cx="12.3" cy="15.4" rx="2.7" ry="6" transform="rotate(-8 12.3 15.4)" fill="#f4d273" opacity="0.7"/>
+  <g fill="#bf8e1e"><circle cx="20.2" cy="14" r="1"/><circle cx="11" cy="24" r="1"/><circle cx="21" cy="22.2" r="1"/></g>
+  <g fill="#fff"><circle cx="13.3" cy="18.8" r="1.7"/><circle cx="19.3" cy="18" r="1.7"/></g>
+  <g fill="#6e4f12"><circle cx="13.6" cy="19" r="0.9"/><circle cx="19.6" cy="18.2" r="0.9"/></g>
+  <g fill="#f2a79a" opacity="0.8"><ellipse cx="11.3" cy="21.8" rx="2" ry="1.3"/><ellipse cx="21.3" cy="21" rx="2" ry="1.3"/></g>
+  <path d="M14.2 22.6 Q16.4 24.8 18.6 22" fill="none" stroke="#6e4f12" stroke-width="1.3" stroke-linecap="round"/>
+  <path d="M9.5 8.6 L12 11.4 L16 7.4 L20 11.4 L22.5 8.6 L21.5 13.6 L10.5 13.6 Z" fill="#ffd84d" stroke="#d9a92a" stroke-width="0.8" stroke-linejoin="round"/>
+  <circle cx="16" cy="6.4" r="1.1" fill="#fff0b8"/>
+</symbol></svg>
 <div class="app">
   <!-- 사이드바 -->
   <nav class="sidebar">
@@ -103,6 +128,7 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
       <div class="sb-nav" data-screen="admin-attend"><i class="ti ti-clipboard-check"></i> 출결·보강</div>
       <div class="sb-nav" data-screen="admin-settle"><i class="ti ti-coin"></i> 정산 (티어)</div>
       <div class="sb-nav" data-screen="admin-trial"><i class="ti ti-stairs-up"></i> 시강 진화</div>
+      <div class="sb-nav" data-screen="admin-approve"><i class="ti ti-user-shield"></i> 강사 승인 <span class="eye" style="background:rgba(220,80,80,0.18);color:#f1a3a3"><i class="ti ti-gavel"></i>법적</span></div>
     </div>
 
     <div class="sb-group">
@@ -114,10 +140,16 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
     <div class="sb-group">
       <div class="sb-group-label">강사 <span style="color:rgba(223,232,212,0.3)">· 외부 IP 허용 · 픽클 고객</span></div>
       <div class="sb-nav" data-screen="teacher-dash"><i class="ti ti-home"></i> 강사 대시보드</div>
+      <div class="sb-nav" data-screen="teacher-verify"><i class="ti ti-license"></i> 가입·검증</div>
       <div class="sb-nav" data-screen="teacher-timetable"><i class="ti ti-calendar"></i> 시간표·프로필</div>
       <div class="sb-nav" data-screen="teacher-proposal"><i class="ti ti-inbox"></i> 배정 제안 받기</div>
       <div class="sb-nav" data-screen="teacher-bank"><i class="ti ti-leaf"></i> 픽클뱅크</div>
       <div class="sb-nav" data-screen="promise"><i class="ti ti-shield-check"></i> 픽클 약속</div>
+    </div>
+
+    <div class="sb-group">
+      <div class="sb-group-label" style="color:#9cc579">유입 · 공개</div>
+      <div class="sb-nav" data-screen="exam"><i class="ti ti-clipboard-data"></i> 학습유형검사</div>
     </div>
 
     <div class="sb-group">
@@ -238,9 +270,9 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
       <table class="ad-tbl">
         <thead><tr><th>강사</th><th>티어</th><th>배정</th><th>여유</th><th>이번달</th><th>연장률</th></tr></thead>
         <tbody>
-          <tr><td><span class="dot d-ok"></span>이민준</td><td><span class="tier-mini">🧂</span></td><td>8명</td><td style="color:#3b6d11">+2</td><td>16타임</td><td>82%</td></tr>
+          <tr><td><span class="dot d-ok"></span>이민준</td><td><span class="tier-mini">🫙</span></td><td>8명</td><td style="color:#3b6d11">+2</td><td>16타임</td><td>82%</td></tr>
           <tr><td><span class="dot d-half"></span>최수아</td><td><span class="tier-mini">🥒</span></td><td>10명</td><td style="color:#854f0b">+1</td><td>20타임</td><td>75%</td></tr>
-          <tr><td><span class="dot d-full"></span>박지훈</td><td><span class="tier-mini">🫙</span></td><td>12명</td><td style="color:#a32d2d">마감</td><td>24타임</td><td>91%</td></tr>
+          <tr><td><span class="dot d-full"></span>박지훈</td><td><span class="tier-mini"><svg viewBox="0 0 32 32" style="width:15px;height:15px;display:inline-block;vertical-align:-3px"><use href="#pickleTier"/></svg></span></td><td>12명</td><td style="color:#a32d2d">마감</td><td>24타임</td><td>91%</td></tr>
           <tr><td><span class="dot d-ok"></span>김하늘</td><td><span class="tier-mini">🥒</span></td><td>5명</td><td style="color:#3b6d11">+4</td><td>10타임</td><td>68%</td></tr>
           <tr><td><span class="dot d-ok"></span>정유진</td><td><span class="tier-mini">🥒</span></td><td>7명</td><td style="color:#3b6d11">+3</td><td>14타임</td><td>79%</td></tr>
         </tbody>
@@ -522,10 +554,28 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
   <div class="mc acc">
     <div class="mc-row">
       <div class="mc-ph">이</div>
-      <div class="mc-id"><div class="mc-name">이민준 <span class="gt gm">남</span> <span class="tt">🧂</span></div><div class="mc-uni">연세대 수학과 · 경력 4년</div><div class="mc-match"><span style="color:var(--adm-text2)">겹치는 슬롯:</span><span class="ms">화 17:00</span><span class="ms">목 18:00</span></div></div>
+      <div class="mc-id"><div class="mc-name">이민준 <span class="gt gm">남</span> <span class="tt">🫙</span></div><div class="mc-uni">연세대 수학과 · 경력 4년</div><div class="mc-match"><span style="color:var(--adm-text2)">겹치는 슬롯:</span><span class="ms">화 17:00</span><span class="ms">목 18:00</span></div></div>
       <div class="mc-mt"><div><span class="mc-mv" style="color:var(--warn-tx)">+2</span><span class="mc-ml">여유</span></div><div><span class="mc-mv">4.9</span><span class="mc-ml">평점</span></div></div>
     </div>
     <div class="sbox sb-a"><i class="ti ti-circle-check"></i><span><b>강사 수락 완료</b> · "화·목 가능합니다" · 14:40</span><button class="bconf">확정하기</button></div>
+  </div>
+
+  <div style="margin-top:22px;display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--adm-text)"><i class="ti ti-mood-heart" style="color:#3a8e3f"></i> 케어 요청 <span style="font-size:10px;font-weight:600;background:var(--warn-bg);color:var(--warn-tx);padding:1px 8px;border-radius:20px">선생님 변경 상담 2</span></div>
+  <div style="font-size:11px;color:var(--adm-text2);margin:6px 0 12px;line-height:1.5">학부모가 "수업이 안 맞는다"고 알리면 <b>즉시 교체가 아니라 여기로</b> 들어와요. 매니저가 먼저 상담·조정하고, 안 풀리면 재매칭으로 올립니다. (남용 방지 + 강사 보호)</div>
+
+  <div class="mc">
+    <div class="mc-row">
+      <div class="mc-ph" style="background:var(--warn-bg);color:var(--warn-tx)">박</div>
+      <div class="mc-id"><div class="mc-name">박서연 <span style="font-size:11px;color:var(--adm-text2);font-weight:400">고1 · 영어 · 김도윤 선생님</span></div><div class="mc-uni" style="margin-top:3px"><span style="background:var(--adm-bg);padding:2px 8px;border-radius:6px;font-size:10px">사유: 진도·난이도가 맞지 않음</span> · 접수 1일 전</div><div class="mc-match" style="color:var(--adm-text2)">"수업이 너무 빨라서 따라가기 버겁다고 해요."</div></div>
+      <div class="mc-act"><button class="bprop" onclick="showToast('상담 일정이 잡혔어요 · 매니저 배정 ✓')" style="border-color:#3a8e3f;background:#eef6e0;color:#2c6b30"><i class="ti ti-message-2" style="vertical-align:-1px"></i> 상담 먼저</button><button class="bskip" onclick="showToast('재매칭 대기로 이동했어요')">재매칭으로 →</button></div>
+    </div>
+  </div>
+  <div class="mc">
+    <div class="mc-row">
+      <div class="mc-ph" style="background:var(--danger-bg);color:var(--danger-tx)">한</div>
+      <div class="mc-id"><div class="mc-name">한지우 <span style="font-size:11px;color:var(--adm-text2);font-weight:400">중2 · 수학 · 최수아 선생님</span></div><div class="mc-uni" style="margin-top:3px"><span style="background:var(--danger-bg);color:var(--danger-tx);padding:2px 8px;border-radius:6px;font-size:10px">강사 사유 · 결석 2회</span> · 접수 오늘</div><div class="mc-match" style="color:var(--adm-text2)">강사 귀책 → 픽클 약속 불이익 연동 · 횟수 차감 없음</div></div>
+      <div class="mc-act"><button class="bprop" onclick="showToast('재매칭 + 픽클 약속 불이익 처리 ✓')" style="border-color:var(--danger-bd);background:var(--danger-bg);color:var(--danger-tx)">바로 재매칭</button></div>
+    </div>
   </div>
 </div>
 </div>
@@ -653,9 +703,9 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
   <div class="se-tiers" style="grid-template-columns:repeat(5,1fr)">
     <div class="se-tier"><div class="se-emoji">🌱</div><div class="se-tn">씨앗</div><div class="se-ten">Seed · 신입</div><div class="se-rate">44%</div><div class="se-rl">순매출 배분율</div><div class="se-cond">입사~3개월 / 정착 지원금 병행</div></div>
     <div class="se-tier cur"><div class="se-cb">김하늘</div><div class="se-emoji">🥒</div><div class="se-tn">오이</div><div class="se-ten">Cucumber</div><div class="se-rate">46%</div><div class="se-rl">순매출 배분율</div><div class="se-cond">근속+타임 / 연장 시작</div></div>
-    <div class="se-tier"><div class="se-emoji">🧂</div><div class="se-tn">절임</div><div class="se-ten">Brine</div><div class="se-rate">50%</div><div class="se-rl">순매출 배분율</div><div class="se-cond">연장 누적 / 베테랑</div></div>
-    <div class="se-tier"><div class="se-emoji">🫙</div><div class="se-tn">픽클</div><div class="se-ten">Pickle · 마스터</div><div class="se-rate">52%</div><div class="se-rl">순매출 배분율</div><div class="se-cond">최상위 마스터</div></div>
-    <div class="se-tier" style="border:2px solid var(--lime);background:linear-gradient(135deg,#f6fde8,#fff)"><div class="se-emoji">✨</div><div class="se-tn" style="color:var(--green-dark)">골든픽클</div><div class="se-ten">Golden Pickle · 원장</div><div class="se-rate" style="font-size:15px;line-height:1.3">52%<br><span style="font-size:11px;color:var(--green)">+ 후배 4%</span></div><div class="se-rl">멘토 수익 추가</div><div class="se-cond" style="color:var(--green-dark)">후배를 키워 버는<br>지역 원장</div></div>
+    <div class="se-tier"><div class="se-emoji">🫙</div><div class="se-tn">숙성</div><div class="se-ten">Aging</div><div class="se-rate">50%</div><div class="se-rl">순매출 배분율</div><div class="se-cond">연장 누적 / 베테랑</div></div>
+    <div class="se-tier"><div class="se-emoji"><svg viewBox="0 0 32 32" style="width:26px;height:26px;display:inline-block;vertical-align:-5px"><use href="#pickleTier"/></svg></div><div class="se-tn">픽클</div><div class="se-ten">Pickle · 마스터</div><div class="se-rate">52%</div><div class="se-rl">순매출 배분율</div><div class="se-cond">최상위 마스터</div></div>
+    <div class="se-tier" style="border:2px solid var(--lime);background:linear-gradient(135deg,#f6fde8,#fff)"><div class="se-emoji"><svg viewBox="0 0 32 32" style="width:27px;height:27px;display:inline-block;vertical-align:-5px"><use href="#pickleTierGold"/></svg></div><div class="se-tn" style="color:var(--green-dark)">골든픽클</div><div class="se-ten">Golden Pickle · 원장</div><div class="se-rate" style="font-size:15px;line-height:1.3">52%<br><span style="font-size:11px;color:var(--green)">+ 후배 4%</span></div><div class="se-rl">멘토 수익 추가</div><div class="se-cond" style="color:var(--green-dark)">후배를 키워 버는<br>지역 원장</div></div>
   </div>
   <div class="se-sect"><i class="ti ti-trending-up"></i> 승급 공식 <span class="sub">근속(기본) + 타임 + 연장 결제</span></div>
   <div class="promo">
@@ -671,7 +721,7 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
   <div class="pnote" style="margin-top:10px;border:1px solid #c9e89f;background:#f3fce2"><i class="ti ti-crown" style="color:var(--green-dark)"></i><span><b>골든픽클(원장) = 세계관의 완성.</b> 씨앗으로 입사 → 픽클로 성장 → 골든픽클(원장)이 되어 새 씨앗을 키운다. 본인 52% + 후배 강사 순매출의 <b>4% 멘토 수익</b> 추가. 지역 원장이 되면 해당 지역 강사·학생 데이터를 관리할 수 있는 권한이 부여됨.</span></div>
   <div class="se-sect"><i class="ti ti-table"></i> 단가 매트릭스 <span class="sub">학년 × 티어 (90분 기준)</span></div>
   <table class="matrix">
-    <thead><tr><th>학년 (90분)</th><th>🌱 씨앗</th><th>🥒 오이</th><th>🧂 절임</th><th>🫙 픽클</th></tr></thead>
+    <thead><tr><th>학년 (90분)</th><th>🌱 씨앗</th><th>🥒 오이</th><th>🫙 숙성</th><th><svg viewBox="0 0 32 32" style="width:15px;height:15px;display:inline-block;vertical-align:-3px"><use href="#pickleTier"/></svg> 픽클</th></tr></thead>
     <tbody>
       <tr><td>초등</td><td><span class="cr">17,000</span></td><td><span class="cr">+a</span></td><td><span class="cr">+a</span></td><td><span class="cr">+a</span></td></tr>
       <tr><td>중등</td><td><span class="cr">22,000</span></td><td><span class="cr">+a</span></td><td><span class="cr">+a</span></td><td><span class="cr">+a</span></td></tr>
@@ -806,7 +856,7 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
     <div class="tea-sc"><div class="tea-scl">오늘 수업</div><div class="tea-scv gI">3</div><div class="tea-scs">완료 1 · 남음 2</div></div>
     <div class="tea-sc"><div class="tea-scl">이번달 타임</div><div class="tea-scv">142</div><div class="tea-scs">담당 학생 12명</div></div>
     <div class="tea-sc"><div class="tea-scl">픽클뱅크 잔액</div><div class="tea-scv gI">1.84M</div><div class="tea-scs">출금 가능</div></div>
-    <div class="tea-sc"><div class="tea-scl">연장 결제</div><div class="tea-scv">6건 ★</div><div class="tea-scs">절임까지 72%</div></div>
+    <div class="tea-sc"><div class="tea-scl">연장 결제</div><div class="tea-scv">6건 ★</div><div class="tea-scs">숙성까지 72%</div></div>
   </div>
   <div class="tea-prop">
     <i class="ti ti-bell-ringing"></i>
@@ -919,7 +969,7 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
     <table class="mini"><thead><tr><th></th><th>월</th><th>화</th><th>수</th><th>목</th><th>금</th><th>토</th></tr></thead><tbody id="tt1b"></tbody></table>
   </div>
   <div class="thc">
-    <div class="thch"><div class="thp">박</div><div><div class="thn">박지훈 <span style="font-size:9px;padding:1px 6px;border-radius:20px;background:var(--info-bg);color:var(--info-tx)">남</span> 🫙 <span style="font-size:10px;color:var(--text2)">수학</span></div><div class="thm">고려대 · 경력 5년</div></div><div class="thcc"><div><span class="thcv" style="color:var(--danger-tx)">1</span><span class="thcl">빈 슬롯</span></div><div><span class="thcv">12</span><span class="thcl">배정</span></div></div></div>
+    <div class="thch"><div class="thp">박</div><div><div class="thn">박지훈 <span style="font-size:9px;padding:1px 6px;border-radius:20px;background:var(--info-bg);color:var(--info-tx)">남</span> <svg viewBox="0 0 32 32" style="width:15px;height:15px;display:inline-block;vertical-align:-3px"><use href="#pickleTier"/></svg> <span style="font-size:10px;color:var(--text2)">수학</span></div><div class="thm">고려대 · 경력 5년</div></div><div class="thcc"><div><span class="thcv" style="color:var(--danger-tx)">1</span><span class="thcl">빈 슬롯</span></div><div><span class="thcv">12</span><span class="thcl">배정</span></div></div></div>
     <div class="sk">
       <div class="sk-h"><i class="ti ti-cards"></i> 스킬 포트폴리오</div>
       <div class="sk-row"><span class="sk-k">가능 학년</span><div class="sk-tags"><span class="sk-t">중2~중3</span><span class="sk-t">고1~고3</span></div></div>
@@ -1050,7 +1100,8 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
       <div class="bk-bl">김하늘 선생님 · 출금 가능 잔액</div>
       <div class="bk-bal">1,847,200 <span class="u">픽클</span></div>
       <div class="bk-won">= 1,847,200원 · 1픽클 = 1원 (세후 적립 기준)</div>
-      <button class="bk-wd"><i class="ti ti-cash"></i> 출금 신청하기</button>
+      <button class="bk-wd" onclick="openModal('kakaoauth')"><i class="ti ti-cash"></i> 출금 신청하기</button>
+      <div style="margin-top:9px;font-size:10.5px;color:rgba(255,255,255,0.72);display:flex;align-items:center;justify-content:center;gap:5px"><i class="ti ti-shield-lock" style="color:var(--lime)"></i> 출금 등 민감 동작은 <b style="color:#fff">카카오 본인인증</b>을 한 번 더 거쳐요</div>
     </div>
     <div class="bk-rate"><i class="ti ti-info-circle"></i><span><b>1픽클 = 1원</b> 고정 · 수업 완료 시 3.3% 사업소득세를 먼저 뗀 세후 금액으로 적립 · 출금 = 정산 신청</span></div>
     <div class="bk-sect">이번 달 적립 (6월)</div>
@@ -1187,6 +1238,19 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
         <div class="pw-pr"><span class="pw-pl2">현재 플랜</span><span class="pw-pp">6개월 구독 · 5% 할인</span></div>
         <div class="pw-pr"><span class="pw-pl2">수업 구성</span><span class="pw-pv">주 2회 · 60분</span></div>
         <div class="pw-pr"><span class="pw-pl2">다음 결제일</span><span class="pw-pv">2026. 7. 15</span></div>
+      </div>
+    </div>
+    <div class="pw-sec">
+      <div style="background:#fff;border:1px solid #e6eedb;border-radius:14px;padding:16px 16px">
+        <div style="display:flex;gap:11px;align-items:flex-start">
+          <div style="width:38px;height:38px;border-radius:10px;background:var(--lime-soft);display:flex;align-items:center;justify-content:center;flex-shrink:0"><i class="ti ti-mood-heart" style="font-size:19px;color:var(--green)"></i></div>
+          <div style="flex:1">
+            <div style="font-size:13.5px;font-weight:600;color:var(--green-dark)">수업이 잘 안 맞나요?</div>
+            <div style="font-size:11px;color:var(--text2);margin-top:4px;line-height:1.55">바로 바꾸기 전에, <b>담당 매니저가 먼저 들어요.</b> 시간·진도·스타일을 조정해 보고, 그래도 안 맞으면 선생님을 다시 매칭해 드려요.</div>
+          </div>
+        </div>
+        <button onclick="openModal('teacherchange')" style="margin-top:13px;width:100%;padding:11px;border:1px solid var(--green);border-radius:10px;background:#fff;color:var(--green-dark);font-size:13px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px"><i class="ti ti-message-2"></i> 담당 매니저에게 알리기</button>
+        <div style="margin-top:9px;font-size:10px;color:var(--text3);text-align:center">타사는 변경 버튼이 곧 교체예요. 픽클은 <b style="color:var(--green)">상담이 먼저</b>예요.</div>
       </div>
     </div>
   </div>
@@ -1415,6 +1479,20 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
   </div>
   <button class="py-pay" onclick="openModal('card')"><i class="ti ti-shield-check"></i> 카드 등록하고 자동결제 시작</button>
   <div class="py-pg"><i class="ti ti-lock"></i> KISPG 정기결제 · 매월 자동 갱신 · 갱신 3일 전 안내</div>
+
+  <div class="py-card" style="margin-top:14px">
+    <div class="py-step"><span class="py-sn" style="background:#e4ebd8;color:#5a6450"><i class="ti ti-receipt-refund" style="font-size:13px"></i></span> 중도 해지 · 환불</div>
+    <div style="font-size:11.5px;color:var(--text2);line-height:1.6;margin:4px 0 12px"><b style="color:var(--green-dark)">기기 약정·위약금이 없어요.</b> 월 단위로 자유롭게 그만둘 수 있고, 환불은 <b>학원법 기준</b>으로 진행분만 차감해 투명하게 처리돼요. (설탭·콴다는 태블릿 약정·위약금이 있어요.)</div>
+    <div style="border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-bottom:12px">
+      <div style="display:flex;background:var(--lime-soft);font-size:10.5px;font-weight:600;color:var(--green-dark)"><div style="flex:1.4;padding:8px 12px">해지 시점 (총 수업시간 기준)</div><div style="flex:1;padding:8px 12px;text-align:right">환불 금액</div></div>
+      <div style="display:flex;font-size:11.5px;border-top:1px solid var(--line)"><div style="flex:1.4;padding:8px 12px;color:var(--text)">1/6 경과 전</div><div style="flex:1;padding:8px 12px;text-align:right;font-weight:600;color:var(--green-dark)">납입액의 5/6</div></div>
+      <div style="display:flex;font-size:11.5px;border-top:1px solid var(--line)"><div style="flex:1.4;padding:8px 12px;color:var(--text)">1/6 ~ 1/3 사이</div><div style="flex:1;padding:8px 12px;text-align:right;font-weight:600;color:var(--green-dark)">납입액의 2/3</div></div>
+      <div style="display:flex;font-size:11.5px;border-top:1px solid var(--line)"><div style="flex:1.4;padding:8px 12px;color:var(--text)">1/3 ~ 1/2 사이</div><div style="flex:1;padding:8px 12px;text-align:right;font-weight:600;color:var(--green-dark)">납입액의 1/2</div></div>
+      <div style="display:flex;font-size:11.5px;border-top:1px solid var(--line)"><div style="flex:1.4;padding:8px 12px;color:var(--text)">1/2 경과 후</div><div style="flex:1;padding:8px 12px;text-align:right;font-weight:600;color:var(--text3)">환불 없음</div></div>
+    </div>
+    <div style="font-size:10px;color:#a8b29c;line-height:1.5;margin-bottom:12px"><i class="ti ti-info-circle" style="color:var(--green)"></i> 학원의 설립·운영 및 과외교습에 관한 법률 시행령 기준. 결제수수료·사은품 가격은 환불액에서 공제. 회사 사정으로 수업을 제공할 수 없는 경우는 잔여분 전액 환불.</div>
+    <button onclick="openModal('cancel')" style="width:100%;padding:11px;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--text2);font-size:13px;font-weight:600;cursor:pointer">구독 해지 · 환불 신청</button>
+  </div>
 </div></div>
 </div>
 
@@ -1550,8 +1628,17 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
 .mr-td .n{width:18px;height:18px;border-radius:6px;background:rgba(199,232,122,0.18);color:var(--lime);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;flex-shrink:0;margin-top:1px}
 .mr-disc{margin:16px 20px 0;font-size:10px;color:var(--text3);line-height:1.5;display:flex;gap:6px}
 .mr-disc i{color:#5a3db0;flex-shrink:0;margin-top:1px}
+@keyframes mspin{to{transform:rotate(360deg)}}
 </style>
 <div class="mr-pad"><div class="mr-wrap">
+  <div id="mrGen" style="margin:20px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px 20px;text-align:center">
+    <div style="width:46px;height:46px;border-radius:12px;background:var(--lime-soft);display:flex;align-items:center;justify-content:center;margin:0 auto 12px"><i class="ti ti-stack-2" style="font-size:22px;color:var(--green)"></i></div>
+    <div style="font-size:14px;font-weight:600;color:var(--green-dark)">이번 달 수업 리포트 <b>8회</b> 준비됨</div>
+    <div style="font-size:11px;color:var(--text2);margin-top:5px;line-height:1.5">회차마다 쌓인 단원·이해도·숙제완료·정답률을<br>AI가 분석해 월간 리포트로 요약해요.</div>
+    <button id="mrGenBtn" onclick="genMonthly()" style="margin-top:15px;width:100%;padding:13px;border:none;border-radius:12px;background:var(--green);color:#fff;font-size:14px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:7px"><i class="ti ti-sparkles"></i> AI 월간 분석 생성</button>
+    <div style="font-size:10px;color:var(--text3);margin-top:9px">* 회차 수는 가변 — 주2회면 8회, 주1회면 4회도 그 달 리포트를 그대로 넣어 생성</div>
+  </div>
+  <div id="mrResult" style="display:none">
   <div class="mr-h">
     <div class="mr-mon">2026년 6월 · 월간 리포트</div>
     <div class="mr-name">이준혁 학생</div>
@@ -1620,7 +1707,199 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
   </div>
 
   <div class="mr-disc"><i class="ti ti-info-circle"></i><span>AI 분석·예측은 수업 리포트 데이터를 기반으로 자동 생성된 참고 자료예요. 실제 진도는 선생님과 상의해 조정돼요.</span></div>
+  </div><!-- /mrResult -->
 </div></div>
+</div>
+
+<!-- ========== 유입: 학습유형검사 (공개) ========== -->
+<div class="screen" id="scr-exam">
+<style>
+.ex-pad{background:var(--bg);min-height:100%;display:flex;justify-content:center}
+.ex-wrap{max-width:480px;width:100%;padding-bottom:30px}
+.ex-h{background:linear-gradient(160deg,var(--green),#2c6b30);padding:30px 24px 34px;color:#fff;text-align:center;position:relative;overflow:hidden}
+.ex-h::after{content:'';position:absolute;left:-40px;bottom:-50px;width:160px;height:160px;border-radius:50%;background:rgba(199,232,122,0.14)}
+.ex-badge{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:600;background:rgba(199,232,122,0.2);color:var(--lime);padding:4px 12px;border-radius:20px;margin-bottom:14px;position:relative;z-index:1}
+.ex-hl{font-size:23px;font-weight:700;line-height:1.4;position:relative;z-index:1}
+.ex-sub{font-size:12.5px;color:rgba(255,255,255,0.82);margin-top:9px;line-height:1.6;position:relative;z-index:1}
+.ex-card{background:#fff;border:1px solid var(--line);border-radius:16px;margin:18px 20px 0;padding:18px}
+.ex-fl{font-size:11px;font-weight:600;color:var(--green-dark);margin:0 0 6px}
+.ex-in{width:100%;padding:11px 13px;border:1px solid #e6eedb;border-radius:10px;font-size:13px;font-family:inherit;box-sizing:border-box;margin-bottom:12px}
+.ex-cta{width:100%;padding:14px;border:none;border-radius:12px;background:var(--green);color:#fff;font-size:15px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:7px}
+.ex-meta{display:flex;justify-content:center;gap:18px;margin:14px 20px 0;font-size:11px;color:var(--text2)}
+.ex-meta b{color:var(--green-dark)}
+.ex-rh{background:var(--lime-soft);border:1px solid #cfe6bf;border-radius:16px;margin:18px 20px 0;padding:18px;text-align:center}
+.ex-type{font-size:20px;font-weight:700;color:var(--green-dark)}
+.ex-rec{display:flex;gap:11px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px;margin:10px 20px 0}
+.ex-rec-ph{width:46px;height:46px;border-radius:12px;background:var(--lime-soft);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:600;color:var(--green-dark);flex-shrink:0}
+.ex-rec-n{font-size:13.5px;font-weight:600}
+.ex-rec-s{font-size:11px;color:var(--text2);margin-top:2px}
+.ex-rec-m{font-size:10px;color:var(--green);margin-top:3px;font-weight:600}
+.ex-fit{margin-left:auto;text-align:center;flex-shrink:0}
+.ex-fitv{font-size:16px;font-weight:700;color:var(--green-dark)}
+.ex-fitl{font-size:9px;color:var(--text3)}
+</style>
+<div class="ex-pad"><div class="ex-wrap">
+  <div class="ex-h">
+    <div class="ex-badge"><i class="ti ti-check"></i> 인싸이트 학습유형검사 제휴</div>
+    <div class="ex-hl">우리 아이 공부 유형,<br>알고 계신가요?</div>
+    <div class="ex-sub">무료 진단 후, 우리 아이에게 딱 맞는<br>검증된 전담 선생님을 연결해드려요.</div>
+  </div>
+
+  <div id="examIntro">
+    <div class="ex-card">
+      <div class="ex-fl">학생 이름</div>
+      <input class="ex-in" placeholder="예) 이준혁">
+      <div class="ex-fl">학부모 연락처</div>
+      <input class="ex-in" placeholder="010-0000-0000">
+      <div class="ex-fl">학년</div>
+      <input class="ex-in" placeholder="예) 초5">
+      <button class="ex-cta" onclick="examStart()"><i class="ti ti-clipboard-data"></i> 무료 학습유형검사 시작</button>
+    </div>
+    <div class="ex-meta"><span>⏱ 약 <b>10분</b> 소요</span><span>💸 <b>100% 무료</b></span><span>🎁 결과 즉시 확인</span></div>
+  </div>
+
+  <div id="examResult" style="display:none">
+    <div class="ex-rh">
+      <div style="font-size:11px;color:var(--green);font-weight:600;margin-bottom:6px">이준혁 학생의 학습유형</div>
+      <div class="ex-type">🔎 꼼꼼 분석형</div>
+      <div style="font-size:12px;color:var(--green-dark);margin-top:8px;line-height:1.6">개념을 천천히 짚어주면 깊게 이해하는 타입이에요. 빠른 진도보다 <b>차분히 설명하고 확인하는 선생님</b>과 잘 맞아요.</div>
+    </div>
+    <div style="font-size:13px;font-weight:600;color:var(--green-dark);margin:18px 20px 0;display:flex;align-items:center;gap:6px"><i class="ti ti-sparkles" style="color:var(--green)"></i> 이 유형에 맞는 선생님 3명</div>
+    <div class="ex-rec">
+      <div class="ex-rec-ph">김</div>
+      <div style="flex:1;min-width:0"><div class="ex-rec-n">김하늘 선생님 <span style="font-size:9px;background:#eef6e0;color:#2c6b30;padding:1px 6px;border-radius:10px">검증완료</span></div><div class="ex-rec-s">서울교대 · 차분한 개념 설명형</div><div class="ex-rec-m">⭐ 신원·성범죄경력·학력 검증 완료</div></div>
+      <div class="ex-fit"><div class="ex-fitv">98%</div><div class="ex-fitl">유형 적합</div></div>
+    </div>
+    <div class="ex-rec">
+      <div class="ex-rec-ph">정</div>
+      <div style="flex:1;min-width:0"><div class="ex-rec-n">정유진 선생님 <span style="font-size:9px;background:#eef6e0;color:#2c6b30;padding:1px 6px;border-radius:10px">검증완료</span></div><div class="ex-rec-s">이화여대 · 단계별 확인 수업</div><div class="ex-rec-m">⭐ 신원·성범죄경력·학력 검증 완료</div></div>
+      <div class="ex-fit"><div class="ex-fitv">94%</div><div class="ex-fitl">유형 적합</div></div>
+    </div>
+    <div class="ex-rec">
+      <div class="ex-rec-ph">박</div>
+      <div style="flex:1;min-width:0"><div class="ex-rec-n">박도윤 선생님 <span style="font-size:9px;background:#eef6e0;color:#2c6b30;padding:1px 6px;border-radius:10px">검증완료</span></div><div class="ex-rec-s">고려대 · 기초 탄탄 반복형</div><div class="ex-rec-m">⭐ 신원·성범죄경력·학력 검증 완료</div></div>
+      <div class="ex-fit"><div class="ex-fitv">91%</div><div class="ex-fitl">유형 적합</div></div>
+    </div>
+    <div style="margin:18px 20px 0"><button class="ex-cta" onclick="showToast('무료 체험수업 신청이 접수됐어요 ✓')"><i class="ti ti-gift"></i> 1순위 선생님께 무료 체험 신청</button></div>
+    <div style="text-align:center;font-size:11px;color:var(--text3);margin-top:10px">결과는 카카오 알림톡으로도 보내드려요</div>
+  </div>
+</div></div>
+</div>
+
+<!-- ========== 강사: 가입 · 검증 (서류 제출) ========== -->
+<div class="screen" id="scr-teacher-verify">
+<style>
+.tv-pad{background:var(--bg);min-height:100%;display:flex;justify-content:center}
+.tv-wrap{max-width:500px;width:100%;padding:20px 20px 30px}
+.tv-steps{display:flex;align-items:center;gap:0;margin-bottom:18px}
+.tv-step{flex:1;text-align:center;position:relative}
+.tv-sd{width:26px;height:26px;border-radius:50%;background:#e4ebd8;color:#8a9580;font-size:12px;font-weight:600;display:flex;align-items:center;justify-content:center;margin:0 auto 5px}
+.tv-step.on .tv-sd{background:var(--green);color:#fff}
+.tv-step.done .tv-sd{background:var(--lime);color:var(--green-dark)}
+.tv-sl{font-size:10px;color:var(--text2)}
+.tv-step.on .tv-sl{color:var(--green-dark);font-weight:600}
+.tv-line{position:absolute;top:13px;left:60%;width:80%;height:2px;background:#e4ebd8;z-index:-1}
+.tv-sec{font-size:11px;font-weight:700;color:var(--text2);letter-spacing:0.3px;margin:18px 0 10px}
+.tv-doc{background:#fff;border:1px solid var(--line);border-radius:13px;padding:14px 15px;margin-bottom:10px}
+.tv-dtop{display:flex;align-items:center;gap:9px}
+.tv-di{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.tv-dn{font-size:13px;font-weight:600;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.tv-tag{font-size:9px;font-weight:700;padding:1px 7px;border-radius:20px}
+.tv-req{background:#fdeaea;color:#c0392b}
+.tv-opt{background:#eef2f6;color:#5a6b7a}
+.tv-dd{font-size:10.5px;color:var(--text3);margin-top:2px;line-height:1.5}
+.tv-up{margin-top:11px;border:1.5px dashed #cdd9c0;border-radius:10px;padding:11px;text-align:center;font-size:12px;color:var(--green-dark);cursor:pointer;background:#fafdf5}
+.tv-up.done{border-style:solid;border-color:var(--green);background:#eef6e0}
+</style>
+<div class="tv-pad"><div class="tv-wrap">
+  <div class="tv-steps">
+    <div class="tv-step done"><div class="tv-sd"><i class="ti ti-check"></i></div><div class="tv-sl">기본정보</div><div class="tv-line"></div></div>
+    <div class="tv-step on"><div class="tv-sd">2</div><div class="tv-sl">서류 제출</div><div class="tv-line"></div></div>
+    <div class="tv-step"><div class="tv-sd">3</div><div class="tv-sl">승인 대기</div></div>
+  </div>
+
+  <div style="background:#fdf3f3;border:1px solid #f3d6d6;border-radius:12px;padding:12px 14px;display:flex;gap:9px;align-items:flex-start;margin-bottom:6px"><i class="ti ti-gavel" style="color:#c0392b;font-size:17px;flex-shrink:0;margin-top:1px"></i><div style="font-size:11px;color:#9a3b3b;line-height:1.6">미성년 학생을 가르치는 만큼 <b>성범죄경력 조회·학력 확인은 법적 필수</b>예요(아동·청소년의 성보호에 관한 법률 제56조). 서류는 본인이 정부24·경찰서에서 발급해 올려주시면 됩니다.</div></div>
+
+  <div class="tv-sec">법적 필수 서류</div>
+  <div class="tv-doc">
+    <div class="tv-dtop"><div class="tv-di" style="background:#fdeaea;color:#c0392b"><i class="ti ti-shield-lock"></i></div><div style="flex:1"><div class="tv-dn">성범죄경력·아동학대전력 조회 회신서 <span class="tv-tag tv-req">필수</span></div><div class="tv-dd">정부24·경찰서에서 본인 발급 → 업로드 (발급일이 가입일 이전이어야 인정)</div></div></div>
+    <div class="tv-up done" onclick="this.classList.toggle('done');this.innerHTML=this.classList.contains('done')?'<i class=\'ti ti-circle-check\'></i> 회신서_이준혁.pdf 업로드됨':'<i class=\'ti ti-upload\'></i> 파일 선택 또는 촬영'"><i class="ti ti-circle-check"></i> 회신서_이준혁.pdf 업로드됨</div>
+  </div>
+  <div class="tv-doc">
+    <div class="tv-dtop"><div class="tv-di" style="background:#fdeaea;color:#c0392b"><i class="ti ti-certificate"></i></div><div style="flex:1"><div class="tv-dn">최종학력증명서 <span class="tv-tag tv-req">필수</span></div><div class="tv-dd">전문대졸 이상 · 교육청 강사 등록 요건</div></div></div>
+    <div class="tv-up" onclick="this.classList.toggle('done');this.innerHTML=this.classList.contains('done')?'<i class=\'ti ti-circle-check\'></i> 학력증명서.pdf 업로드됨':'<i class=\'ti ti-upload\'></i> 파일 선택 또는 촬영'"><i class="ti ti-upload"></i> 파일 선택 또는 촬영</div>
+  </div>
+  <div class="tv-doc">
+    <div class="tv-dtop"><div class="tv-di" style="background:#fdeaea;color:#c0392b"><i class="ti ti-id"></i></div><div style="flex:1"><div class="tv-dn">신분증 본인확인 <span class="tv-tag tv-req">필수</span></div><div class="tv-dd">실명·계좌 예금주 일치 확인 (정산 안전)</div></div></div>
+    <div class="tv-up" onclick="this.classList.toggle('done');this.innerHTML=this.classList.contains('done')?'<i class=\'ti ti-circle-check\'></i> 신분증 업로드됨':'<i class=\'ti ti-upload\'></i> 파일 선택 또는 촬영'"><i class="ti ti-upload"></i> 파일 선택 또는 촬영</div>
+  </div>
+
+  <div class="tv-sec">선택 (품질·운영)</div>
+  <div class="tv-doc">
+    <div class="tv-dtop"><div class="tv-di" style="background:#eef6e0;color:var(--green)"><i class="ti ti-video"></i></div><div style="flex:1"><div class="tv-dn">화상수업 녹화 동의 <span class="tv-tag tv-opt">선택</span></div><div class="tv-dd">품질 점검·분쟁 대비용 · 개인정보 동의 기반</div></div><label style="cursor:pointer"><input type="checkbox" style="width:18px;height:18px;accent-color:var(--green)"></label></div>
+  </div>
+  <div class="tv-doc">
+    <div class="tv-dtop"><div class="tv-di" style="background:#eef6e0;color:var(--green)"><i class="ti ti-award"></i></div><div style="flex:1"><div class="tv-dn">경력증명·자격증 <span class="tv-tag tv-opt">선택</span></div><div class="tv-dd">프로필 신뢰도·티어 심사에 반영</div></div></div>
+    <div class="tv-up" onclick="this.classList.toggle('done');this.innerHTML=this.classList.contains('done')?'<i class=\'ti ti-circle-check\'></i> 업로드됨':'<i class=\'ti ti-upload\'></i> 파일 선택 (선택)'"><i class="ti ti-upload"></i> 파일 선택 (선택)</div>
+  </div>
+
+  <button onclick="showToast('서류 제출 완료 · 관리자 승인 대기로 넘어갔어요')" style="width:100%;padding:14px;border:none;border-radius:12px;background:var(--green);color:#fff;font-size:15px;font-weight:600;cursor:pointer;margin-top:14px"><i class="ti ti-send" style="vertical-align:-2px"></i> 서류 제출하고 승인 요청</button>
+  <div style="text-align:center;font-size:10.5px;color:var(--text3);margin-top:10px;line-height:1.5">제출 후 관리자가 회신서·학력을 확인해 승인해요. 승인 전에는 학생 배정을 받을 수 없어요.</div>
+</div></div>
+</div>
+
+<!-- ========== 관리자: 강사 승인 · 검증 ========== -->
+<div class="screen" id="scr-admin-approve">
+<style>
+.ap-pad{padding:20px;background:var(--adm-bg);min-height:100%}
+.ap-note{display:flex;gap:8px;align-items:flex-start;font-size:11px;background:#fdf3f3;border:1px solid #f3d6d6;color:#9a3b3b;border-radius:9px;padding:10px 12px;margin-bottom:14px;line-height:1.5}
+.ap-note i{color:#c0392b;font-size:15px;flex-shrink:0;margin-top:1px}
+.ap-card{background:#fff;border:1px solid var(--adm-line);border-radius:12px;padding:15px 16px;margin-bottom:12px}
+.ap-top{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.ap-av{width:40px;height:40px;border-radius:50%;background:var(--adm-bg);color:var(--adm-text2);display:flex;align-items:center;justify-content:center;font-weight:600;font-size:14px}
+.ap-n{font-size:14px;font-weight:600}
+.ap-s{font-size:11px;color:var(--adm-text2);margin-top:2px}
+.ap-wait{margin-left:auto;font-size:10px;font-weight:600;background:var(--warn-bg);color:var(--warn-tx);padding:3px 10px;border-radius:20px}
+.ap-chk{display:flex;align-items:center;gap:9px;padding:8px 0;border-top:1px solid var(--adm-line);font-size:12px}
+.ap-ci{width:20px;height:20px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0}
+.ap-ok{background:#e3f3e6;color:#2c8a3a}.ap-no{background:#fdeaea;color:#c0392b}.ap-pend{background:#fff5e6;color:#c08a2a}
+.ap-cl{flex:1}
+.ap-clt{font-weight:500;color:var(--adm-text)}
+.ap-req{font-size:9px;font-weight:700;color:#c0392b;margin-left:5px}
+.ap-cv{font-size:10px;color:var(--adm-text2)}
+.ap-act{display:flex;gap:8px;margin-top:13px}
+.ap-approve{flex:1;padding:10px;border:none;border-radius:9px;background:#2c8a3a;color:#fff;font-size:13px;font-weight:600;cursor:pointer}
+.ap-approve.dim{background:#cdd9c0;color:#fff;cursor:not-allowed}
+.ap-reject{padding:10px 16px;border:1px solid var(--adm-line2);border-radius:9px;background:#fff;color:var(--adm-text2);font-size:13px;cursor:pointer}
+</style>
+<div class="ap-pad">
+  <div class="ap-note"><i class="ti ti-gavel"></i><span><b>아동보호 법적 게이트.</b> 성범죄경력 회신서·학력은 법적 필수라 <b>3개 필수 항목이 모두 확인돼야</b> 승인 버튼이 열려요. 미이행 시 과태료(1차 300만원) 대상이에요.</span></div>
+
+  <div class="ap-card">
+    <div class="ap-top">
+      <div class="ap-av">정유진</div>
+      <div><div class="ap-n">정유진 <span style="font-size:11px;color:var(--adm-text2);font-weight:400">여 · 수학</span></div><div class="ap-s">이화여대 수학교육 · 경력 3년</div></div>
+      <span class="ap-wait">승인 대기</span>
+    </div>
+    <div class="ap-chk"><div class="ap-ci ap-ok"><i class="ti ti-check"></i></div><div class="ap-cl"><span class="ap-clt">성범죄경력·아동학대 회신서<span class="ap-req">법적</span></span><div class="ap-cv">발급 2026.06.20 · 가입일 이전 · 이상 없음</div></div></div>
+    <div class="ap-chk"><div class="ap-ci ap-ok"><i class="ti ti-check"></i></div><div class="ap-cl"><span class="ap-clt">최종학력증명서<span class="ap-req">법적</span></span><div class="ap-cv">이화여대 학사 · 전문대졸 이상 충족</div></div></div>
+    <div class="ap-chk"><div class="ap-ci ap-ok"><i class="ti ti-check"></i></div><div class="ap-cl"><span class="ap-clt">신분증 본인확인<span class="ap-req">필수</span></span><div class="ap-cv">실명·예금주 일치</div></div></div>
+    <div class="ap-chk"><div class="ap-ci ap-ok"><i class="ti ti-check"></i></div><div class="ap-cl"><span class="ap-clt">화상 녹화 동의 <span style="font-size:9px;color:var(--adm-text2)">(선택)</span></span><div class="ap-cv">동의함</div></div></div>
+    <div class="ap-act"><button class="ap-approve" onclick="showToast('정유진 강사 승인 완료 · 배정 가능 상태로 전환 ✓')">승인 (배정 가능)</button><button class="ap-reject" onclick="showToast('반려 사유를 강사에게 안내했어요')">반려</button></div>
+  </div>
+
+  <div class="ap-card">
+    <div class="ap-top">
+      <div class="ap-av" style="background:var(--warn-bg);color:var(--warn-tx)">한승우</div>
+      <div><div class="ap-n">한승우 <span style="font-size:11px;color:var(--adm-text2);font-weight:400">남 · 영어</span></div><div class="ap-s">한양대 영어영문 · 경력 1년</div></div>
+      <span class="ap-wait" style="background:#fff5e6;color:#c08a2a">서류 미비</span>
+    </div>
+    <div class="ap-chk"><div class="ap-ci ap-ok"><i class="ti ti-check"></i></div><div class="ap-cl"><span class="ap-clt">성범죄경력·아동학대 회신서<span class="ap-req">법적</span></span><div class="ap-cv">이상 없음</div></div></div>
+    <div class="ap-chk"><div class="ap-ci ap-pend"><i class="ti ti-clock"></i></div><div class="ap-cl"><span class="ap-clt">최종학력증명서<span class="ap-req">법적</span></span><div class="ap-cv" style="color:#c08a2a">미제출 — 강사에게 요청됨</div></div></div>
+    <div class="ap-chk"><div class="ap-ci ap-ok"><i class="ti ti-check"></i></div><div class="ap-cl"><span class="ap-clt">신분증 본인확인<span class="ap-req">필수</span></span><div class="ap-cv">실명·예금주 일치</div></div></div>
+    <div class="ap-act"><button class="ap-approve dim" onclick="showToast('법적 필수 서류(학력)가 미비해 승인할 수 없어요')">승인 (법적 서류 미비)</button><button class="ap-reject" onclick="showToast('학력증명서 제출을 다시 요청했어요')">서류 재요청</button></div>
+  </div>
+</div>
 </div>
 
     </div>
@@ -1649,13 +1928,38 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
       <input style="width:100%;padding:9px 12px;border:1px solid #e6eedb;border-radius:8px;font-size:13px;font-family:inherit;box-sizing:border-box" placeholder="예) 교재 p.24~28 연습문제 풀기">
     </div>
     <div style="margin-bottom:12px">
-      <div style="font-size:11px;font-weight:600;color:#1f2e1a;margin-bottom:6px">이해도</div>
-      <div style="display:flex;gap:6px">
-        <span onclick="this.parentNode.querySelectorAll('span').forEach(s=>s.style.background='#f4f7ec');this.style.background='#3a8e3f';this.style.color='#fff'" style="padding:6px 14px;border-radius:20px;border:1px solid #e6eedb;font-size:12px;cursor:pointer">😊 잘 따라옴</span>
-        <span onclick="this.parentNode.querySelectorAll('span').forEach(s=>s.style.background='#f4f7ec');this.style.background='#3a8e3f';this.style.color='#fff'" style="padding:6px 14px;border-radius:20px;border:1px solid #e6eedb;font-size:12px;cursor:pointer">😐 보통</span>
-        <span onclick="this.parentNode.querySelectorAll('span').forEach(s=>s.style.background='#f4f7ec');this.style.background='#3a8e3f';this.style.color='#fff'" style="padding:6px 14px;border-radius:20px;border:1px solid #e6eedb;font-size:12px;cursor:pointer">😟 어려워함</span>
+      <div style="font-size:11px;font-weight:600;color:#1f2e1a;margin-bottom:6px">단원 태그 <span style="color:#8a9580;font-weight:400">· 약한 단원 집계용</span></div>
+      <input style="width:100%;padding:9px 12px;border:1px solid #e6eedb;border-radius:8px;font-size:13px;font-family:inherit;box-sizing:border-box" placeholder="예) 일차함수 · 그래프 해석">
+      <div style="display:flex;gap:5px;flex-wrap:wrap;margin-top:6px">
+        <span onclick="this.style.background='#eef6e0';this.style.borderColor='#3a8e3f';this.style.color='#2c6b30'" style="padding:3px 9px;border-radius:14px;border:1px solid #e6eedb;font-size:11px;cursor:pointer;color:#8a9580">+ 일차함수</span>
+        <span onclick="this.style.background='#eef6e0';this.style.borderColor='#3a8e3f';this.style.color='#2c6b30'" style="padding:3px 9px;border-radius:14px;border:1px solid #e6eedb;font-size:11px;cursor:pointer;color:#8a9580">+ 방정식</span>
+        <span onclick="this.style.background='#eef6e0';this.style.borderColor='#3a8e3f';this.style.color='#2c6b30'" style="padding:3px 9px;border-radius:14px;border:1px solid #e6eedb;font-size:11px;cursor:pointer;color:#8a9580">+ 그래프</span>
       </div>
     </div>
+    <div style="display:flex;gap:10px;margin-bottom:12px">
+      <div style="flex:1">
+        <div style="font-size:11px;font-weight:600;color:#1f2e1a;margin-bottom:6px">이해도</div>
+        <div style="display:flex;gap:4px">
+          <span onclick="this.parentNode.querySelectorAll('span').forEach(s=>{s.style.background='#f4f7ec';s.style.color='#5a6450'});this.style.background='#3a8e3f';this.style.color='#fff'" style="padding:6px 10px;border-radius:18px;border:1px solid #e6eedb;font-size:12px;cursor:pointer;background:#f4f7ec">😊</span>
+          <span onclick="this.parentNode.querySelectorAll('span').forEach(s=>{s.style.background='#f4f7ec';s.style.color='#5a6450'});this.style.background='#3a8e3f';this.style.color='#fff'" style="padding:6px 10px;border-radius:18px;border:1px solid #e6eedb;font-size:12px;cursor:pointer;background:#f4f7ec">😐</span>
+          <span onclick="this.parentNode.querySelectorAll('span').forEach(s=>{s.style.background='#f4f7ec';s.style.color='#5a6450'});this.style.background='#3a8e3f';this.style.color='#fff'" style="padding:6px 10px;border-radius:18px;border:1px solid #e6eedb;font-size:12px;cursor:pointer;background:#f4f7ec">😟</span>
+        </div>
+      </div>
+      <div style="flex:1">
+        <div style="font-size:11px;font-weight:600;color:#1f2e1a;margin-bottom:6px">숙제 완료율</div>
+        <div style="display:flex;gap:4px">
+          <span onclick="this.parentNode.querySelectorAll('span').forEach(s=>{s.style.background='#f4f7ec';s.style.color='#5a6450'});this.style.background='#3a8e3f';this.style.color='#fff'" style="padding:6px 9px;border-radius:18px;border:1px solid #e6eedb;font-size:11px;cursor:pointer;background:#f4f7ec">0%</span>
+          <span onclick="this.parentNode.querySelectorAll('span').forEach(s=>{s.style.background='#f4f7ec';s.style.color='#5a6450'});this.style.background='#3a8e3f';this.style.color='#fff'" style="padding:6px 9px;border-radius:18px;border:1px solid #e6eedb;font-size:11px;cursor:pointer;background:#f4f7ec">50</span>
+          <span onclick="this.parentNode.querySelectorAll('span').forEach(s=>{s.style.background='#f4f7ec';s.style.color='#5a6450'});this.style.background='#3a8e3f';this.style.color='#fff'" style="padding:6px 9px;border-radius:18px;border:1px solid #e6eedb;font-size:11px;cursor:pointer;background:#f4f7ec">80</span>
+          <span onclick="this.parentNode.querySelectorAll('span').forEach(s=>{s.style.background='#f4f7ec';s.style.color='#5a6450'});this.style.background='#3a8e3f';this.style.color='#fff'" style="padding:6px 9px;border-radius:18px;border:1px solid #e6eedb;font-size:11px;cursor:pointer;background:#f4f7ec">100</span>
+        </div>
+      </div>
+    </div>
+    <div style="margin-bottom:14px">
+      <div style="font-size:11px;font-weight:600;color:#1f2e1a;margin-bottom:6px;display:flex;justify-content:space-between"><span>이번 회차 정답률 <span style="color:#8a9580;font-weight:400">· 월간 추이 그래프 원천</span></span><span id="repAccVal" style="color:#3a8e3f;font-weight:700">82%</span></div>
+      <input type="range" min="0" max="100" value="82" oninput="document.getElementById('repAccVal').textContent=this.value+'%'" style="width:100%;accent-color:#3a8e3f">
+    </div>
+    <div style="background:#f4f7ec;border-radius:8px;padding:8px 11px;font-size:10.5px;color:#6b7763;display:flex;gap:6px;margin-bottom:14px"><i class="ti ti-sparkles" style="color:#3a8e3f"></i><span>단원·이해도·완료율·정답률은 <b>숫자로 저장</b>돼 월말에 AI 월간 리포트(추이 그래프·약한 단원)의 원천이 됩니다.</span></div>
     <div style="margin-bottom:16px">
       <div style="font-size:11px;font-weight:600;color:#1f2e1a;margin-bottom:6px">학부모 코멘트 (따뜻하게 한 줄)</div>
       <textarea style="width:100%;padding:9px 12px;border:1px solid #e6eedb;border-radius:8px;font-size:13px;font-family:inherit;resize:none;box-sizing:border-box" rows="3" placeholder="예) 서연이가 오늘 집중력이 좋았어요. 숙제 꼭 확인 부탁드립니다 😊"></textarea>
@@ -1759,6 +2063,72 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
   </div>
 </div>
 
+<!-- ⑧ 중도 해지 · 환불 신청 (학부모) -->
+<div id="modal-cancel" class="modal-box" style="display:none;max-width:440px;width:100%;background:#fff;border-radius:18px;overflow:hidden">
+  <div style="background:#1f2e1a;padding:16px 20px;display:flex;align-items:center;justify-content:space-between">
+    <div style="color:#fff;font-weight:600;font-size:14px;display:flex;align-items:center;gap:8px"><i class="ti ti-receipt-refund" style="color:#c7e87a"></i> 구독 해지 · 환불 신청</div>
+    <button onclick="closeModal()" style="background:none;border:none;color:rgba(255,255,255,0.6);font-size:20px;cursor:pointer;line-height:1">×</button>
+  </div>
+  <div style="padding:18px 20px">
+    <div style="font-size:12px;color:#5a6450;margin-bottom:14px">이준혁 학생 · 6개월 구독 · 수학 주2회</div>
+    <div style="background:#f7f9f2;border-radius:12px;padding:14px 16px;margin-bottom:14px">
+      <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:7px"><span style="color:#6b7763">전체 수업</span><span style="font-weight:600;color:#1f2e1a">48회</span></div>
+      <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:7px"><span style="color:#6b7763">수강 완료</span><span style="font-weight:600;color:#1f2e1a">14회 (약 1/3 지점)</span></div>
+      <div style="height:1px;background:#e6eedb;margin:9px 0"></div>
+      <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:5px"><span style="color:#6b7763">납입액</span><span style="color:#1f2e1a">5,520,000원</span></div>
+      <div style="display:flex;justify-content:space-between;font-size:14px"><span style="font-weight:600;color:#2c6b30">예상 환불액</span><span style="font-weight:700;color:#2c6b30">약 3,680,000원</span></div>
+      <div style="font-size:10px;color:#a8b29c;margin-top:6px;line-height:1.5">1/3 지점 → 학원법 기준 2/3 환불 · 결제수수료·사은품 공제 후 확정. 정확한 금액은 접수 후 안내드려요.</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:7px;margin-bottom:14px">
+      <label style="display:flex;align-items:center;gap:9px;padding:10px 13px;border:1px solid #e6eedb;border-radius:10px;cursor:pointer;font-size:12px;color:#3a4636"><input type="radio" name="cancelType" checked style="accent-color:#3a8e3f"> 당월 수업 유지 후 <b>다음 달부터 미청구</b> (권장)</label>
+      <label style="display:flex;align-items:center;gap:9px;padding:10px 13px;border:1px solid #e6eedb;border-radius:10px;cursor:pointer;font-size:12px;color:#3a4636"><input type="radio" name="cancelType" style="accent-color:#3a8e3f"> 즉시 해지 후 <b>잔여분 환불</b> (학원법 기준)</label>
+    </div>
+    <div style="background:#eef6e0;border-radius:10px;padding:11px 13px;font-size:11px;color:#3a6b1a;line-height:1.6;margin-bottom:14px"><i class="ti ti-shield-check"></i> 기기 약정·위약금이 없어요. 해지 후에도 그동안의 <b>수업 리포트·월간 리포트는 마이페이지에서 계속 열람</b>할 수 있어요.</div>
+    <button onclick="closeModal();showToast('해지·환불 신청이 접수됐어요 · 담당자가 확인 후 안내드려요')" style="width:100%;padding:13px;border-radius:12px;border:none;background:#3a8e3f;color:#fff;font-size:14px;font-weight:600;cursor:pointer">해지 · 환불 신청하기</button>
+    <div style="text-align:center;margin-top:9px"><button onclick="closeModal()" style="background:none;border:none;color:#9aa48f;font-size:11px;cursor:pointer">계속 수업할게요</button></div>
+  </div>
+</div>
+
+<!-- ⑦ 선생님 변경 = 상담 우선 (학부모) -->
+<div id="modal-teacherchange" class="modal-box" style="display:none;max-width:440px;width:100%;background:#fff;border-radius:18px;overflow:hidden">
+  <div style="background:#1f2e1a;padding:16px 20px;display:flex;align-items:center;justify-content:space-between">
+    <div style="color:#fff;font-weight:600;font-size:14px;display:flex;align-items:center;gap:8px"><i class="ti ti-mood-heart" style="color:#c7e87a"></i> 담당 매니저에게 알리기</div>
+    <button onclick="closeModal()" style="background:none;border:none;color:rgba(255,255,255,0.6);font-size:20px;cursor:pointer;line-height:1">×</button>
+  </div>
+  <div style="padding:18px 20px">
+    <div style="font-size:12px;color:#5a6450;margin-bottom:14px">이준혁 학생 · 김하늘 선생님 · 수학</div>
+    <div style="font-size:11px;font-weight:600;color:#1f2e1a;margin-bottom:7px">어떤 점이 불편하세요?</div>
+    <div style="display:flex;flex-direction:column;gap:7px;margin-bottom:15px">
+      <label style="display:flex;align-items:center;gap:9px;padding:10px 13px;border:1px solid #e6eedb;border-radius:10px;cursor:pointer;font-size:12.5px;color:#3a4636"><input type="radio" name="tcReason" style="accent-color:#3a8e3f"> 수업 시간이 잘 안 맞아요</label>
+      <label style="display:flex;align-items:center;gap:9px;padding:10px 13px;border:1px solid #e6eedb;border-radius:10px;cursor:pointer;font-size:12.5px;color:#3a4636"><input type="radio" name="tcReason" style="accent-color:#3a8e3f"> 수업 스타일·성향이 안 맞아요</label>
+      <label style="display:flex;align-items:center;gap:9px;padding:10px 13px;border:1px solid #e6eedb;border-radius:10px;cursor:pointer;font-size:12.5px;color:#3a4636"><input type="radio" name="tcReason" style="accent-color:#3a8e3f"> 진도·난이도가 맞지 않아요</label>
+      <label style="display:flex;align-items:center;gap:9px;padding:10px 13px;border:1px solid #e6eedb;border-radius:10px;cursor:pointer;font-size:12.5px;color:#3a4636"><input type="radio" name="tcReason" style="accent-color:#3a8e3f"> 기타 (직접 입력)</label>
+    </div>
+    <textarea style="width:100%;padding:9px 12px;border:1px solid #e6eedb;border-radius:8px;font-size:13px;font-family:inherit;resize:none;box-sizing:border-box;margin-bottom:14px" rows="2" placeholder="자세한 내용을 적어주시면 매니저가 더 잘 도와드려요 (선택)"></textarea>
+    <div style="background:#eef6e0;border-radius:10px;padding:11px 13px;font-size:11px;color:#3a6b1a;line-height:1.6;margin-bottom:14px"><i class="ti ti-info-circle"></i> 접수하면 <b>담당 매니저가 먼저 연락</b>드려 조정을 도와드려요. 조정으로 해결되지 않으면 <b>선생님을 다시 매칭</b>해 드립니다. (강사 사정으로 인한 교체는 횟수와 무관하게 처리돼요.)</div>
+    <button onclick="closeModal();showToast('접수됐어요 · 담당 매니저가 곧 연락드려요 ✓')" style="width:100%;padding:13px;border-radius:12px;border:none;background:#3a8e3f;color:#fff;font-size:14px;font-weight:600;cursor:pointer">상담 요청 접수하기</button>
+  </div>
+</div>
+
+<!-- ⑥ 카카오 본인인증 게이트 (출금 등 민감 동작) -->
+<div id="modal-kakaoauth" class="modal-box" style="display:none;max-width:400px;width:100%;background:#fff;border-radius:18px;overflow:hidden">
+  <div style="background:#1f2e1a;padding:16px 20px;display:flex;align-items:center;justify-content:space-between">
+    <div style="color:#fff;font-weight:600;font-size:14px;display:flex;align-items:center;gap:8px"><i class="ti ti-shield-lock" style="color:#c7e87a"></i> 본인인증</div>
+    <button onclick="closeModal()" style="background:none;border:none;color:rgba(255,255,255,0.6);font-size:20px;cursor:pointer;line-height:1">×</button>
+  </div>
+  <div style="padding:22px 20px">
+    <div style="text-align:center;margin-bottom:16px">
+      <div style="width:52px;height:52px;border-radius:14px;background:#FEE500;display:flex;align-items:center;justify-content:center;margin:0 auto 12px"><i class="ti ti-message-circle-2" style="font-size:26px;color:#3c1e1e"></i></div>
+      <div style="font-size:15px;font-weight:700;color:#1f2e1a">출금 전 카카오 본인인증</div>
+      <div style="font-size:11.5px;color:#6b7763;margin-top:7px;line-height:1.6">평소 로그인은 간편하게, <b>돈이 나가는 동작만</b> 본인 명의를<br>한 번 더 확인해요. 부정 출금·명의도용 방지 장치예요.</div>
+    </div>
+    <div style="background:#f7f9f2;border-radius:10px;padding:12px 14px;margin-bottom:8px;display:flex;gap:9px;align-items:flex-start"><i class="ti ti-id-badge-2" style="color:#3a8e3f;font-size:16px;margin-top:1px"></i><div style="font-size:11px;color:#4a5443;line-height:1.5">이름·생년월일·통신사 명의가 <b>출금 계좌 예금주와 일치</b>하는지 확인합니다.</div></div>
+    <div style="background:#f7f9f2;border-radius:10px;padding:12px 14px;margin-bottom:16px;display:flex;gap:9px;align-items:flex-start"><i class="ti ti-device-mobile-check" style="color:#3a8e3f;font-size:16px;margin-top:1px"></i><div style="font-size:11px;color:#4a5443;line-height:1.5">새 기기에서 로그인했거나 1개월 이상 미인증 시 자동 요청돼요.</div></div>
+    <button onclick="closeModal();showToast('본인인증 완료 · 출금 신청이 접수됐어요 ✓')" style="width:100%;padding:13px;border-radius:12px;border:none;background:#FEE500;color:#3c1e1e;font-size:14px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:7px"><i class="ti ti-message-circle-2"></i> 카카오로 본인인증</button>
+    <div style="text-align:center;font-size:10px;color:#9aa48f;margin-top:10px">카카오 인증서 기반 · 건당 인증 (소셜 로그인과 별개)</div>
+  </div>
+</div>
+
 </div><!-- /modalOverlay -->
 
 <script>
@@ -1770,7 +2140,9 @@ const SCREENS = {
   'admin-attend': {title:'출결·보강', sub:'관리자 어드민'},
   'admin-settle': {title:'정산 · 픽클 티어제', sub:'관리자 어드민'},
   'admin-trial':  {title:'시강 진화 로드맵', sub:'관리자 어드민'},
+  'admin-approve':{title:'강사 승인 · 검증', sub:'관리자 어드민 · 아동보호 법적 게이트'},
   'teacher-dash': {title:'강사 대시보드', sub:'강사 화면'},
+  'teacher-verify':{title:'강사 가입 · 검증', sub:'강사 화면 · 서류 제출'},
   'teacher-timetable':{title:'시간표·프로필', sub:'강사 화면 · 스킬 포트폴리오'},
   'teacher-proposal':{title:'배정 제안 받기', sub:'강사 화면'},
   'teacher-bank': {title:'픽클뱅크', sub:'강사 정산'},
@@ -1781,6 +2153,7 @@ const SCREENS = {
   'shop':         {title:'픽클 상점', sub:'고객 화면 · 포인트 사용'},
   'promise':      {title:'픽클 약속', sub:'강사 · 교습 보증 제도'},
   'monthly-report':{title:'월간 리포트', sub:'고객 화면 · AI 월간 분석'},
+  'exam':         {title:'학습유형검사', sub:'유입 · 공개 페이지'},
 };
 
 function switchScreen(id){
@@ -1789,6 +2162,8 @@ function switchScreen(id){
   const meta = SCREENS[id];
   if(meta){ document.getElementById('tbTitle').textContent=meta.title; document.getElementById('tbSub').textContent=meta.sub; }
   document.getElementById('screenArea').scrollTop=0;
+  if(id==='monthly-report' && typeof resetMonthly==='function') resetMonthly();
+  if(id==='exam' && typeof examReset==='function') examReset();
 }
 
 document.querySelectorAll('.sb-nav').forEach(n=>{
@@ -1815,6 +2190,44 @@ function closeModal(){
   const overlay = document.getElementById('modalOverlay');
   overlay.style.display = 'none';
   document.querySelectorAll('.modal-box').forEach(m => m.style.display = 'none');
+}
+
+/* ===== 월간 리포트: AI 생성 연출 (정적 데모 · 추후 Claude API 전환) ===== */
+function genMonthly(){
+  const btn = document.getElementById('mrGenBtn');
+  if(!btn) return;
+  btn.disabled = true;
+  btn.innerHTML = '<i class="ti ti-loader-2" style="animation:mspin 0.8s linear infinite"></i> 8회 리포트 분석 중…';
+  setTimeout(()=>{
+    const gen = document.getElementById('mrGen');
+    const res = document.getElementById('mrResult');
+    if(gen) gen.style.display = 'none';
+    if(res) res.style.display = 'block';
+    showToast('AI 월간 분석이 완성됐어요 ✨');
+  }, 1600);
+}
+function resetMonthly(){
+  const gen = document.getElementById('mrGen');
+  const res = document.getElementById('mrResult');
+  const btn = document.getElementById('mrGenBtn');
+  if(gen) gen.style.display = '';
+  if(res) res.style.display = 'none';
+  if(btn){ btn.disabled = false; btn.innerHTML = '<i class="ti ti-sparkles"></i> AI 월간 분석 생성'; }
+}
+
+/* ===== 학습유형검사: 검사 → 결과 ===== */
+function examStart(){
+  const intro = document.getElementById('examIntro');
+  const res = document.getElementById('examResult');
+  if(intro) intro.style.display = 'none';
+  if(res) res.style.display = 'block';
+  showToast('학습유형 분석 완료 · 맞춤 선생님을 찾았어요 ✨');
+}
+function examReset(){
+  const intro = document.getElementById('examIntro');
+  const res = document.getElementById('examResult');
+  if(intro) intro.style.display = '';
+  if(res) res.style.display = 'none';
 }
 
 /* ===== 리드 관리: 필터 · 정렬 · 모아보기 ===== */
