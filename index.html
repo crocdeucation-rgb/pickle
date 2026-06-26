@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>픽클과외 시스템 프로토타입</title>
+<title>픽클 시스템 프로토타입</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.47.0/tabler-icons.min.css">
 <style>
 :root{
@@ -107,7 +107,7 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
   <!-- 사이드바 -->
   <nav class="sidebar">
     <div class="sb-logo">
-      <div class="sb-logo-name"><span class="sb-logo-icon"><svg viewBox="0 0 44 44" style="width:84%;height:84%;display:block"><use href="#pickleLogo"/></svg></span> 픽클과외</div>
+      <div class="sb-logo-name"><span class="sb-logo-icon"><svg viewBox="0 0 44 44" style="width:84%;height:84%;display:block"><use href="#pickleLogo"/></svg></span> 픽클</div>
       <div class="sb-logo-sub">시스템 프로토타입 v1.0</div>
     </div>
 
@@ -129,6 +129,11 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
     <div class="sb-group">
       <div class="sb-group-label" style="color:#7fb0db">마케터 전용 <span style="color:rgba(223,232,212,0.3)">· 내부 IP</span></div>
       <div class="sb-nav" data-screen="admin-lead"><i class="ti ti-users"></i> 리드 관리 <span class="eye"><i class="ti ti-eye"></i>마케터</span></div>
+    </div>
+
+    <div class="sb-group">
+      <div class="sb-group-label" style="color:#d9a55c">사업부 (방문 영업) <span style="color:rgba(223,232,212,0.3)">· 외부 · 모바일</span></div>
+      <div class="sb-nav" data-screen="field-visit"><i class="ti ti-clipboard-text"></i> 방문결과 입력</div>
     </div>
 
     <div class="sb-group">
@@ -428,6 +433,123 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
   </div>
   <div style="margin-top:10px;font-size:11px;color:var(--adm-text2)">노션식 인라인 편집 · 상태 칩 클릭으로 즉시 변경 · "안 함"도 <b>보류</b>로 계속 관리 · 전 채널 모수 통합 (메타·네이버·당근·카카오·구글·텐핑 + 추후 확장)</div>
 </div>
+</div>
+
+<!-- ========== 사업부: 방문결과 입력 ========== -->
+<div class="screen" id="scr-field-visit">
+<style>
+.fv-pad{background:var(--bg);min-height:100%;display:flex;justify-content:center;padding:18px 16px 40px}
+.fv-wrap{max-width:520px;width:100%}
+.fv-phone{font-size:11px;color:#9a6b1a;background:#fff8ec;border:1px solid #f0e0c0;border-radius:10px;padding:9px 12px;display:flex;align-items:center;gap:7px;margin-bottom:16px;line-height:1.5}
+.fv-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px 16px;margin-bottom:14px}
+.fv-ct{font-size:12px;font-weight:700;color:var(--adm-text);margin-bottom:12px;display:flex;align-items:center;gap:7px}
+.fv-ct .n{width:19px;height:19px;border-radius:50%;background:var(--green);color:#fff;font-size:11px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.fv-ro{background:#f7faf4;border-radius:10px;padding:11px 13px;margin-bottom:8px}
+.fv-rl{font-size:10px;color:#7a8670;margin-bottom:2px}
+.fv-rv{font-size:13px;font-weight:600;color:var(--adm-text)}
+.fv-lk{font-size:9px;color:#9aa48f;margin-left:5px;font-weight:400}
+.fv-f{margin-bottom:11px}
+.fv-fl{font-size:11px;font-weight:600;color:var(--adm-text);margin-bottom:6px;display:block}
+.fv-req{color:#c0392b;font-size:10px}
+.fv-in{width:100%;padding:12px 13px;border:1px solid #dfe6d6;border-radius:10px;font-size:14px;font-family:inherit;box-sizing:border-box;background:#fff}
+.fv-in:focus{outline:none;border-color:var(--green)}
+.fv-sel{width:100%;padding:12px 13px;border:1px solid #dfe6d6;border-radius:10px;font-size:14px;font-family:inherit;box-sizing:border-box;background:#fff}
+.fv-chips{display:flex;flex-wrap:wrap;gap:7px}
+.fv-chip{padding:10px 16px;border:1px solid #dfe6d6;border-radius:22px;font-size:13px;font-weight:600;color:var(--adm-text2);background:#fff;cursor:pointer;user-select:none}
+.fv-chip.on{background:var(--green);color:#fff;border-color:var(--green)}
+.fv-pay{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.fv-pm{flex:1;min-width:90px;padding:13px 8px;border:1px solid #dfe6d6;border-radius:11px;text-align:center;font-size:12px;font-weight:600;color:var(--adm-text2);background:#fff;cursor:pointer}
+.fv-pm.on{border-color:var(--green);background:#eef6e0;color:#2c6b30}
+.fv-pm i{display:block;font-size:18px;margin-bottom:3px}
+.fv-cam{border:2px dashed #cdd8c0;border-radius:12px;padding:20px;text-align:center;color:#7a8670;font-size:12px;cursor:pointer;background:#fafdf7}
+.fv-cam.done{border-style:solid;border-color:var(--green);background:#eef6e0;color:#2c6b30}
+.fv-cam i{font-size:24px;display:block;margin-bottom:6px;color:var(--green)}
+.fv-save{width:100%;padding:15px;border:none;border-radius:13px;background:var(--green);color:#fff;font-size:15px;font-weight:700;cursor:pointer;margin-top:4px}
+.fv-warn{font-size:10.5px;color:#c0392b;margin-top:5px;display:none}
+.fv-note{font-size:10px;color:var(--adm-text3);margin-top:6px;line-height:1.5}
+</style>
+<div class="fv-pad"><div class="fv-wrap">
+
+  <div class="fv-phone"><i class="ti ti-device-mobile"></i> 방문 현장에서 스마트폰으로 바로 입력 · 사진 첨부까지 한 화면에서 끝 (3페이지 분할·카톡 우회 없음)</div>
+
+  <!-- 1. 학생 정보 (자동, 읽기전용) -->
+  <div class="fv-card">
+    <div class="fv-ct"><span class="n">1</span> 학생 정보 <span style="font-size:10px;color:#9aa48f;font-weight:400">· 방문 카드에서 자동 · 수정 불가</span></div>
+    <div class="fv-ro"><div class="fv-rl">학생명</div><div class="fv-rv">박서진 <span class="fv-lk">(초5)</span></div></div>
+    <div class="fv-ro"><div class="fv-rl">주소</div><div class="fv-rv">인천 연수구 송도동 ○○아파트</div></div>
+    <div class="fv-ro" style="margin-bottom:0"><div class="fv-rl">방문 배정</div><div class="fv-rv">김기민 (사업부) · 마스터 배정</div></div>
+  </div>
+
+  <!-- 2. 계약 내용 -->
+  <div class="fv-card">
+    <div class="fv-ct"><span class="n">2</span> 계약 내용</div>
+    <div class="fv-f"><label class="fv-fl">결과 <span class="fv-req">*</span></label>
+      <div class="fv-chips" id="fvResult">
+        <span class="fv-chip on" onclick="fvPick(this,'fvResult')">성공 (계약)</span>
+        <span class="fv-chip" onclick="fvPick(this,'fvResult')">결보 (보류)</span>
+      </div>
+    </div>
+    <div class="fv-f"><label class="fv-fl">과목 <span class="fv-req">*</span> <span style="font-size:10px;color:#9aa48f;font-weight:400">복수 선택</span></label>
+      <div class="fv-chips" id="fvSubj">
+        <span class="fv-chip on" onclick="this.classList.toggle('on')">수학</span>
+        <span class="fv-chip" onclick="this.classList.toggle('on')">영어</span>
+        <span class="fv-chip" onclick="this.classList.toggle('on')">국어</span>
+        <span class="fv-chip" onclick="this.classList.toggle('on')">과학</span>
+        <span class="fv-chip" onclick="this.classList.toggle('on')">사회</span>
+      </div>
+    </div>
+    <div class="fv-f" style="margin-bottom:0"><label class="fv-fl">계약 기간 <span class="fv-req">*</span> <span style="font-size:10px;color:#9aa48f;font-weight:400">사업부는 장기만 · 할인 없음</span></label>
+      <div class="fv-chips" id="fvTerm">
+        <span class="fv-chip on" onclick="fvPick(this,'fvTerm')">6개월</span>
+        <span class="fv-chip" onclick="fvPick(this,'fvTerm')">12개월</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. 결제 (KIS Pay) -->
+  <div class="fv-card">
+    <div class="fv-ct"><span class="n">3</span> 현장 결제 <span style="font-size:10px;color:#9aa48f;font-weight:400">· KIS Pay · 단말기 없이 폰으로</span></div>
+    <div class="fv-f"><label class="fv-fl">결제 방식</label>
+      <div class="fv-pay" id="fvPay">
+        <div class="fv-pm on" onclick="fvPickPay(this)"><i class="ti ti-nfc"></i>폰2폰</div>
+        <div class="fv-pm" onclick="fvPickPay(this)"><i class="ti ti-camera"></i>카메라</div>
+        <div class="fv-pm" onclick="fvPickPay(this)"><i class="ti ti-message"></i>SMS링크</div>
+        <div class="fv-pm" onclick="fvPickPay(this)"><i class="ti ti-cash"></i>현금</div>
+      </div>
+    </div>
+    <div id="fvCardBox">
+      <div class="fv-f"><label class="fv-fl">카드사</label>
+        <select class="fv-sel"><option>삼성카드</option><option>현대카드</option><option>신한카드</option><option>KB국민카드</option><option>롯데카드</option><option>BC카드</option><option>하나카드</option><option>NH카드</option></select>
+      </div>
+      <div class="fv-f"><label class="fv-fl">무이자 할부 <span style="font-size:10px;color:#9aa48f;font-weight:400">· 6개월 이내만</span></label>
+        <select class="fv-sel"><option>일시불</option><option>2개월 무이자</option><option>3개월 무이자</option><option>4개월 무이자</option><option>5개월 무이자</option><option>6개월 무이자</option></select>
+      </div>
+      <div class="fv-f" style="margin-bottom:0"><label class="fv-fl">승인번호 <span class="fv-req">*</span> <span style="font-size:10px;color:#9aa48f;font-weight:400">· 카드번호는 저장 안 함</span></label>
+        <input class="fv-in" inputmode="numeric" placeholder="결제 후 승인번호 입력" value="30024815">
+      </div>
+    </div>
+    <div id="fvCashBox" style="display:none;background:#eef6e0;border-radius:10px;padding:12px 14px;font-size:11.5px;color:#2c6b30;line-height:1.6"><i class="ti ti-building-bank"></i> 현금은 <b>법인 통장으로 입금</b> 안내(계좌는 시스템에 등록되어 매번 묻지 않음). 입금 확인 후 계약 확정.</div>
+  </div>
+
+  <!-- 4. 계약서 사진 + 인계 -->
+  <div class="fv-card">
+    <div class="fv-ct"><span class="n">4</span> 계약서 사진 · 인계</div>
+    <div class="fv-f"><label class="fv-fl">계약서 · 승인전표 <span class="fv-req">*</span></label>
+      <div class="fv-cam" id="fvCam" onclick="this.classList.toggle('done');this.innerHTML=this.classList.contains('done')?'<i class=\'ti ti-circle-check\'></i> 사진 2장 첨부됨 · 다시 누르면 재촬영':'<i class=\'ti ti-camera\'></i> 카메라로 촬영 또는 갤러리에서 선택'"><i class="ti ti-camera"></i> 카메라로 촬영 또는 갤러리에서 선택</div>
+    </div>
+    <div class="fv-f"><label class="fv-fl">특이사항 (학생·학부모)</label>
+      <textarea class="fv-in" rows="2" style="resize:none" placeholder="예) 누나도 상담 원함 · 주차 어려움 · 결제일 변경 요청 등"></textarea>
+    </div>
+    <div class="fv-f" style="margin-bottom:0"><label class="fv-fl">원장 일차콜 <span style="font-size:10px;color:#9aa48f;font-weight:400">· 계약 직후 원장이 거는 첫 전화</span></label>
+      <input class="fv-in" placeholder="일차콜 시 전달할 메모 (원장에게 인계됨)" value="저녁 8시 이후 통화 가능 · 어머니 응대">
+    </div>
+  </div>
+
+  <button class="fv-save" onclick="fvSave()"><i class="ti ti-check" style="vertical-align:-2px"></i> 방문결과 저장 · 인계</button>
+  <div class="fv-warn" id="fvWarn"><i class="ti ti-alert-circle"></i> 필수 항목(승인번호·계약서 사진)을 확인해주세요.</div>
+  <div class="fv-note">저장하면 결제 승인내역이 본사·정산 채널로, 특이사항·원장 일차콜이 원장에게 인계됩니다. 필수값이 비면 저장되지 않아 새벽 입력 실수를 막습니다.</div>
+
+</div></div>
 </div>
 
 <!-- ========== 관리자: 매칭·배정 ========== -->
@@ -2373,6 +2495,7 @@ body{font-family:'Spoqa Han Sans Neo',-apple-system,'Apple SD Gothic Neo','Malgu
 const SCREENS = {
   'admin-dash':   {title:'운영 대시보드', sub:'관리자 어드민'},
   'admin-lead':   {title:'리드 관리', sub:'관리자 어드민 · 전 채널 통합'},
+  'field-visit':  {title:'방문결과 입력', sub:'사업부 · 방문 영업 · 모바일'},
   'admin-match':  {title:'매칭·배정', sub:'관리자 어드민'},
   'admin-attend': {title:'출결·보강', sub:'관리자 어드민'},
   'admin-settle': {title:'정산 · 픽클 티어제', sub:'관리자 어드민'},
@@ -2612,6 +2735,35 @@ function pyRender(){
     if(pts>0) pt.innerHTML = '<i class="ti ti-coins"></i> 결제 즉시 <b>'+pts.toLocaleString('ko-KR')+' 픽클포인트</b> 적립 → 교재·플래너 구매 (할인 대신 포인트)';
     else pt.innerHTML = '<i class="ti ti-coins"></i> 월간 결제는 포인트 적립이 없어요 · 6개월 이상부터 적립';
   }
+}
+
+/* ===== 사업부 방문결과 입력 ===== */
+function fvPick(el, groupId){
+  document.querySelectorAll('#'+groupId+' .fv-chip').forEach(c=>c.classList.remove('on'));
+  el.classList.add('on');
+}
+function fvPickPay(el){
+  document.querySelectorAll('#fvPay .fv-pm').forEach(c=>c.classList.remove('on'));
+  el.classList.add('on');
+  var isCash = el.textContent.indexOf('현금')>=0;
+  var cardBox=document.getElementById('fvCardBox'), cashBox=document.getElementById('fvCashBox');
+  if(cardBox) cardBox.style.display = isCash ? 'none' : 'block';
+  if(cashBox) cashBox.style.display = isCash ? 'block' : 'none';
+}
+function fvSave(){
+  var cam = document.getElementById('fvCam');
+  var camOk = cam && cam.classList.contains('done');
+  var apprv = document.querySelector('#fvCardBox input');
+  var cashMode = document.getElementById('fvCashBox') && document.getElementById('fvCashBox').style.display==='block';
+  var apprvOk = cashMode || (apprv && apprv.value.trim().length>0);
+  var warn = document.getElementById('fvWarn');
+  if(!camOk || !apprvOk){
+    if(warn) warn.style.display='block';
+    showToast('필수 항목이 비어 저장할 수 없어요');
+    return;
+  }
+  if(warn) warn.style.display='none';
+  showToast('방문결과 저장 · 결제 승인내역·원장 일차콜 인계 완료 ✓');
 }
 
 /* ===== 리드 상세 → 등록 카드 모달 ===== */
